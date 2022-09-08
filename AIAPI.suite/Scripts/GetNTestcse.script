@@ -1,0 +1,22 @@
+﻿GetAccessTokenAPI.AccessToken 
+put Global accessToken 
+put GetNTestcase().responsebody into APIResponse
+put JSONValue(APIResponse) into ResponseValue
+log ResponseValue
+
+
+
+log the number of items of ResponseValue
+
+//log item 1 of ResponseValue
+
+
+repeat with each item of ResponseValue
+	log it.testcaseName
+end repeat
+
+
+
+
+
+

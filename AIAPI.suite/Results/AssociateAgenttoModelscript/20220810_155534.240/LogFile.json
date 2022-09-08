@@ -1,0 +1,28 @@
+{
+	"entries": [
+		{
+				"message": "Running AssociateAgenttoModelscript.script",
+				"identifier": "START",
+				"timestamp": "2022-08-10 15:55:34.253 +0530"
+			},
+		{
+				"handlerName": "on_associateagenttomodelscript",
+				"timestamp": "2022-08-10 15:55:34.370 +0530",
+				"message": "Validation Error: Failed to parse JSON request body. Unexpected character n at index 6. {    name: \"VijayalaxmiK\",  }",
+				"scriptName": "AssociateAgenttoModelscript.script",
+				"handlerLine": 3,
+				"identifier": "LogError"
+			},
+		{
+				"message": "(Duration:\"0.148\", Errors:\"2\", Exceptions:\"0\", StartTime:\"2022-08-10 15:55:34 +0530\", Successes:\"0\", TestCase:\"AssociateAgenttoModelscript.script\", Warnings:\"0\")",
+				"identifier": "EndTestCase",
+				"timestamp": "2022-08-10 15:55:34.401 +0530"
+			},
+		{
+				"message": "Validation Error:: The Api Test could not be executed due to validation errors. -- Execution Time 0:00:00 AssociateAgenttoModelscript.script",
+				"identifier": "FAILURE",
+				"timestamp": "2022-08-10 15:55:34.475 +0530"
+			}
+	],
+	"createdTimestamp": "2022-08-10 15:55:34.253 +0530"
+}

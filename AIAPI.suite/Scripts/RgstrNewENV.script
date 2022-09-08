@@ -1,0 +1,10 @@
+﻿--> Not working post
+
+GetAccessTokenAPI.AccessToken 
+put Global accessToken 
+put RegisterENV().responsebody into APIResponse
+log APIResponse
+
+
+
+

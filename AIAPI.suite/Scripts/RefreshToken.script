@@ -1,0 +1,15 @@
+﻿//GetAccessToken
+GetAccessTokenAPI.GetAccessToken "client:dai:agent:integration","2450d039-0728-4077-9168-9a8fdb3f2a07","sudhakar.medameni@ideabytes.com","Sudhakar#345", "http://localhost:8000/auth/realms/eggplant/protocol/openid-connect/token"
+put "client:dai:agent:integration" into clientId
+put "2450d039-0728-4077-9168-9a8fdb3f2a07" into clientSecret //ENTER YOUR SECRET ID HERE
+put "sudhakar.medameni@ideabytes.com" into username
+put "Sudhakar#345" into password
+put "http://localhost:8000/auth/realms/eggplant/protocol/openid-connect/token" into authUrl// Post the credentials to the auth server. This will return the access token
+put {grant_type: "refresh_token", username: username, password: password, client_id: clientId, client_secret:clientSecret,refresh_token:Global refreshToken} into postData
+post postData to url authUrl// Access the resource using the access token
+put access_token of the JSONValue of it into Global accessToken1
+log Global accessToken1
+
+
+(*put GetListOfTestConfigurations1().responseBody into APIResponse
+log APIResponse*)

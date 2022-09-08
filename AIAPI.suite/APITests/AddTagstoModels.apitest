@@ -1,0 +1,29 @@
+{
+    URLparameters = (
+	{
+	    checkedNumber = <*BY>;
+	    param = "";
+	    showCheckedNumber = <*BY>;
+	    value = "";
+	}
+    );
+    authenticationType = None;
+    httpVerb = POST;
+    oauth1Token = "";
+    password = "";
+    requestBody = "{
+\"model\" : \"830e9d5e-3dab-4f1b-9599-da7c5feff794\",
+\"tag\" :\"Updated\",
+\"author\" : \"SudhakarM\",
+}";
+    requestBodyFormat = "JSON (application/json)";
+    requestHeaders = "<![CDATA[Accept:*/*
+Authorization:[[Global accessToken]]
+Content-Type:application/json
+]]>";
+    requests = "";
+    testResults = "";
+    testScript = "";
+    url = "http://localhost:8000/models/830e9d5e-3dab-4f1b-9599-da7c5feff794/tags";
+    userName = "";
+}

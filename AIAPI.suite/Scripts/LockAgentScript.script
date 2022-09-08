@@ -1,0 +1,12 @@
+﻿GetAccessTokenAPI.AccessToken 
+put Global accessToken 
+put LockAgent().responsebody into APIResponse
+log APIResponse
+
+
+
+GetAccessTokenAPI.AccessToken 
+put Global accessToken 
+put LockAgentbyID().responsebody into APIResponse
+log APIResponse
+

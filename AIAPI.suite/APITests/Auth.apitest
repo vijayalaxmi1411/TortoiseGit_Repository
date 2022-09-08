@@ -1,0 +1,50 @@
+{
+    URLparameters = (
+	{
+	    checkedNumber = <*BN>;
+	    param = "user_id";
+	    showCheckedNumber = <*BY>;
+	    value = "\"2450d039-0728-4077-9168-9a8fdb3f2a07\"";
+	},
+	{
+	    checkedNumber = <*BN>;
+	    param = "expires_in";
+	    showCheckedNumber = <*BY>;
+	    value = "\"604800\"";
+	},
+	{
+	    checkedNumber = <*BN>;
+	    param = "access_type";
+	    showCheckedNumber = <*BY>;
+	    value = "\"eyJhbGciOiJIUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICJhYWEyZTNmNy03MGNiLTQ5NDMtYWJlMy1mYmE4MjNiZmNhYmQifQ.eyJleHAiOjAsImlhdCI6MTY1NjU2ODEzNiwianRpIjoiMDdhNjU0MDAtZDNjNC00ZjczLWI0YzEtODVhZTlkYjAxYzJmIiwiaXNzIjoiaHR0cDovL2xvY2FsaG9zdDo4MDAwL2F1dGgvcmVhbG1zL2VnZ3BsYW50IiwiYXVkIjoiaHR0cDovL2xvY2FsaG9zdDo4MDAwL2F1dGgvcmVhbG1zL2VnZ3BsYW50IiwidHlwIjoiUmVnaXN0cmF0aW9uQWNjZXNzVG9rZW4iLCJyZWdpc3RyYXRpb25fYXV0aCI6ImF1dGhlbnRpY2F0ZWQifQ.7pt6giPUEpIR5qqpZCa1Sv6fkXQGoPKNtdnk03JXt10\"";
+	},
+	{
+	    checkedNumber = <*BN>;
+	    param = "token_type";
+	    showCheckedNumber = <*BY>;
+	    value = "\"bearer\"";
+	}
+    );
+    authenticationType = None;
+    httpVerb = POST;
+    oauth1Token = "";
+    password = "";
+    requestBody = "{
+  \"user_id\": \"\"2450d039-0728-4077-9168-9a8fdb3f2a07\"\",
+  \"expires_in\": 604800,
+  \"access_type\": \"eyJhbGciOiJIUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICJhYWEyZTNmNy03MGNiLTQ5NDMtYWJlMy1mYmE4MjNiZmNhYmQifQ.eyJleHAiOjAsImlhdCI6MTY1NjU2ODEzNiwianRpIjoiMDdhNjU0MDAtZDNjNC00ZjczLWI0YzEtODVhZTlkYjAxYzJmIiwiaXNzIjoiaHR0cDovL2xvY2FsaG9zdDo4MDAwL2F1dGgvcmVhbG1zL2VnZ3BsYW50IiwiYXVkIjoiaHR0cDovL2xvY2FsaG9zdDo4MDAwL2F1dGgvcmVhbG1zL2VnZ3BsYW50IiwidHlwIjoiUmVnaXN0cmF0aW9uQWNjZXNzVG9rZW4iLCJyZWdpc3RyYXRpb25fYXV0aCI6ImF1dGhlbnRpY2F0ZWQifQ.7pt6giPUEpIR5qqpZCa1Sv6fkXQGoPKNtdnk03JXt10\",
+  \"token_type\": \"bearer\"
+}";
+    requestBodyFormat = "Form Url Encoded";
+    requestHeaders = "<![CDATA[]]>";
+    requests = "";
+    testResults = "";
+    testScript = "";
+    url = "http://localhost:8000/ai/auth
+  \"user_id\": \"97cf2b38-b9bf-426c-9293-b2c92f5b92f3\",
+  \"expires_in\": 604800,
+  \"access_type\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE1NjE5NzczNTQsImV4cCI6MTU2MjU4MjE1NCwidXNlciI6eyJ1c2VybmFtZSI6Im1hcnRpbi5kYW5uQGVnZ3BsYW50LmlvIn0sImlzcyI6ImVnZ3BsYW50YWkuY29tIiwicmFuZCI6Nzg4ODY5OTQwMDQ5NDR9.Q8fp67rrMi32AEM6U-Hkulthh3-XXx6voSmEHsuwrgk\",
+  \"token_type\": \"bearer\"
+";
+    userName = "";
+}

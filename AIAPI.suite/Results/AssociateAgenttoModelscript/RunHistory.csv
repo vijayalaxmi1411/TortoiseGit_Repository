@@ -1,0 +1,5 @@
+﻿Date Run,Status,Time,# of Errors,# of Warnings,# of Exceptions,Log File,Return Value,Error Message,# of Successes
+2022-08-10 15:54:01.284 +0530,"Success",0:00:00,0,0,0,"20220810_155401.284/LogFile.txt","","",1
+2022-08-10 15:54:49.299 +0530,"Success",0:00:00,0,0,0,"20220810_155449.299/LogFile.txt","","",1
+2022-08-10 15:55:34.240 +0530,"Failure",0:00:00,2,0,0,"20220810_155534.240/LogFile.txt","","Validation Error: -- The Api Test could not be executed due to validation errors.",0
+2022-08-10 15:55:57.392 +0530,"Success",0:00:00,0,0,0,"20220810_155557.392/LogFile.txt","","",1

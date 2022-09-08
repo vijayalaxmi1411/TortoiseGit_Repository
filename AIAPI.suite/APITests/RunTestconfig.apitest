@@ -1,0 +1,24 @@
+{
+    URLparameters = (
+	{
+	    checkedNumber = <*BY>;
+	    param = "";
+	    showCheckedNumber = <*BY>;
+	    value = "";
+	}
+    );
+    authenticationType = None;
+    httpVerb = POST;
+    oauth1Token = "";
+    password = "";
+    requestBody = "";
+    requestBodyFormat = "Form Url Encoded";
+    requestHeaders = "<![CDATA[Authorization:[[Global accessToken]]
+Accept:*/*
+]]>";
+    requests = "";
+    testResults = "";
+    testScript = "";
+    url = "http://localhost:8000/task_scheduler_service/api/v1/task_instances/84506a8b-b715-431e-9263-2e38640b550b";
+    userName = "";
+}

@@ -1,0 +1,23 @@
+﻿
+GetAccessTokenAPI.AccessToken 
+put Global accessToken 
+put ErrorList().responsebody into APIResponse
+
+put JSONValue(APIResponse) into ResponseValue
+put ResponseValue.items into Temp
+//log Temp
+log number of items of  Temp
+
+repeat with each item of Temp
+	put it into temp1
+	repeat with each item of temp1
+		//log temp1.created	
+		log temp1.message
+	end repeat
+end repeat
+
+
+(*repeat with each item of APIResponse
+	log it.severity
+	
+end repeat*)

@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<testsuites>
+ <testsuite name="AccessTokenScript_script" package="AIAPI.suite" timestamp="2022-08-10 15:50:07.836 +0530"
+ tests="1"  failures="0" errors="0" time="0.240000">
+  <properties>
+   <property name="RunDate" value="2022-08-10 15:50:07.836 +0530"/>
+   <property name="Status" value="Success"/>
+  </properties>
+  <testcase name="AccessTokenScript.script" assertions="1" status="success"  time="0.236">
+  </testcase>
+ </testsuite>
+</testsuites>

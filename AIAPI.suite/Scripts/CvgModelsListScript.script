@@ -1,0 +1,16 @@
+﻿GetAccessTokenAPI.AccessToken 
+put Global accessToken 
+put CvgModelsList().responsebody into APIResponse
+put JSONValue(APIResponse) into ResponseValue
+log ResponseValue
+
+log number of items of ResponseValue
+
+
+repeat with each item of ResponseValue
+	log it.id && it.name
+end repeat
+
+
+
+

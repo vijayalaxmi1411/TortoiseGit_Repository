@@ -1,0 +1,13 @@
+﻿GetAccessTokenAPI.AccessToken 
+put Global accessToken 
+put RunlogbyID().responsebody into APIResponse
+log APIResponse
+
+
+
+
+
+
+
+
+

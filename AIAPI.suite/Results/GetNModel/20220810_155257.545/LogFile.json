@@ -1,0 +1,92 @@
+{
+	"entries": [
+		{
+				"message": "Running GetNModel.script",
+				"identifier": "START",
+				"timestamp": "2022-08-10 15:52:57.560 +0530"
+			},
+		{
+				"handlerName": "on_getnmodel",
+				"timestamp": "2022-08-10 15:52:57.790 +0530",
+				"message": "[{assets:[], group:{id:1, name:\"vijayalaxmi\"}, id:10, modeluuid:\"a2623c63-265c-4ead-8cc8-5227263954a3\", name:\"PaccarDemo\"},{assets:[], group:{id:1, name:\"vijayalaxmi\"}, id:6, modeluuid:\"9924735f-6d5e-4734-8269-1dbd54d3a1b0\", name:\"PeopleXCD\"},{assets:[], group:{id:1, name:\"vijayalaxmi\"}, id:5, modeluuid:\"eebdaeb4-61a8-4145-b82e-c91970de48a3\", name:\"ShopeeMainModel\"},{assets:[], group:{id:1, name:\"vijayalaxmi\"}, id:4, modeluuid:\"11e9e220-d8b0-4312-9a53-b6e811c79b15\", name:\"ShopeeMobileApp\"},{assets:[], group:{id:1, name:\"vijayalaxmi\"}, id:3, modeluuid:\"e0f1554f-a494-4aff-80fd-f9dbc1b3c366\", name:\"ShopeeWebApplicationScenarios\"},{assets:[], group:{id:1, name:\"vijayalaxmi\"}, id:2, modeluuid:\"667f952f-6780-4e93-ab70-592736ad4b9a\", name:\"SlackAutomation\"},{assets:[], group:{id:1, name:\"vijayalaxmi\"}, id:7, modeluuid:\"39f18a84-6019-4393-b5a3-adfad905f737\", name:\"TeamCenterPLM\"}]",
+				"scriptName": "GetNModel.script",
+				"handlerLine": 7,
+				"identifier": "Log"
+			},
+		{
+				"handlerName": "on_getnmodel",
+				"timestamp": "2022-08-10 15:52:57.790 +0530",
+				"message": "Total Models 7",
+				"scriptName": "GetNModel.script",
+				"handlerLine": 8,
+				"identifier": "Log"
+			},
+		{
+				"handlerName": "on_getnmodel",
+				"timestamp": "2022-08-10 15:52:57.790 +0530",
+				"message": "PaccarDemo a2623c63-265c-4ead-8cc8-5227263954a3",
+				"scriptName": "GetNModel.script",
+				"handlerLine": 10,
+				"identifier": "Log"
+			},
+		{
+				"handlerName": "on_getnmodel",
+				"timestamp": "2022-08-10 15:52:57.806 +0530",
+				"message": "PeopleXCD 9924735f-6d5e-4734-8269-1dbd54d3a1b0",
+				"scriptName": "GetNModel.script",
+				"handlerLine": 10,
+				"identifier": "Log"
+			},
+		{
+				"handlerName": "on_getnmodel",
+				"timestamp": "2022-08-10 15:52:57.806 +0530",
+				"message": "ShopeeMainModel eebdaeb4-61a8-4145-b82e-c91970de48a3",
+				"scriptName": "GetNModel.script",
+				"handlerLine": 10,
+				"identifier": "Log"
+			},
+		{
+				"handlerName": "on_getnmodel",
+				"timestamp": "2022-08-10 15:52:57.806 +0530",
+				"message": "ShopeeMobileApp 11e9e220-d8b0-4312-9a53-b6e811c79b15",
+				"scriptName": "GetNModel.script",
+				"handlerLine": 10,
+				"identifier": "Log"
+			},
+		{
+				"handlerName": "on_getnmodel",
+				"timestamp": "2022-08-10 15:52:57.806 +0530",
+				"message": "ShopeeWebApplicationScenarios e0f1554f-a494-4aff-80fd-f9dbc1b3c366",
+				"scriptName": "GetNModel.script",
+				"handlerLine": 10,
+				"identifier": "Log"
+			},
+		{
+				"handlerName": "on_getnmodel",
+				"timestamp": "2022-08-10 15:52:57.806 +0530",
+				"message": "SlackAutomation 667f952f-6780-4e93-ab70-592736ad4b9a",
+				"scriptName": "GetNModel.script",
+				"handlerLine": 10,
+				"identifier": "Log"
+			},
+		{
+				"handlerName": "on_getnmodel",
+				"timestamp": "2022-08-10 15:52:57.822 +0530",
+				"message": "TeamCenterPLM 39f18a84-6019-4393-b5a3-adfad905f737",
+				"scriptName": "GetNModel.script",
+				"handlerLine": 10,
+				"identifier": "Log"
+			},
+		{
+				"message": "(Duration:\"0.277\", Errors:\"0\", Exceptions:\"0\", StartTime:\"2022-08-10 15:52:57 +0530\", Successes:\"1\", TestCase:\"GetNModel.script\", Warnings:\"0\")",
+				"identifier": "EndTestCase",
+				"timestamp": "2022-08-10 15:52:57.837 +0530"
+			},
+		{
+				"message": "Execution Time 0:00:00 GetNModel.script",
+				"identifier": "SUCCESS",
+				"timestamp": "2022-08-10 15:52:57.911 +0530"
+			}
+	],
+	"createdTimestamp": "2022-08-10 15:52:57.560 +0530"
+}

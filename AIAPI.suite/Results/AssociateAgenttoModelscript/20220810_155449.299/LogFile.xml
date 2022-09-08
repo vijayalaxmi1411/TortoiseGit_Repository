@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<testsuites>
+ <testsuite name="AssociateAgenttoModelscript_script" package="AIAPI.suite" timestamp="2022-08-10 15:54:49.299 +0530"
+ tests="1"  failures="0" errors="0" time="0.271000">
+  <properties>
+   <property name="RunDate" value="2022-08-10 15:54:49.299 +0530"/>
+   <property name="Status" value="Success"/>
+  </properties>
+  <testcase name="AssociateAgenttoModelscript.script" assertions="1" status="success"  time="0.264">
+  </testcase>
+ </testsuite>
+</testsuites>

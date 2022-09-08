@@ -1,0 +1,24 @@
+{
+    URLparameters = (
+	{
+	    checkedNumber = <*BY>;
+	    param = "";
+	    showCheckedNumber = <*BY>;
+	    value = "";
+	}
+    );
+    authenticationType = None;
+    httpVerb = GET;
+    oauth1Token = "";
+    password = "";
+    requestBody = "";
+    requestBodyFormat = "Form Url Encoded";
+    requestHeaders = "<![CDATA[Accept:*/*
+Authorization:[[Global accessToken]]
+]]>";
+    requests = "";
+    testResults = "";
+    testScript = "";
+    url = "http://localhost:8000/ai/licenses";
+    userName = "";
+}

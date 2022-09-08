@@ -1,0 +1,52 @@
+﻿put UTCtime
+
+put the availableTimeZoneNames
+
+
+put Zulutime
+
+put Abidjantime
+
+//"ACT","AET","AGT","ART","AST","Africa/Abidjan","Africa/Accra","Africa/Addis_Ababa",
+
+
+
+put now into aTime
+
+put aTime —> 2022-07-27 10:21:11 +0530
+
+put aTime's timeZone —>India Standard Time
+
+put aTime's timeZoneOffset  into mytime—> 5.5 hours
+
+set atime's  timeZoneOffset to -2 hours
+
+put atime
+
+put mytime
+
+
+
+set aTime's timeZoneOffset to -2 hours
+
+put aTime —> 2022-07-27 02:51:11 -0200
+
+set aTime.timeZone to "GMT"
+
+put aTime —>2022-07-27 04:51:11 +0000
+
+put aTime's timeZone
+
+
+put now into aTime
+
+put aTime  - 2 hours into Mytime
+
+Put mytime
+
+
+
+CaptureScreen {name:SuiteInfo().ImagesFolder & slash & Screenshots &slash& "CurrentLogo"}
+
+CaptureScreen {name:"E:\Eggplant\Screenshots\currentlogo"}
+

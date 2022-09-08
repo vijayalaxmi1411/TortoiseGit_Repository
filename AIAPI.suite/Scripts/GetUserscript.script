@@ -1,0 +1,12 @@
+﻿GetAccessTokenAPI.AccessToken 
+put Global accessToken 
+put GetUsers().responsebody into APIResponse
+log APIResponse
+
+
+(*
+{"id": "43737c40-76c0-4ce7-a8e4-b63d4115b42d", "username": "sudhakar.medameni@ideabytes.com", "role": null, "groups": [{"id": 1, "name": "sudhakar.medameni@ideabytes.com"}], "hide_welcome_popup": true}]
+*)
+
+
+

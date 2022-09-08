@@ -1,0 +1,51 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<runHistory script="AssociateAgenttoModelscript">
+ <run>
+  <RunDate>2022-08-10 15:54:01.284 +0530</RunDate>
+  <Status>Success</Status>
+  <Duration>0.252000</Duration>
+  <Errors>0</Errors>
+  <Warnings>0</Warnings>
+  <Exceptions>0</Exceptions>
+  <Successes>1</Successes>
+  <LogFile>20220810_155401.284/LogFile.txt</LogFile>
+  <ReturnValue></ReturnValue>
+  <ErrorMessage></ErrorMessage>
+ </run>
+ <run>
+  <RunDate>2022-08-10 15:54:49.299 +0530</RunDate>
+  <Status>Success</Status>
+  <Duration>0.271000</Duration>
+  <Errors>0</Errors>
+  <Warnings>0</Warnings>
+  <Exceptions>0</Exceptions>
+  <Successes>1</Successes>
+  <LogFile>20220810_155449.299/LogFile.txt</LogFile>
+  <ReturnValue></ReturnValue>
+  <ErrorMessage></ErrorMessage>
+ </run>
+ <run>
+  <RunDate>2022-08-10 15:55:34.240 +0530</RunDate>
+  <Status>Failure</Status>
+  <Duration>0.161000</Duration>
+  <Errors>2</Errors>
+  <Warnings>0</Warnings>
+  <Exceptions>0</Exceptions>
+  <Successes>0</Successes>
+  <LogFile>20220810_155534.240/LogFile.txt</LogFile>
+  <ReturnValue></ReturnValue>
+  <ErrorMessage>Validation Error: -- The Api Test could not be executed due to validation errors.</ErrorMessage>
+ </run>
+ <run>
+  <RunDate>2022-08-10 15:55:57.392 +0530</RunDate>
+  <Status>Success</Status>
+  <Duration>0.258000</Duration>
+  <Errors>0</Errors>
+  <Warnings>0</Warnings>
+  <Exceptions>0</Exceptions>
+  <Successes>1</Successes>
+  <LogFile>20220810_155557.392/LogFile.txt</LogFile>
+  <ReturnValue></ReturnValue>
+  <ErrorMessage></ErrorMessage>
+ </run>
+</runHistory>

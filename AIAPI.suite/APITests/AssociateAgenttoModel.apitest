@@ -1,0 +1,28 @@
+{
+    URLparameters = (
+	{
+	    checkedNumber = <*BY>;
+	    param = "";
+	    showCheckedNumber = <*BY>;
+	    value = "";
+	}
+    );
+    authenticationType = None;
+    httpVerb = PUT;
+    oauth1Token = "";
+    password = "";
+    requestBody = "{
+\"name\":\"VijayalaxmiK\",
+}
+";
+    requestBodyFormat = "JSON (application/json)";
+    requestHeaders = "<![CDATA[Accept:*/*
+Authorization:[[Global accessToken]]
+content-type:application/json
+]]>";
+    requests = "";
+    testResults = "";
+    testScript = "";
+    url = "http://localhost:8000/ai/models/ee85649c-b76e-45a2-b679-5976f22bb516/agent";
+    userName = "";
+}

@@ -1,0 +1,14 @@
+﻿GetAccessTokenAPI.AccessToken 
+put Global accessToken 
+put GetAgentsbyid().responsebody into APIResponse
+log APIResponse
+put JSONValue(APIResponse) into ResponseValue
+log ResponseValue
+
+
+
+
+
+
+
+

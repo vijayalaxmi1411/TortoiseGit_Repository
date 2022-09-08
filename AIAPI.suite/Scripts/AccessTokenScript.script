@@ -1,0 +1,4 @@
+﻿GetAccessTokenAPI.AccessToken 
+put Global accessToken 
+put AccessToken().responseBody into APIResponse
+log APIResponse

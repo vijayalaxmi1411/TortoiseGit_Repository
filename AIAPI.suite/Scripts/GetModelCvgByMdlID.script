@@ -1,0 +1,11 @@
+﻿
+GetAccessTokenAPI.AccessToken 
+put Global accessToken 
+put GetCoverageByMdelID().responsebody into Response
+log Response
+
+put Response as property list into res
+//log res.created
+
+
+

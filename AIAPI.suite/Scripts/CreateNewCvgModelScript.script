@@ -1,0 +1,12 @@
+﻿GetAccessTokenAPI.AccessToken 
+put Global accessToken 
+put CreateNewCvgModel().responsebody into APIResponse
+put JSONValue(APIResponse) into ResponseValue
+log ResponseValue
+
+
+
+
+
+
+

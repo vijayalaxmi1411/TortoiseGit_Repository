@@ -1,0 +1,10 @@
+﻿//{"message": "Internal Server Error"}
+
+
+
+
+GetAccessTokenAPI.AccessToken 
+put Global accessToken 
+put UpdateLicense().responsebody into APIResponse
+log APIResponse
+

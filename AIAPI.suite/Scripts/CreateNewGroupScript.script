@@ -1,0 +1,17 @@
+﻿
+GetAccessTokenAPI.AccessToken 
+put Global accessToken 
+put CreateNewGroup().responsebody into APIResponse
+log APIResponse
+put JSONValue(APIResponse) into ResponseValue
+log ResponseValue
+
+
+
+
+
+GetAccessTokenAPI.AccessToken 
+put Global accessToken 
+put RunlogbyID().responsebody into APIResponse
+log APIResponse
+

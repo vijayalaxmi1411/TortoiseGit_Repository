@@ -1,0 +1,4 @@
+﻿2022-08-10 15:50:07.852 +0530	START		Running AccessTokenScript.script
+2022-08-10 15:50:08.067 +0530	Log		{"error":"invalid_request","error_description":"Missing form parameter: grant_type"}	4	on_accesstokenscript	AccessTokenScript.script
+2022-08-10 15:50:08.092 +0530	EndTestCase		(Duration:"0.236", Errors:"0", Exceptions:"0", StartTime:"2022-08-10 15:50:07 +0530", Successes:"1", TestCase:"AccessTokenScript.script", Warnings:"0")
+2022-08-10 15:50:08.138 +0530	SUCCESS		Execution Time 0:00:00 AccessTokenScript.script

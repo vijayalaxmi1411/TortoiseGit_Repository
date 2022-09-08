@@ -1,0 +1,25 @@
+{
+    URLparameters = (
+	{
+	    checkedNumber = <*BN>;
+	    param = "Coverage_Model";
+	    showCheckedNumber = <*BY>;
+	    value = true;
+	}
+    );
+    authenticationType = None;
+    httpVerb = PUT;
+    oauth1Token = "";
+    password = "";
+    requestBody = "{\"id\": 4, \"Coverage_Model\":\"true\"}";
+    requestBodyFormat = "JSON (application/json)";
+    requestHeaders = "<![CDATA[Authorization:[[Global accessToken]]
+Accept:*/*
+Content-Type:application/json
+]]>";
+    requests = "";
+    testResults = "";
+    testScript = "";
+    url = "http://localhost:8000/ai/coverage/model/5";
+    userName = "";
+}

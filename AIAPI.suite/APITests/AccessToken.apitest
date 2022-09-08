@@ -1,0 +1,25 @@
+{
+    URLparameters = (
+	{
+	    checkedNumber = <*BY>;
+	    param = "";
+	    showCheckedNumber = <*BY>;
+	    value = "";
+	}
+    );
+    authenticationType = None;
+    httpVerb = POST;
+    oauth1Token = "";
+    password = "";
+    requestBody = "grant_type:client_credentials,
+client_id:client:dai:agent:integration,
+client_secret:6e9ae4ac-c404-480c-a78a-202439e5ad24";
+    requestBodyFormat = "Form Url Encoded";
+    requestHeaders = "<![CDATA[Content-Type:application/x-www-form-urlencoded
+]]>";
+    requests = "";
+    testResults = "";
+    testScript = "";
+    url = "http://127.0.0.1:4652/auth/realms/eggplant/protocol/openid-connect/token";
+    userName = "";
+}

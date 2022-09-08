@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<statistics>
+ <script name="AccessTokenScript">
+  <LastStatus>Success</LastStatus>
+  <NumberOfRuns>2</NumberOfRuns>
+  <NumberOfFails>0</NumberOfFails>
+  <FirstRun>2022-08-10 15:50:07 +0530</FirstRun>
+  <LastRun>2022-08-10 15:51:16 +0530</LastRun>
+  <TotalTimeOnSuccess>0.478000</TotalTimeOnSuccess>
+ </script>
+ <script name="AssociateAgenttoModelscript">
+  <LastStatus>Success</LastStatus>
+  <NumberOfRuns>4</NumberOfRuns>
+  <NumberOfFails>1</NumberOfFails>
+  <FirstRun>2022-08-10 15:54:01 +0530</FirstRun>
+  <LastRun>2022-08-10 15:55:57 +0530</LastRun>
+  <TotalTimeOnSuccess>0.781000</TotalTimeOnSuccess>
+ </script>
+ <script name="RunModelScript">
+  <LastStatus>Success</LastStatus>
+  <NumberOfRuns>1</NumberOfRuns>
+  <NumberOfFails>0</NumberOfFails>
+  <FirstRun>2022-08-10 16:07:08 +0530</FirstRun>
+  <LastRun>2022-08-10 16:07:08 +0530</LastRun>
+  <TotalTimeOnSuccess>2.371000</TotalTimeOnSuccess>
+ </script>
+ <script name="GetNModel">
+  <LastStatus>Success</LastStatus>
+  <NumberOfRuns>1</NumberOfRuns>
+  <NumberOfFails>0</NumberOfFails>
+  <FirstRun>2022-08-10 15:52:57 +0530</FirstRun>
+  <LastRun>2022-08-10 15:52:57 +0530</LastRun>
+  <TotalTimeOnSuccess>0.292000</TotalTimeOnSuccess>
+ </script>
+ <script name="GetNagents">
+  <LastStatus>Success</LastStatus>
+  <NumberOfRuns>1</NumberOfRuns>
+  <NumberOfFails>0</NumberOfFails>
+  <FirstRun>2022-08-10 15:54:33 +0530</FirstRun>
+  <LastRun>2022-08-10 15:54:33 +0530</LastRun>
+  <TotalTimeOnSuccess>0.251000</TotalTimeOnSuccess>
+ </script>
+</statistics>

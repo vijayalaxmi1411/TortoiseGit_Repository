@@ -1,0 +1,11 @@
+﻿//Not working
+//{"message": "The browser (or proxy) sent a request that this server could not understand."}
+
+
+GetAccessTokenAPI.AccessToken 
+put Global accessToken 
+put UpdateGroup().responsebody into APIResponse
+log APIResponse
+put JSONValue(APIResponse) into ResponseValue
+log ResponseValue
+

@@ -1,0 +1,6 @@
+﻿
+GetAccessTokenAPI.AccessToken 
+put Global accessToken 
+put DeleteModelbyId().responsebody into APIResponse
+log APIResponse
+

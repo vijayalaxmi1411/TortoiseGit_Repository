@@ -1,0 +1,5 @@
+﻿GetAccessTokenAPI.AccessToken 
+put Global accessToken 
+put CreateModel().responsebody into APIResponse
+put JSONValue(APIResponse) into ResponseValue
+log ResponseValue

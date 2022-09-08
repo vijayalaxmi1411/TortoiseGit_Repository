@@ -1,0 +1,9 @@
+﻿
+GetAccessTokenAPI.AccessToken 
+put Global accessToken 
+put ExeStatuslog().responsebody into APIResponse
+log APIResponse
+
+
+
+

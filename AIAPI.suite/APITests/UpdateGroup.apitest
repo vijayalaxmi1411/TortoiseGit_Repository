@@ -1,0 +1,27 @@
+{
+    URLparameters = (
+	{
+	    checkedNumber = <*BY>;
+	    param = "";
+	    showCheckedNumber = <*BY>;
+	    value = "";
+	}
+    );
+    authenticationType = None;
+    httpVerb = PUT;
+    oauth1Token = "";
+    password = "";
+    requestBody = "{
+\"groupname\" : \"sudhakar.medameni@ideabyte2.com\"
+}";
+    requestBodyFormat = "Form Url Encoded";
+    requestHeaders = "<![CDATA[Authorization:[[Global accessToken]]
+Accept:*/*
+Content-Type:application/json
+]]>";
+    requests = "";
+    testResults = "";
+    testScript = "";
+    url = "http://localhost:8000/ai/groups/2";
+    userName = "";
+}

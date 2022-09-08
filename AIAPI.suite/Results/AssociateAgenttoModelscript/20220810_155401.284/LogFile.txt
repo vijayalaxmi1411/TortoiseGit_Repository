@@ -1,0 +1,4 @@
+﻿2022-08-10 15:54:01.288 +0530	START		Running AssociateAgenttoModelscript.script
+2022-08-10 15:54:01.525 +0530	Log		<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">\n<title>404 Not Found</title>\n<h1>Not Found</h1>\n<p>The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.</p>\n	4	on_associateagenttomodelscript	AssociateAgenttoModelscript.script
+2022-08-10 15:54:01.551 +0530	EndTestCase		(Duration:"0.259", Errors:"0", Exceptions:"0", StartTime:"2022-08-10 15:54:01 +0530", Successes:"1", TestCase:"AssociateAgenttoModelscript.script", Warnings:"0")
+2022-08-10 15:54:01.616 +0530	SUCCESS		Execution Time 0:00:00 AssociateAgenttoModelscript.script

@@ -1,0 +1,7 @@
+﻿GetAccessTokenAPI.AccessToken 
+put Global accessToken 
+put DeletecvgMdlbyID().responsebody into APIResponse
+put JSONValue(APIResponse) into ResponseValue
+log ResponseValue
+
+log number of items of ResponseValue
