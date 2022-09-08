@@ -1,6 +1,0 @@
-﻿GetAccessTokenAPI.AccessToken 
-put Global accessToken 
-//put DeleteAgent().statuscode --> to verify status code
-
-put DeleteAgent().responsebody into APIResponse
-log APIResponse

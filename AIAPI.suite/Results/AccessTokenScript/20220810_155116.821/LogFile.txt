@@ -1,4 +1,0 @@
-﻿2022-08-10 15:51:16.824 +0530	START		Running AccessTokenScript.script
-2022-08-10 15:51:17.043 +0530	Log		{"error":"unsupported_grant_type","error_description":"Unsupported grant_type"}	4	on_accesstokenscript	AccessTokenScript.script
-2022-08-10 15:51:17.074 +0530	EndTestCase		(Duration:"0.245", Errors:"0", Exceptions:"0", StartTime:"2022-08-10 15:51:16 +0530", Successes:"1", TestCase:"AccessTokenScript.script", Warnings:"0")
-2022-08-10 15:51:17.120 +0530	SUCCESS		Execution Time 0:00:00 AccessTokenScript.script

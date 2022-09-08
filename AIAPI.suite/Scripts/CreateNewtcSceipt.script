@@ -1,9 +1,0 @@
-﻿--	Log		{message:"The method is not allowed for the requested URL."}
-
-
-//Creating NewTC not working
-GetAccessTokenAPI.AccessToken 
-put Global accessToken 
-put CreateNewTC().responsebody into APIResponse
-put JSONValue(APIResponse) into ResponseValue
-log ResponseValue

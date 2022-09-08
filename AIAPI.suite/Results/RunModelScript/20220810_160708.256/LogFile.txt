@@ -1,4 +1,0 @@
-﻿2022-08-10 16:07:08.271 +0530	START		Running RunModelScript.script
-2022-08-10 16:07:10.602 +0530	Log		{"execution_id":"57f5c606-5724-4f90-80ed-66a795b5ef20"}	6	on_runmodelscript	RunModelScript.script
-2022-08-10 16:07:10.627 +0530	EndTestCase		(Duration:"2.356", Errors:"0", Exceptions:"0", StartTime:"2022-08-10 16:07:08 +0530", Successes:"1", TestCase:"RunModelScript.script", Warnings:"0")
-2022-08-10 16:07:10.692 +0530	SUCCESS		Execution Time 0:00:02 RunModelScript.script

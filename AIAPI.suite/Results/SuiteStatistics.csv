@@ -1,6 +1,0 @@
-﻿Script,Last Status,Runs,Fails,First Run,Last Run,Avg Time(Success)
-AccessTokenScript,Success,2,0,2022-08-10 15:50:07 +0530,2022-08-10 15:51:16 +0530,0:00:00
-AssociateAgenttoModelscript,Success,4,1,2022-08-10 15:54:01 +0530,2022-08-10 15:55:57 +0530,0:00:00
-RunModelScript,Success,1,0,2022-08-10 16:07:08 +0530,2022-08-10 16:07:08 +0530,0:00:02
-GetNModel,Success,1,0,2022-08-10 15:52:57 +0530,2022-08-10 15:52:57 +0530,0:00:00
-GetNagents,Success,1,0,2022-08-10 15:54:33 +0530,2022-08-10 15:54:33 +0530,0:00:00

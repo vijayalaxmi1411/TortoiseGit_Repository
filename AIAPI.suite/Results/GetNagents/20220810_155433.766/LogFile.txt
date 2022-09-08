@@ -1,4 +1,0 @@
-﻿2022-08-10 15:54:33.780 +0530	START		Running GetNagents.script
-2022-08-10 15:54:34.001 +0530	Log		[{agenttype:"DESIGN", id:1, isconnected:"True", ishosted:"False", lock:<missing value>, name:"VijayalaxmiK", queueuuid:"db14222e-5a5d-4043-b78f-d62936f0b281", recordpath:"", suite:@"D:\\Vijayalaxmi\\VijayalaxmiSuites"}]	10	on_getnagents	GetNagents.script
-2022-08-10 15:54:34.017 +0530	EndTestCase		(Duration:"0.237", Errors:"0", Exceptions:"0", StartTime:"2022-08-10 15:54:33 +0530", Successes:"1", TestCase:"GetNagents.script", Warnings:"0")
-2022-08-10 15:54:34.094 +0530	SUCCESS		Execution Time 0:00:00 GetNagents.script

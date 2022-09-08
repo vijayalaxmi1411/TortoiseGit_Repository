@@ -1,9 +1,0 @@
-﻿
-GetAccessTokenAPI.AccessToken 
-put Global accessToken 
-put CreateNewAgent().responsebody into APIResponse
-log APIResponse
-
-
-put JSONValue(APIResponse) into ResponseValue
-log ResponseValue

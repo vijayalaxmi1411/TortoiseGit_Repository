@@ -1,4 +1,0 @@
-﻿GetAccessTokenAPI.AccessToken 
-put Global accessToken 
-put RunTestconfig().responsebody into APIResponse
-log APIResponse
