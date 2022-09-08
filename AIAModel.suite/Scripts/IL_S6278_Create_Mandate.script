@@ -11,7 +11,17 @@
 // 20220418     Reginal                       Initial Version
 //-------------------------------------------------------------------------------------------------------------------------
 
-
+// Bank Account Number option
+To Handle OptionFor_BankCode1
+	--set global var_BankCode_Option = "Select Existing"
+	
+	If global var_BankCode_Option is ...  
+		"Input"                                                  : Input_BankCode
+		"Select Existing"                                      : Select_BankCode
+	End If
+	
+	return global var_BankCode_Option
+End OptionFor_BankCode1
 // Bank Account Number option
 To Handle OptionFor_BankCode
 	--set global var_BankCode_Option = "Select Existing"
