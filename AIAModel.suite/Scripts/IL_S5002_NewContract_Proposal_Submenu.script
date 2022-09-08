@@ -1,0 +1,56 @@
+﻿//======================================================
+//                                           AIA SINGAPORE
+//======================================================
+// Name        : Common_Functions
+// Descripton : This contains all common functions for Integral Life application suite
+//======================================================
+//  REVISION
+//-------------------------------------------------------------------------------------------------------------------------
+// Date          |  Author                              | Description
+//----------------- -------------------------------- ----------------------------------------------------------------------
+// 20220410    Automation Team -Colleen    Initial Version for IL Proposal submenu 
+//-------------------------------------------------------------------------------------------------------------------------
+
+
+on enter_AIAPolNo
+	click text : "Contract Number"
+	typetext tabKey, global var_AIAPolNo 
+end enter_AIAPolNo
+
+on enter_contract_type
+	if   global var_Action = "New Proposal"
+		click text : "Contract Type"
+		typetext   tabKey,global var_Contract_type
+		
+	end if 
+	
+end enter_contract_type
+
+on enter_Action
+	click text : "Action"
+	if   global var_Action is...
+		"New Proposal"      : set var_action = "A"
+		"Inquire Proposal"  : set var_action = "E"
+		"Underwriting" : set var_action ="C"
+	end if
+	typetext  tabKey,var_action
+	
+end enter_Action
+
+on set_rectangle
+	set the SearchRectangle to Common_Functions.ScreenPart("Verticalmiddle")
+	
+end set_rectangle
+
+
+
+on Hit_Enter var_env
+	capturescreen {name: "Image before Hit Enter" & today & hour(time) & "_" & minute(time) &second(time)  } 
+	typetext returnkey
+	
+	put common_functions.Check_Next_Screen (var_env)  into var_next_screen
+	return var_next_screen
+	
+end Hit_Enter
+
+

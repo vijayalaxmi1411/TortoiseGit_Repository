@@ -1,0 +1,42 @@
+﻿//======================================================
+//                                           AIA SINGAPORE
+//======================================================
+// Name        : IntegralLife_S2571
+// Descripton : This script is for Integral Life Client Bank Scroll
+//======================================================
+//  REVISION
+//-------------------------------------------------------------------------------------------------------------------------
+// Date          |  Author                     | Description
+//----------------- -------------------------------- ----------------------------------------------------------------------
+// 20220418     Reginal                       Initial Version
+//-------------------------------------------------------------------------------------------------------------------------
+
+// Select Bank Code
+To Handle Select_BankAccount
+	(*Set var_ItemFound = "N"
+	Set var_counter = 0*)
+	
+	Click Text:"BSB", caseSensitive:yes, TextDifference:1, waitfor:8
+	Typetext tab
+	
+	Set the searchRectangle to Common_Functions.ScreenPart("LeftHalf") + [[300,0], [-250,0]]
+	(*	Repeat until var_ItemFound = "Y" or var_counter = 10
+		If Imagefound(Text:global var_BankAcctNumber, CaseSensitive:Yes, waitfor:8)
+			Set var_ItemFound = "Y"
+		Else
+			TypeText pageDown
+			Set var_counter = var_counter + 1
+		End If
+	End Repeat
+	
+	If var_ItemFound = "Y"
+		Click Text:global var_BankAcctNumber, CaseSensitive:Yes, waitfor:8
+		Typetext shiftKey, tab
+		Typetext "1", return
+	Else 
+		LogError "S2571: Bank Account not Found"
+	End If*)
+	
+	Common_Functions.Select_Item global var_BankAcctNumber, "(S2571) Bank Account not Found"
+	Set the searchRectangle to empty
+End Select_BankAccount

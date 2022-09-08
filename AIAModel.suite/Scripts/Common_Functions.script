@@ -1,0 +1,547 @@
+﻿//======================================================
+//                                           AIA SINGAPORE
+//======================================================
+// Name        : Common_Functions
+// Descripton : This contains all common functions for Integral Life application suite
+//======================================================
+//  REVISION
+//-------------------------------------------------------------------------------------------------------------------------
+// Date          |  Author                     | Description
+//----------------- -------------------------------- ----------------------------------------------------------------------
+// 20220418    Automation Team          Initial Version
+//-------------------------------------------------------------------------------------------------------------------------
+
+
+// =============================================================================
+// Name        : ScreenPart
+// Description : This function will get a portion of the screen which you can use as searchrectangle
+// Parameter1 : The portion of the screen you want to get (eg: "LeftHalf")
+// -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+function ScreenPart Portion
+
+	// Set up an easy-to-maintain property list that stores the necessary multipliers for the specified screen portion parameter value	
+	set screenPortions to {
+		TopHalf: [[0,0],[1,.5]],		
+		BottomHalf: [[0,.5],[1,1]],		
+		LeftHalf: [[0,0],[.5,1]],		
+		RightHalf: [[.5,0],[1,1]],		
+		HorizontalMiddle: [[0,.25],[1,.75]],		
+		VerticalMiddle:[[.25,0],[.75,1]],		
+		TopLeftQuadrant:[[0,0],[.5,.5]],		
+		TopRightQuadrant:[[.5,0],[1,.5]],		
+		BottomLeftQuadrant:[[0,.5],[.5,1]],		
+		BottomRightQuadrant:[[.5,.5],[1,1]],		
+		Center:[[.25,.25],[.75,.75]],
+	}
+	
+	set multiplier to screenPortions.(Portion) 
+	// Retrieves the value for the key in the property list. The name of the key is passed as a parameter into the function.
+	
+	// Error handling is needed in the event that an unrecognized parameter is passed to the function
+	if multiplier is empty then	
+		throw "Parameter error", Portion && "is not a recognized screen portion."		
+	end if
+	
+	return [the remoteScreenSize,the remotescreenSize] * multiplier	
+End ScreenPart
+
+
+// =======================================================================================
+// Name         : GlobalGetExcelData
+// Description : Use this function to get data from excel file
+// Parameter1 : Row Number
+// Parameter2 : Filename
+// Parameter3 : Worksheet Name
+// ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+To Handle GlobalGetExcelData var_index, var_xlsFilename, var_xlsSheet
+	log "XLS Row number   : " & var_index
+	log "XLS Filename        : " & var_xlsFilename 
+	log "XLS Sheet            : " & var_xlsSheet
+	
+	set global var_index = var_index
+	
+	If global var_index <> 0
+		Set myExcelDB to {type: "excel", file:var_xlsFilename, name:var_xlsSheet, writable:Yes} 
+		set myExcelData to table("Data") of myExcelDB
+		put the records of myExcelDB into var_exceldata
+		
+		repeat with each item rowData of var_exceldata
+			log rowdata.SN
+			log global var_index
+			If  rowdata.SN =  global var_index
+				If var_xlsSheet = "Policy"
+					--put rowdata."Login"                          into global var_Login
+					put rowdata.Proposal_Action into global var_Action
+					put rowdata.AIAPolNo into global var_AIAPolNo
+					put rowdata.Contract_Type into global var_Contract_type
+					put rowdata.Company into global var_Company
+					put rowdata.CKA into global var_CKA
+					put rowdata.Client_Choice into global var_Client_Choice
+					put rowdata.Risk_Profile_Item into global var_Risk_Profile_Item
+					put rowdata.Portfolio_Risk_Item into global var_Portfolio_Risk_Item
+					put rowdata.PWP_Signed_Date into global var_PWP_Signed_Date
+					put rowdata.Final_Decision_Item into global var_Final_Decision_Item
+					put rowdata.Overwrite_Decision into global var_Overwrite_Decision
+					put rowData.Owner into global varOwner
+					put rowData.OwnerName into global varOwnerName
+					put rowData.SvcAgent into global varSvcAgent
+					put rowData.SvcAgentName into global varSvcAgentName
+					put rowData.BillingFreq into global varBillingFreq
+					put rowData.Mode into global varMOP
+					put rowData.DeliveryMode into global varDeliveryMode
+					put rowData.Campaign into global varCampaign
+					put rowData.PlanDesc into global var_PlanDesc
+					put rowData.OffShoreInd into global varOffShoreInd
+					put rowData.Register into global varRegister
+					put rowData.DirectDebit into global varDirectDebit
+					put rowData.Mercer_Portfolio into global var_MercerPortfolio
+					put rowData.Mercer_Eff_Date into global var_MercerEffDate
+					put rowData.Fund into global var_Fund
+					put rowData.Percentage into global var_Percentage
+					put rowdata.env into global var_env 
+					put rowdata.Statistical_code into global var_Statistical_code
+					Exit repeat
+				End if
+				
+				
+				//Extra Details for Proposal
+				If var_xlsSheet = "ExtraDetails" 
+					put rowdata.ContractNo into global var_ContractNo
+					put rowdata.Contract_Owner into global var_Contract_Owner
+					(*	put rowdata.Contract_Type into global var_Contract_Type*)
+					put rowdata.Promo_Code into global var_Promo_Code 
+					put rowdata.Remote_Sig into global var_Remote_Sig
+					put rowdata.Citi_Bundled into global var_Citi_Bundled
+					put rowdata.Ac_Invest into global var_Ac_Invest
+					put rowdata.Special_Ind into global var_Special_Ind
+					put rowdata.Sign_SG into global var_Sign_SG
+					put rowdata.Sign_Loc into global var_Sign_Loc
+					put rowdata.VC into global var_VC
+					put rowdata.FNA_NFTF into global var_FNA_NFTF
+					put rowdata.eAPP_NFTF into global var_eAPP_NFTF
+					put rowdata.isNFTF into global var_isNFTF
+					put rowdata.Child_PD into global var_Child_PD
+					put rowdata.Tar_Ret_Age into global var_Tar_Ret_Age
+					put rowdata.Tar_Payout_Pd into global var_Tar_Payout_Pd
+					put rowdata.Target_Mo_Inc into global var_Target_Mo_Inc
+					put rowdata.StepUp_Inc into global var_StepUp_Inc
+					
+					Exit repeat
+				End If
+				
+				If var_xlsSheet = "Life01" 
+					put rowdata.Required_component_ind into global var_Required_component_ind
+					put rowdata.Components into global var_Components
+					put rowdata.Life_clientnum into global var_Life_clientnum
+					put rowdata.Premiums into global var_Premiums
+					put rowdata.Sum_Assured_Ben_Amt  into global var_Sum_Assured_Ben_Amt
+					put rowdata.RiskAge into global var_RiskAge
+					put rowdata.PremAge  into global var_PremAge
+					put rowdata.BenAge into global var_BenAge
+					put rowdata.Waived_Comp into global var_Waived_Comp
+					put rowdata.Waived_Amt into global var_Waived_Amt
+					put rowdata.Medical_Evidence_Item into global var_Medical_Evidence_Item
+					put rowdata.Smoking_Item into global var_Smoking_Item
+					put rowdata.Vitality_Discount_Eligibility into global var_Vitality_Discount_Eligibility
+					put rowdata.ILP_Annual_Premium into global var_ILP_Annual_Premium
+					Exit repeat
+					
+				End If
+				
+				If var_xlsSheet = "ContractIssuance" 
+					--put rowdata."Login"                          into global var_Login
+					put rowdata.Contract_Issuance_Action into global var_Contract_Issuance_Action
+					
+					Exit repeat
+				End If
+				
+				// Mandate (proposal)
+				If var_xlsSheet = "Mandate_Proposal" 
+					put rowdata.MandateNo_Option                      into global var_MandateNo_Option
+					put rowdata.MandateNo                                 into global var_MandateNo
+					put rowdata.PreferredDeductionDay                 into global var_PreferredDeductionDay
+					put rowdata.BankCode_Option                        into global var_BankCode_Option
+					put rowdata.BankCode                                   into global var_BankCode
+					put rowdata.BankDescription                           into global var_BankDescription
+					put rowdata.BranchDescription                        into global var_BranchDescription
+					put rowdata.BankAccountNumber_Option          into global var_BankAccountNumber_Option
+					put rowdata.BankAcctNumber                          into global var_BankAcctNumber
+					put rowdata.FactoringHouse_Option                 into global var_FactoringHouse_Option
+					put rowdata.FactoringHouse                            into global var_FactoringHouse
+					put rowdata.FactHouse_Desc                           into global var_FactHouse_Desc
+					put rowdata.FactoringHouse_Option                 into global var_FactoringHouse_Option
+					put rowdata.FactoringHouse                            into global var_FactoringHouse
+					put rowdata.FactHouse_Desc                           into global var_FactHouse_Desc
+					put rowdata.EnrolmentSource_Option               into global var_EnrolmentSource_Option
+					put rowdata.EnrolmentSource                          into global var_EnrolmentSource
+					put rowdata.EnrolmentSource_Desc                  into global var_EnrolmentSource_Desc
+					put rowdata.BillRefNo_Option                          into global var_BillRefNo_Option
+					put rowdata.BillRefNo                                     into global var_BillRefNo
+					put rowdata.ItemBillRefNo_Desc                       into global var_ItemBillRefNo_Desc
+					put rowdata.BillRefNoDesc                               into global var_BillRefNoDesc
+					put rowdata.MandateAmount                           into global var_MandateAmount
+					put rowdata.DetailDDAmount                           into global var_DetailDDAmount
+					put rowdata.BankAccessApproval                      into global var_BankAccessApproval                      
+					Exit repeat
+				End If
+				
+				If var_xlsSheet = "Receipt"
+					put rowdata.Action into global var_Action
+					put rowdata.BankCode into global var_BankCode
+					put rowdata.Payment_Type into global var_PaymentType
+					put rowdata.PayorClient into global var_PayorClient
+					put rowdata.PolicyNumber into global var_PolicyNumber
+					put rowdata.Premium_Amount into global var_PremiumAmt
+					put rowdata.Currency into global var_Currency
+					put rowdata.SACSCODE into global var_Sacscode
+					put rowdata.SACSTYPE into global var_Sacstype
+					put rowdata.Card_Acct_type into global var_Card_Acct_type
+					put rowdata.Chq_CCDt into global var_Chq_CCDt
+					put rowData.BSB_Code into global var_BSB_Code
+					put rowData.Account_CCNo into global var_Account_CCNo
+					put rowData.AML_ind into global var_AML_ind
+					put rowdata.FPDF_ind into global var_FDPF_ind
+					put rowdata.CPF_ind into global var_CPF_ind
+					put rowdata.ChequeNo into global var_ChequeNo
+					Exit repeat
+					
+				End if
+				
+				If var_xlsSheet = "UW"
+					put rowdata.UW_Action into global var_Action
+					put rowdata.UW_Decison_Code into  global var_UWDecisionCode
+					put rowdata.Exclusion into global var_Exclusion
+					put rowdata.Exclusion_Clause1 into global var_Exclusion_Clause1
+					put rowdata.Exclusion_Clause_ExtendedText1 into global var_Exclusion_Clause_ExtendedText1
+					put rowdata.Exclusion_Clause2 into global var_Exclusion_Clause2
+					put rowdata.Exclusion_Clause_ExtendedText2 into global var_Exclusion_Clause_ExtendedText2
+					put rowdata.Exclusion_Clause3 into global var_Exclusion_Clause3
+					put rowdata.Exclusion_Clause_ExtendedText3 into global var_Exclusion_Clause_ExtendedText3
+					put rowdata.Exclusion_Clause4 into global var_Exclusion_Clause4
+					put rowdata.Exclusion_Clause_ExtendedText4 into global var_Exclusion_Clause_ExtendedText4
+					put rowdata.Exclusion_Clause5 into global var_Exclusion_Clause5
+					put rowdata.Exclusion_Clause_ExtendedText5 into global var_Exclusion_Clause_ExtendedText5
+					put rowdata.Spec_Provisions into global var_Spec_Provisions
+					put rowdata.SP_Clause1 into global var_SP_Clause1
+					put rowdata.SP_Clause_ExtText1 into global var_SP_Clause_ExtText1
+					put rowdata.SP_Clause2 into global var_SP_Clause2
+					put rowdata.SP_Clause_ExtText2 into global var_SP_Clause_ExtText2
+					put rowdata.SP_Clause3 into global var_SP_Clause3
+					put rowdata.SP_Clause_ExtText3 into global var_SP_Clause_ExtText3
+					put rowdata.SP_Clause4 into global var_SP_Clause4
+					put rowdata.SP_Clause_ExtText4 into global var_SP_Clause_ExtText4
+					put rowdata.SP_Clause5 into global var_SP_Clause5
+					put rowdata.SP_Clause_ExtText5 into global var_SP_Clause_ExtText5
+					put rowdata.PMR_Update into global var_PMR_Update
+					put rowdata.Risk_Type into global Risk_Type
+					put rowdata.Hospitalise_Days into global Hospitalise_Days
+					put rowdata.Postpone_Duration into global Postpone_DurationYr
+					put rowdata.Postpone_Duration into Postpone_DurationMths
+					put rowdata.Medical_Codes1 into global Medical_Codes1
+					put rowdata.Medical_Codes2 into global Medical_Codes2
+					put rowdata.Medical_Codes3 into global Medical_Codes3
+					Exit repeat
+					
+				End If
+			End If 
+			
+		End repeat 
+	End If
+	return global var_env
+End GlobalGetExcelData
+
+
+// =======================================================================================
+// Name         : Press_F4
+// Description : Use this Handler to press F4 on a specific field
+// Parameter1 : Field Name
+// ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+To Handle Press_F4 var_FieldName
+	Click text:var_FieldName, CaseSensitive:yes, TextDifference:1
+	Typetext Tabkey
+	Typetext F4
+End Press_F4 
+
+
+// =======================================================================================
+// Name         : Press_F7
+// Description : Use this handler to press F7
+// ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+To Handle Press_F7
+	Typetext F7
+End Press_F7
+
+
+// =======================================================================================
+// Name         : Press_EnterKey
+// Description : Use this handler to press Enterkey
+// ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+To Handle Press_EnterKey
+	Typetext Returnkey
+End Press_EnterKey
+
+
+// =======================================================================================
+// Name         : Select Item using page down/up
+// Description : Use this handler to press Enterkey
+// Parameter1 : Field Name
+// ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+To Handle Select_Item var_TableItem, var_ErrorMsg
+	Set var_ItemFound = "N"
+	Set var_counter = 0
+	
+	Repeat until var_ItemFound = "Y" or var_counter = 15
+		If Imagefound(Text:var_TableItem, CaseSensitive:Yes, waitfor:8)
+			Set var_ItemFound = "Y"
+		Else
+			TypeText pageDown
+			Set var_counter = var_counter + 1
+		End If
+	End Repeat
+	
+	If var_ItemFound = "N"
+		Set var_counter = 0
+		Repeat until var_ItemFound = "Y" or var_counter = 15
+			If Imagefound(Text:var_TableItem, CaseSensitive:Yes, waitfor:8)
+				Set var_ItemFound = "Y"
+			Else
+				TypeText pageUp
+				set var_counter = var_counter + 1
+			End If
+		End Repeat
+	End If
+	
+	If var_ItemFound = "Y"
+		Click Text:var_TableItem, CaseSensitive:Yes, waitfor:8
+		Typetext shiftKey, tabKey
+		Typetext "1"
+	Else 
+		LogError "Error : " & var_ErrorMsg
+	End If
+	
+	Return var_ItemFound
+End Select_Item
+
+// Check Screen Error
+To Handle Check_ScreenError 
+	--Set the searchRectangle to Common_Functions.ScreenPart("BottomHalf") + [[0,260], [0,-90]]
+	Set the searchRectangle to Common_Functions.ScreenPart("BottomHalf") + [[0,200], [0,-100]]
+	Put ReadText ([searchrectangle().topleft, searchrectangle().bottomright], contrastColor:[255,255,255], contrast:"On" ) into global var_ErrorMessage
+	
+	If global var_ErrorMessage <> " "
+		LogWarning "Error : " & global var_ErrorMessage
+		capturescreen {name: "Screen Error found_" & today & hour(time) & "_" & minute(time) &second(time) , increment: yes} 
+		Set the searchRectangle to Empty
+		Return "true"
+	Else 
+		Set the searchRectangle to Empty
+		Return "false"
+	End If
+End Check_ScreenError
+
+// To log success/error and do a screen capture
+To Handle LogResult_ScreenCapture var_Result, var_Message, var_Filename
+	If var_Result = "Success"
+		CaptureScreen {Name: var_Filename & "_Passed!_" & today, increment:true, imageFormat: JPG}
+		LogSuccess "Success : " & var_Message
+	Else
+		CaptureScreen {Name: var_Filename & "_Failed!_" & today, increment:true, imageFormat: JPG}
+		LogWarning "Error : " & var_Message & global var_ErrorMessage
+	End If
+End LogResult_ScreenCapture
+
+
+
+
+
+// =======================================================================================
+// Name         : Press_F4
+// Description : Use this Handler to press F4 on a specific field
+// Parameter1 : Field Name
+// ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+To Handle Press_F4 var_FieldName
+	Click [30,130]
+	Typetext Altkey
+	Click text:var_FieldName, CaseSensitive:yes, TextDifference:1
+	Typetext Tab
+	Typetext F4
+End Press_F4 
+
+
+// =======================================================================================
+// Name         : Press_F7
+// Description : Use this handler to press F7
+// ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+To Handle Press_F7
+	Typetext F7
+End Press_F7
+
+
+// =======================================================================================
+// Name         : Press_EnterKey
+// Description : Use this handler to press Enterkey
+// ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+To Handle Press_EnterKey
+	Typetext Returnkey
+End Press_EnterKey
+
+
+// =======================================================================================
+// Name         : Select Item using page down/up
+// Description : Use this handler to press Enterkey
+// Parameter1 : Field Name
+// ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+To Handle Select_Item var_TableItem, var_ErrorMsg
+	Set var_ItemFound = "N"
+	Set var_counter = 0
+	
+	Repeat until var_ItemFound = "Y" or var_counter = 15
+		If Imagefound(Text:var_TableItem, CaseSensitive:Yes, waitfor:8)
+			Set var_ItemFound = "Y"
+		Else
+			TypeText pageDown
+			Set var_counter = var_counter + 1
+		End If
+	End Repeat
+	
+	If var_ItemFound = "N"
+		Set var_counter = 0
+		Repeat until var_ItemFound = "Y" or var_counter = 15
+			If Imagefound(Text:var_TableItem, CaseSensitive:Yes, waitfor:8)
+				Set var_ItemFound = "Y"
+			Else
+				TypeText pageUp
+				set var_counter = var_counter + 1
+			End If
+		End Repeat
+	End If
+	
+	If var_ItemFound = "Y"
+		Click Text:var_TableItem, CaseSensitive:Yes, waitfor:8
+		Typetext shiftKey, tabKey
+		Typetext "1"
+	Else 
+		LogError "Error : " & var_ErrorMsg
+	End If
+	
+	Return var_ItemFound
+End Select_Item
+
+// To validate if Current screen shown is correct
+To Handle Validate_CurrentScreen var_ScreenName
+	Click [30,130]
+	
+	If ImageFound(text:var_ScreenName, casesensitive:yes, waitfor:5)
+		CaptureScreen {Name: var_ScreenName & "_Screen Found!_" & today, increment:true, imageFormat: JPG}
+		LogSuccess "Success : " & var_ScreenName & " Screen Found!"
+	Else 
+		CaptureScreen {Name: var_ScreenName & "_Screen Not Found!_" & today, increment:true, imageFormat: JPG}
+		LogError "Error : " & var_ScreenName & " Screen Not Found!"
+	End If
+End Validate_CurrentScreen
+
+// Check Screen Error
+To Handle Check_ScreenError 
+	Click [30,130]
+	Typetext F5
+	Set global var_ErrorMessage = " "
+	--Set the searchRectangle to Common_Functions.ScreenPart("BottomHalf") + [[0,200], [0,-100]]
+	Set the searchRectangle to Common_Functions.ScreenPart("BottomHalf") + [[0,290], [0,-90]]
+	Put ReadText ([searchrectangle().topleft, searchrectangle().bottomright], contrastColor:[255,255,255], contrast:"On" ) into global var_ErrorMessage
+	
+	--Log global var_ErrorMessage
+	
+	If trim(global var_ErrorMessage) <> ""
+	(*LogWarning "Error : " & global var_ErrorMessage
+		capturescreen {name: "Screen Error found_" & today & hour(time) & "_" & minute(time) &second(time) , increment: yes} *)
+		Set the searchRectangle to Empty
+		Return "true"
+	Else 
+		Set the searchRectangle to Empty
+		Return "false"
+	End If
+End Check_ScreenError
+
+// To log success/error and do a screen capture
+To Handle LogResult_ScreenCapture var_Result, var_Message, var_Filename
+	If var_Result = "Success"
+		CaptureScreen {Name: var_Filename & "_Passed!_" & today, increment:true, imageFormat: JPG}
+		LogSuccess "Success : " & var_Message
+	Else
+		CaptureScreen {Name: var_Filename & "_Failed!_" & today, increment:true, imageFormat: JPG}
+		LogWarning "Error : " & var_Message & global var_ErrorMessage
+	End If
+End LogResult_ScreenCapture
+
+
+function Check_Next_Screen var_env
+	
+	set the SearchRectangle to empty
+	set the SearchRectangle to Common_Functions.ScreenPart("HorizontalMiddle")
+	set var_window = false
+	if imagefound(Text:var_env, LowResolutionMode:"Yes", caseSensitive:"Yes", EnableAggressiveTextExtraction:"Yes", IgnoreSpaces:"Yes", EnhanceLocalContrast:"Yes", WaitFor:5) =false
+		set the SearchRectangle to empty
+	else
+		set var_window = true
+	end if
+	log "Window screen " & var_window 
+	wait 2
+	put  ImageRectangle(Text:var_env, LowResolutionMode:"Yes", caseSensitive:"Yes", EnableAggressiveTextExtraction:"Yes", IgnoreSpaces:"Yes", EnhanceLocalContrast:"Yes", WaitFor:5) into var_loc
+	put  [var_loc.topleft +[880,-10], var_loc.bottomright + [950,10] ] into var_rec 
+	if var_window 
+		put  [var_loc.topleft +[800,-10], var_loc.bottomright + [850,10] ] into var_rec 
+	end if
+	set the SearchRectangle to var_rec 
+	put readtext(var_rec ) into var_readtext
+	put  first  5 chars of var_readtext    into  var_screenname
+	capturescreen [ "Next Screen checking" & today , increment:yes]
+
+	if 	var_screenname  is ... 
+		"S5003" : set  var_next_screen= var_screenname
+		"SAD97" : set  var_next_screen= var_screenname
+		"S6378" : set  var_next_screen= var_screenname
+		"S5002" : set  var_next_screen= var_screenname
+		"S5004" : set  var_next_screen=var_screenname
+		"S5005" : set  var_next_screen=var_screenname
+		"SCB15" : set  var_next_screen=var_screenname
+		"SCB19" : set  var_next_screen=var_screenname
+		"S6326" : set  var_next_screen=var_screenname
+		"SA159": set var_next_screen=var_screenname
+		"S5125": set var_next_screen=var_screenname
+		"S5417": set var_next_screen=var_screenname
+		"SV075": set var_next_screen=var_screenname
+		"SR556": set var_next_screen=var_screenname
+		"S6276": set var_next_screen=var_screenname
+		"S6278": set var_next_screen=var_screenname
+	end if 
+	
+	set the SearchRectangle to empty
+	return var_next_screen 
+end Check_Next_Screen
+
+
+To Go_Back_To_MainMenu
+	set var_found = "N" 
+	
+	if ImageFound(text:"System Administration", waitfor: 3)
+		set  var_found = "Y" 
+	else
+		repeat until imagefound (text: "System Administration", waitfor: 3) or repeatindex() = 10
+			typetext F3
+			set var_found = "Y" 
+		end repeat
+	end if
+	
+	
+	
+	if var_found <> "Y"
+		logerror "Not able to return to Main Menu successfully"
+		capturescreen {name: "Not able to return to Main Menu successfully_" & today & hour(time) & "_" & minute(time) &second(time) , increment: yes}	
+	else
+		
+		logsuccess "Able to return to Main Menu successfully"
+		capturescreen {name: "Able to return to Main Menu successfully_" & today & hour(time) & "_" & minute(time) &second(time) , increment: yes} 
+
+	end if
+	
+End Go_Back_To_MainMenu

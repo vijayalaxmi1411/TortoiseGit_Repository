@@ -1,0 +1,899 @@
+{
+  "path": "",
+  "tags": [
+    {
+      "id": 1,
+      "name": "",
+      "values": ""
+    }
+  ],
+  "ePFhost": "STSS055",
+  "version": "6.0.1-8",
+  "ePFsuite": "",
+  "elements": [
+    {
+      "id": 0,
+      "name": "IL_ContractIssuance",
+      "type": "Root",
+      "parameters": [
+        {
+          "id": 1,
+          "name": "var_index",
+          "type": "Integer",
+          "random": "Non-generated",
+          "ranges": [
+            {
+              "values": "6",
+              "weight": 100,
+              "numBins": 10,
+              "distribution": "Flat"
+            }
+          ],
+          "initial": "2",
+          "parameterUuid": "20b4c3da-be95-44d2-94d9-3e87ec784420"
+        },
+        {
+          "id": 2,
+          "name": "var_xlsFilename",
+          "type": "Text",
+          "random": "Non-generated",
+          "ranges": [],
+          "initial": "D:\\CTestAutomation\\Integral Life\\IntegralLife.suite\\Resources\\IL_TestData.xlsx",
+          "parameterUuid": "22d4e620-181a-4f1d-b5e8-b5cf6b6eb19c"
+        },
+        {
+          "id": 3,
+          "name": "var_xlsSheet",
+          "type": "Text",
+          "random": "Non-generated",
+          "ranges": [],
+          "initial": "Policy",
+          "parameterUuid": "4fbb9e4b-5652-42ef-b441-f5b87ddf42a5"
+        },
+        {
+          "id": 4,
+          "name": "var_xlsSheet_Life01",
+          "type": "Text",
+          "random": "Non-generated",
+          "ranges": [],
+          "initial": "Life01",
+          "parameterUuid": "35e60163-2cc0-46e3-94dd-0fce418360af"
+        },
+        {
+          "id": 5,
+          "name": "var_xlsSheet_ContractIssuance",
+          "type": "Text",
+          "random": "Non-generated",
+          "ranges": [],
+          "initial": "ContractIssuance",
+          "parameterUuid": "3ed8122a-c7c1-4ecc-b805-c5e67635eb07"
+        }
+      ],
+      "elementUuid": "9ce6a132-ce9d-4d42-8cbc-6ea46bb5fc38"
+    },
+    {
+      "id": 929398608661,
+      "name": "Exit",
+      "type": "State",
+      "parentId": 0,
+      "invisible": true,
+      "stateType": "Normal",
+      "parameters": [],
+      "elementUuid": "606b19e6-6780-4938-b9dd-6560cec1b1da",
+      "sortingType": "Z"
+    },
+    {
+      "id": 1295324716276,
+      "name": "Error",
+      "type": "State",
+      "parentId": 0,
+      "invisible": true,
+      "stateType": "Exception",
+      "parameters": [],
+      "elementUuid": "c2b0ac63-8708-43bc-b6ae-04d7b7c9c704",
+      "sortingType": "X"
+    },
+    {
+      "id": 1201815855765,
+      "name": "Cleanup",
+      "type": "State",
+      "parentId": 0,
+      "invisible": true,
+      "stateType": "Cleanup",
+      "parameters": [],
+      "elementUuid": "c3833eed-7313-4d12-a9db-1257a1107b99",
+      "sortingType": "Y"
+    },
+    {
+      "dx": 260,
+      "dy": 20,
+      "id": 1452329589838,
+      "name": "Master Menu",
+      "type": "State",
+      "textX": 20,
+      "textY": 25,
+      "parentId": 0,
+      "invisible": false,
+      "stateType": "Normal",
+      "parameters": [
+        {
+          "id": 0,
+          "name": "",
+          "type": "",
+          "random": "",
+          "ranges": [],
+          "initial": "",
+          "parameterUuid": "4f76f331-55be-4789-97df-c3588651e678"
+        }
+      ],
+      "shapeWidth": 160,
+      "elementUuid": "edd51df0-a377-4c87-8f15-f25a1fefef35",
+      "shapeHeight": 100,
+      "sortingType": "B"
+    },
+    {
+      "dx": 260,
+      "dy": 180,
+      "id": 1452329589840,
+      "name": "Proposal Menu",
+      "type": "State",
+      "textX": 20,
+      "textY": 25,
+      "parentId": 0,
+      "snippets": [],
+      "invisible": false,
+      "stateType": "Normal",
+      "parameters": [
+        {
+          "id": 0,
+          "name": "",
+          "type": "",
+          "random": "",
+          "ranges": [],
+          "initial": "",
+          "parameterUuid": "753c815b-7d55-4417-920f-907aefd984b9"
+        }
+      ],
+      "shapeWidth": 180,
+      "elementUuid": "11d1891e-358e-412b-84fe-ff559f7d6963",
+      "shapeHeight": 100,
+      "sortingType": "B"
+    },
+    {
+      "dx": 580,
+      "dy": 20,
+      "id": 1452329589843,
+      "name": "New Contract Issue Submenu",
+      "type": "State",
+      "textX": 20,
+      "textY": 25,
+      "parentId": 0,
+      "snippets": [],
+      "invisible": false,
+      "stateType": "Normal",
+      "parameters": [
+        {
+          "id": 0,
+          "name": "ContractNumber",
+          "type": "True or False",
+          "random": "Non-generated",
+          "ranges": [],
+          "initial": "false",
+          "parameterUuid": "5ce35767-13b6-4290-b5d5-a605852170b7"
+        },
+        {
+          "id": 1,
+          "name": "Action",
+          "type": "True or False",
+          "random": "Non-generated",
+          "ranges": [],
+          "initial": "false",
+          "parameterUuid": "57343615-815a-489f-bc5b-8a9b1e3f69bb"
+        }
+      ],
+      "shapeWidth": 240,
+      "elementUuid": "fe308f66-66f5-418a-820d-ad9b29aa38d6",
+      "shapeHeight": 220,
+      "sortingType": "B"
+    },
+    {
+      "dx": 260,
+      "dy": 360,
+      "id": 1452329589889,
+      "name": "Contract Issue",
+      "type": "State",
+      "textX": 20,
+      "textY": 25,
+      "parentId": 0,
+      "invisible": false,
+      "stateType": "Normal",
+      "parameters": [
+        {
+          "id": 0,
+          "name": "",
+          "type": "",
+          "random": "",
+          "ranges": [],
+          "initial": "",
+          "parameterUuid": "5cb0dac2-485b-42b8-8850-849a1a9e4e43"
+        }
+      ],
+      "shapeWidth": 220,
+      "elementUuid": "c421753a-0f0e-41f8-9f12-9a7e026c9fe9",
+      "shapeHeight": 100,
+      "sortingType": "B"
+    },
+    {
+      "dx": 540,
+      "dy": 320,
+      "id": 1452329589892,
+      "name": "Pre-Issue Proposal Validation",
+      "type": "State",
+      "textX": 20,
+      "textY": 25,
+      "parentId": 0,
+      "invisible": false,
+      "stateType": "Normal",
+      "parameters": [
+        {
+          "id": 0,
+          "name": "ValidateError",
+          "type": "True or False",
+          "random": "Non-generated",
+          "ranges": [],
+          "initial": "false",
+          "parameterUuid": "bf6f4439-6054-44db-aa86-ba9474f705e9"
+        }
+      ],
+      "shapeWidth": 240,
+      "elementUuid": "d7e276ae-dc9d-4044-bd76-017fc0de4bc3",
+      "shapeHeight": 160,
+      "sortingType": "B"
+    },
+    {
+      "dx": 840,
+      "dy": 340,
+      "id": 1452329589896,
+      "name": "Policy Enquiry",
+      "type": "State",
+      "textX": 20,
+      "textY": 25,
+      "parentId": 0,
+      "invisible": false,
+      "stateType": "Normal",
+      "parameters": [
+        {
+          "id": 0,
+          "name": "",
+          "type": "",
+          "random": "",
+          "ranges": [],
+          "initial": "",
+          "parameterUuid": "18b7e3f7-03c0-41dc-89f6-4c71adbc7d06"
+        }
+      ],
+      "shapeWidth": 180,
+      "elementUuid": "f506140c-ec26-4be6-b881-e2f4ed5af935",
+      "shapeHeight": 120,
+      "sortingType": "B"
+    },
+    {
+      "dx": 40,
+      "dy": 40,
+      "id": 1452329589900,
+      "name": "Launch",
+      "type": "State",
+      "textX": 20,
+      "textY": 25,
+      "parentId": 0,
+      "invisible": false,
+      "stateType": "Start",
+      "parameters": [
+        {
+          "id": 0,
+          "name": "",
+          "type": "",
+          "random": "",
+          "ranges": [],
+          "initial": "",
+          "parameterUuid": "7a273a3a-46c6-474d-9639-a5d03411a17e"
+        }
+      ],
+      "shapeWidth": 160,
+      "elementUuid": "635f2ace-2bce-4854-82d4-482de88b4843",
+      "shapeHeight": 100,
+      "sortingType": "B"
+    },
+    {
+      "dx": 20,
+      "dy": 40,
+      "id": 1452329589839,
+      "name": "Click Proposal NB",
+      "type": "Action",
+      "textX": 15,
+      "textY": 22,
+      "weight": 100,
+      "parentId": 1452329589838,
+      "snippets": [
+        {
+          "name": "click_Proposal",
+          "type": "normal",
+          "fullName": "IL_S0017_MasterMenu.script:click_Proposal",
+          "scriptPath": "IL_S0017_MasterMenu.script:click_Proposal"
+        }
+      ],
+      "callLimit": 0,
+      "actionType": "Normal",
+      "parameters": [
+        {
+          "id": 0,
+          "name": "",
+          "type": "",
+          "random": "",
+          "ranges": [],
+          "initial": "",
+          "parameterUuid": "10b7d820-6e1c-4d4c-a9e3-6ae955af91da"
+        }
+      ],
+      "shapeWidth": 125,
+      "elementUuid": "097168ea-1362-4fba-9240-d9bfbcccef75",
+      "shapeHeight": 40,
+      "sortingType": "C",
+      "connectedStates": [
+        {
+          "stateRef": 1452329589840
+        }
+      ]
+    },
+    {
+      "dx": 20,
+      "dy": 40,
+      "id": 1452329589841,
+      "name": "Click Contract Issue",
+      "type": "Action",
+      "textX": 15,
+      "textY": 22,
+      "weight": 100,
+      "parentId": 1452329589840,
+      "snippets": [
+        {
+          "name": "click_Contract_Issue",
+          "type": "normal",
+          "fullName": "IL_S0018_Proposal_NB.script:click_Contract_Issue",
+          "scriptPath": "IL_S0018_Proposal_NB.script:click_Contract_Issue"
+        }
+      ],
+      "callLimit": 0,
+      "actionType": "Normal",
+      "parameters": [
+        {
+          "id": 0,
+          "name": "",
+          "type": "",
+          "random": "",
+          "ranges": [],
+          "initial": "",
+          "parameterUuid": "ea5afa54-8729-4c1e-8d9a-c052be718c32"
+        }
+      ],
+      "shapeWidth": 138,
+      "elementUuid": "4535865c-df16-4c22-b5bf-104c806e99b0",
+      "shapeHeight": 40,
+      "sortingType": "C",
+      "connectedStates": [
+        {
+          "stateRef": 1452329589843
+        }
+      ]
+    },
+    {
+      "dx": 20,
+      "dy": 40,
+      "id": 1452329589845,
+      "name": "Enter Contract Number",
+      "type": "Action",
+      "textX": 15,
+      "textY": 22,
+      "weight": 100,
+      "parentId": 1452329589843,
+      "snippets": [
+        {
+          "name": "enter_AIAPolNo",
+          "type": "normal",
+          "fullName": "IL_S5073_NewContract_Issue_Submenu.script:enter_AIAPolNo",
+          "scriptPath": "IL_S5073_NewContract_Issue_Submenu.script:enter_AIAPolNo"
+        }
+      ],
+      "callLimit": 0,
+      "actionType": "Normal",
+      "parameters": [
+        {
+          "id": 0,
+          "name": "",
+          "type": "",
+          "random": "",
+          "ranges": [],
+          "initial": "",
+          "parameterUuid": "85f55219-1d76-468f-9f82-edbc882bdc2b"
+        }
+      ],
+      "shapeWidth": 161,
+      "elementUuid": "028d7762-d097-4eaf-b56c-90902f6d852e",
+      "setGenerate": [
+        {
+          "value": "true",
+          "setGen": "set",
+          "parameterName": "ContractNumber"
+        }
+      ],
+      "shapeHeight": 40,
+      "sortingType": "C",
+      "preconditions": [
+        {
+          "value": "false",
+          "condition": "==",
+          "parameterName": "ContractNumber"
+        }
+      ]
+    },
+    {
+      "dx": 60,
+      "dy": 100,
+      "id": 1452329589847,
+      "name": "Enter Action",
+      "type": "Action",
+      "textX": 15,
+      "textY": 22,
+      "weight": 100,
+      "parentId": 1452329589843,
+      "snippets": [
+        {
+          "name": "enter_Action",
+          "type": "normal",
+          "fullName": "IL_S5073_NewContract_Issue_Submenu.script:enter_Action",
+          "scriptPath": "IL_S5073_NewContract_Issue_Submenu.script:enter_Action"
+        }
+      ],
+      "callLimit": 0,
+      "actionType": "Normal",
+      "parameters": [
+        {
+          "id": 0,
+          "name": "",
+          "type": "",
+          "random": "",
+          "ranges": [],
+          "initial": "",
+          "parameterUuid": "1ec2bbe9-135a-4018-af65-659f24869a84"
+        }
+      ],
+      "shapeWidth": 84,
+      "elementUuid": "bbaa98e4-31bc-4897-9b93-3fdcf0163e29",
+      "setGenerate": [
+        {
+          "value": "true",
+          "setGen": "set",
+          "parameterName": "Action"
+        }
+      ],
+      "shapeHeight": 40,
+      "sortingType": "C",
+      "preconditions": [
+        {
+          "value": "false",
+          "condition": "==",
+          "parameterName": "Action"
+        }
+      ]
+    },
+    {
+      "dx": 60,
+      "dy": 160,
+      "id": 1452329589849,
+      "name": "Hit Enter",
+      "type": "Action",
+      "textX": 15,
+      "textY": 22,
+      "weight": 100,
+      "parentId": 1452329589843,
+      "snippets": [
+        {
+          "name": "Hit_Enter",
+          "type": "normal",
+          "fullName": "IL_S5073_NewContract_Issue_Submenu.script:Hit_Enter",
+          "scriptPath": "IL_S5073_NewContract_Issue_Submenu.script:Hit_Enter"
+        }
+      ],
+      "callLimit": 0,
+      "actionType": "Normal",
+      "parameters": [
+        {
+          "id": 0,
+          "name": "",
+          "type": "",
+          "random": "",
+          "ranges": [],
+          "initial": "",
+          "parameterUuid": "68a9651a-52ec-4002-9f7b-cede600c99cf"
+        }
+      ],
+      "shapeWidth": 80,
+      "elementUuid": "a035159e-db7c-4f0f-b7a2-9e747322d6b5",
+      "setGenerate": [
+        {
+          "value": "false",
+          "setGen": "set",
+          "parameterName": "ContractNumber"
+        },
+        {
+          "value": "false",
+          "setGen": "set",
+          "parameterName": "Action"
+        }
+      ],
+      "shapeHeight": 40,
+      "sortingType": "C",
+      "preconditions": [
+        {
+          "value": "true",
+          "condition": "==",
+          "parameterName": "ContractNumber"
+        },
+        {
+          "value": "true",
+          "condition": "==",
+          "parameterName": "Action"
+        }
+      ],
+      "connectedStates": [
+        {
+          "stateRef": 1452329589889
+        }
+      ]
+    },
+    {
+      "dx": 20,
+      "dy": 40,
+      "id": 1452329589890,
+      "name": "Check if ready for issuance",
+      "type": "Action",
+      "textX": 15,
+      "textY": 22,
+      "weight": 100,
+      "parentId": 1452329589889,
+      "snippets": [
+        {
+          "name": "Validate_Contract_Issue_Screen",
+          "type": "normal",
+          "fullName": "IL_S5074_Contract_Issue.script:Validate_Contract_Issue_Screen",
+          "scriptPath": "IL_S5074_Contract_Issue.script:Validate_Contract_Issue_Screen"
+        },
+        {
+          "name": "Contract_Issue_NotReadyF5",
+          "type": "normal",
+          "fullName": "IL_S5074_Contract_Issue.script:Contract_Issue_NotReadyF5",
+          "scriptPath": "IL_S5074_Contract_Issue.script:Contract_Issue_NotReadyF5"
+        }
+      ],
+      "callLimit": 0,
+      "actionType": "Normal",
+      "parameters": [
+        {
+          "id": 0,
+          "name": "",
+          "type": "",
+          "random": "",
+          "ranges": [],
+          "initial": "",
+          "parameterUuid": "6ce4eb49-d73b-449e-acd9-54c5426ef6ad"
+        }
+      ],
+      "shapeWidth": 188,
+      "elementUuid": "d8fb54e2-b531-498e-b269-249eecc7c60b",
+      "shapeHeight": 40,
+      "sortingType": "C",
+      "connectedStates": [
+        {
+          "stateRef": 1452329589892
+        }
+      ]
+    },
+    {
+      "dx": 20,
+      "dy": 40,
+      "id": 1452329589893,
+      "name": "Validate Error",
+      "type": "Action",
+      "textX": 15,
+      "textY": 22,
+      "weight": 100,
+      "parentId": 1452329589892,
+      "snippets": [
+        {
+          "name": "PreIssue_Proposal_Validation",
+          "type": "normal",
+          "fullName": "IL_S6378_PreIssue_Proposal Validation.script:PreIssue_Proposal_Validation",
+          "scriptPath": "IL_S6378_PreIssue_Proposal Validation.script:PreIssue_Proposal_Validation"
+        }
+      ],
+      "callLimit": 0,
+      "actionType": "Normal",
+      "parameters": [
+        {
+          "id": 0,
+          "name": "",
+          "type": "",
+          "random": "",
+          "ranges": [],
+          "initial": "",
+          "parameterUuid": "80d305d2-4578-471b-9a86-9b0ddd9d2b85"
+        }
+      ],
+      "shapeWidth": 95,
+      "elementUuid": "ab7aff2f-b26a-4b0d-be5c-9392682e0c8b",
+      "setGenerate": [
+        {
+          "value": "true",
+          "setGen": "set",
+          "parameterName": "ValidateError"
+        }
+      ],
+      "shapeHeight": 40,
+      "sortingType": "C",
+      "preconditions": [
+        {
+          "value": "false",
+          "condition": "==",
+          "parameterName": "ValidateError"
+        }
+      ]
+    },
+    {
+      "dx": 100,
+      "dy": 100,
+      "id": 1452329589894,
+      "name": "Issue Policy",
+      "type": "Action",
+      "textX": 15,
+      "textY": 22,
+      "weight": 100,
+      "parentId": 1452329589892,
+      "snippets": [
+        {
+          "name": "Issue_Policy",
+          "type": "normal",
+          "fullName": "IL_S6378_PreIssue_Proposal Validation.script:Issue_Policy",
+          "scriptPath": "IL_S6378_PreIssue_Proposal Validation.script:Issue_Policy"
+        }
+      ],
+      "callLimit": 0,
+      "actionType": "Normal",
+      "parameters": [
+        {
+          "id": 0,
+          "name": "",
+          "type": "",
+          "random": "",
+          "ranges": [],
+          "initial": "",
+          "parameterUuid": "f60ae8a0-35fd-46f8-a574-059b0c510931"
+        }
+      ],
+      "shapeWidth": 83,
+      "elementUuid": "fe52457e-2f91-4bd1-ba6d-165159ae6943",
+      "setGenerate": [
+        {
+          "value": "false",
+          "setGen": "set",
+          "parameterName": "ValidateError"
+        }
+      ],
+      "shapeHeight": 40,
+      "sortingType": "C",
+      "preconditions": [
+        {
+          "value": "true",
+          "condition": "==",
+          "parameterName": "ValidateError"
+        }
+      ],
+      "connectedStates": [
+        {
+          "stateRef": 1452329589896
+        }
+      ]
+    },
+    {
+      "dx": 20,
+      "dy": 40,
+      "id": 1452329589897,
+      "name": "Check Policy Status",
+      "type": "Action",
+      "textX": 15,
+      "textY": 22,
+      "weight": 100,
+      "parentId": 1452329589896,
+      "snippets": [
+        {
+          "name": "Policy_Enquiry",
+          "type": "normal",
+          "fullName": "IL_S5073_NewContract_Issue_Submenu.script:Policy_Enquiry",
+          "scriptPath": "IL_S5073_NewContract_Issue_Submenu.script:Policy_Enquiry"
+        }
+      ],
+      "callLimit": 0,
+      "actionType": "Normal",
+      "parameters": [
+        {
+          "id": 0,
+          "name": "",
+          "type": "",
+          "random": "",
+          "ranges": [],
+          "initial": "",
+          "parameterUuid": "3720a54d-65aa-4229-85cc-21c5c0aa902d"
+        }
+      ],
+      "shapeWidth": 138,
+      "elementUuid": "36f766f8-f006-4388-8dc4-d404be596617",
+      "shapeHeight": 40,
+      "sortingType": "C",
+      "connectedStates": [
+        {
+          "stateRef": 929398608661
+        }
+      ]
+    },
+    {
+      "dx": 20,
+      "dy": 40,
+      "id": 1452329589901,
+      "name": "Contract Issuance",
+      "type": "Action",
+      "textX": 15,
+      "textY": 22,
+      "weight": 100,
+      "parentId": 1452329589900,
+      "snippets": [
+        {
+          "name": "GlobalGetExcelData",
+          "type": "custom",
+          "inputs": [
+            {
+              "order": 2,
+              "parameterRef": {
+                "id": 1,
+                "name": "var_index",
+                "type": "Integer",
+                "random": "Non-generated",
+                "ranges": [
+                  {
+                    "values": "6",
+                    "weight": 100,
+                    "numBins": 10,
+                    "distribution": "Flat"
+                  }
+                ],
+                "initial": "2",
+                "parameterUuid": "20b4c3da-be95-44d2-94d9-3e87ec784420"
+              }
+            },
+            {
+              "order": 3,
+              "parameterRef": {
+                "id": 2,
+                "name": "var_xlsFilename",
+                "type": "Text",
+                "random": "Non-generated",
+                "ranges": [],
+                "initial": "D:\\CTestAutomation\\Integral Life\\IntegralLife.suite\\Resources\\IL_TestData.xlsx",
+                "parameterUuid": "22d4e620-181a-4f1d-b5e8-b5cf6b6eb19c"
+              }
+            },
+            {
+              "order": 4,
+              "parameterRef": {
+                "id": 3,
+                "name": "var_xlsSheet",
+                "type": "Text",
+                "random": "Non-generated",
+                "ranges": [],
+                "initial": "Policy",
+                "parameterUuid": "4fbb9e4b-5652-42ef-b441-f5b87ddf42a5"
+              }
+            }
+          ],
+          "disabled": false,
+          "fullName": "Common_Functions.script:GlobalGetExcelData",
+          "scriptPath": "Common_Functions.script:GlobalGetExcelData"
+        },
+        {
+          "name": "GlobalGetExcelData",
+          "type": "custom",
+          "inputs": [
+            {
+              "order": 2,
+              "parameterRef": {
+                "id": 1,
+                "name": "var_index",
+                "type": "Integer",
+                "random": "Non-generated",
+                "ranges": [
+                  {
+                    "values": "6",
+                    "weight": 100,
+                    "numBins": 10,
+                    "distribution": "Flat"
+                  }
+                ],
+                "initial": "2",
+                "parameterUuid": "20b4c3da-be95-44d2-94d9-3e87ec784420"
+              }
+            },
+            {
+              "order": 3,
+              "parameterRef": {
+                "id": 2,
+                "name": "var_xlsFilename",
+                "type": "Text",
+                "random": "Non-generated",
+                "ranges": [],
+                "initial": "D:\\CTestAutomation\\Integral Life\\IntegralLife.suite\\Resources\\IL_TestData.xlsx",
+                "parameterUuid": "22d4e620-181a-4f1d-b5e8-b5cf6b6eb19c"
+              }
+            },
+            {
+              "order": 6,
+              "parameterRef": {
+                "id": 5,
+                "name": "var_xlsSheet_ContractIssuance",
+                "type": "Text",
+                "random": "Non-generated",
+                "ranges": [],
+                "initial": "ContractIssuance",
+                "parameterUuid": "3ed8122a-c7c1-4ecc-b805-c5e67635eb07"
+              }
+            }
+          ],
+          "fullName": "Common_Functions.script:GlobalGetExcelData",
+          "scriptPath": "Common_Functions.script:GlobalGetExcelData"
+        }
+      ],
+      "callLimit": 0,
+      "actionType": "Normal",
+      "parameters": [
+        {
+          "id": 0,
+          "name": "",
+          "type": "",
+          "random": "",
+          "ranges": [],
+          "initial": "",
+          "parameterUuid": "211e9d93-d97c-4bd7-9804-b7a0dc8826c3"
+        }
+      ],
+      "shapeWidth": 125,
+      "elementUuid": "c319d865-281d-41bc-8405-8815e254c183",
+      "shapeHeight": 40,
+      "sortingType": "C",
+      "connectedStates": [
+        {
+          "stateRef": 1452329589838
+        }
+      ]
+    }
+  ],
+  "modeluuid": "34728576-5b28-4a15-b6b4-72edb3bdb071",
+  "suitePath": "IntegralLife.suite",
+  "testcases": [],
+  "verbosity": 32512,
+  "snippetFull": true,
+  "stateCounter": 20,
+  "actionCounter": 45,
+  "parameterCounter": 0,
+  "performanceTests": [],
+  "performanceTimings": true,
+  "allSnippetsDisabled": false,
+  "runCleanupAfterAbort": true,
+  "allowGlobalActionsInInitialStates": true
+}

@@ -1,0 +1,154 @@
+﻿//======================================================
+//                                           AIA SINGAPORE
+//======================================================
+// Name        : Common_Functions
+// Descripton : This contains all common functions for Integral Life application suite
+//======================================================
+//  REVISION
+//-------------------------------------------------------------------------------------------------------------------------
+// Date          |  Author                              | Description
+//----------------- -------------------------------- ----------------------------------------------------------------------
+// 20220410    Automation Team -Colleen    Initial Version for IL Log on
+//-------------------------------------------------------------------------------------------------------------------------
+
+
+
+params UserID, Password
+set UserID =var_suite_userid
+set Password =DecodeText(var_suite_pw) 
+
+
+typetext returnkey
+sign_on_IL UserID, Password
+
+on sign_on_IL UserID, Password
+	if imagefound (Text:"IL AS400 UAT",  LowResolutionMode:"Yes", caseSensitive:"Yes", IgnoreSpaces:"Yes", EnableAggressiveTextExtraction:"Yes", EnhanceLocalContrast:"Yes",waitfor: 3)
+		doubleclick FoundImageLocation() + [0,-20]
+
+		wait 1
+		typetext UserID, tabkey  
+		typehiddentext Password, returnKey
+	else
+		typetext windowsKey,r
+		typetext "PCSWS.EXE", returnKey
+		wait 3
+		if imagefound (text:"SINDUA01.AIA.BIZ" , waitfor: 3)  
+			click text :("OK")
+			typetext UserID, tabkey 
+			typehiddentext Password
+			typetext returnKey
+		else if imagefound (text:"System name", caseSensitive:"Yes", EnableAggressiveTextExtraction:"Yes", WaitFor:8)
+			doubleclick FoundImageLocation() + [0,100] 
+			typetext "SINDUA01.AIA.BIZ", returnkey
+			typetext UserID, tab 
+			typehiddentext Password
+			typetext returnKey
+			
+		end if
+		
+	end if
+	IL_signon UserID, Password
+end sign_on_IL
+
+on IL_signon UserID, Password
+
+	if imagefound (text: "Sign On", waitfor: 3, caseSensitive: yes)  = false and imagefound (text: "Current Library", waitfor: 5, caseSensitive: yes,EnableAggressiveTextExtraction:"Yes")  = false
+	logerror "Sign on screen not displayed"
+	capturescreen {name: "Sign on screen not displayed_" & today & hour(time) & "_" & minute(time) &second(time) , increment: yes} 
+	else
+	typetext windowsKey, upArrow
+	logsuccess "Sign on screen displayed"
+	capturescreen {name: "Sign on screen not displayedain Menu found_" & today & hour(time) & "_" & minute(time) &second(time) , increment: yes} 
+	typetext UserID, tab 
+	typehiddentext Password
+	typetext returnKey
+	wait 1
+	typetext returnKey
+	if imagefound (text: "Type command", waitfor: 3, caseSensitive: yes) 
+		typetext d, returnkey
+	end if 
+	if imagefound (text: "System Master Menu", waitfor: 3, caseSensitive: yes,EnableAggressiveTextExtraction:"Yes")  =true 
+		logsuccess "Main Menu displayed"
+		capturescreen {name: "Main Menu displayed_" & today & hour(time) & "_" & minute(time) &second(time) , increment: yes} 
+	else if imagefound(text:"Press Enter to continue", waitfor: 3, caseSensitive: yes) 
+		typetext returnkey
+	else
+		logerror "Main Menu not found"
+		capturescreen {name: "Main Menu not found_" & today & hour(time) & "_" & minute(time) &second(time) , increment: yes} 
+end if
+	end if
+	
+end IL_signon
+
+on Login_IL UserID, Password
+	if imagefound (text: "IL AS400 UATx", waitfor: 3, textDifference:1) 
+		doubleclick FoundImageLocation()
+	else
+		typetext windowsKey, r 
+		typetext "PCSWS.EXE", returnkey
+		if imagefound(text: "Cancel",waitfor: 5) 	
+			click FoundImageLocation()
+		end if 
+		
+		if imagefound(text: "Communication", waitfor: 3 ) =false
+			logerror "Unable to find IL AS400 UAT"
+			capturescreen {name: "Unable to find IL AS400 UAT_" & today & hour(time) & "_" & minute(time) &second(time), increment: yes} 
+		end if 
+		
+	end if
+	(*	typetext windowsKey, upArrow*)
+	if imagefound(text: "Communication",waitfor: 5) 	
+		click text:"Communication" 
+		click text :"Configure"
+		typetext "SINDUA01.AIA.BIZ" , returnKey	
+		typetext UserID, tab 
+		typehiddentext Password
+		typetext returnKey
+	else
+		logerror "Unable to find IL AS400 UAT"
+		capturescreen {name: "Unable to find IL AS400 UAT_" & today & hour(time) & "_" & minute(time) &second(time) , increment: yes} 
+	end if 
+	
+	if imagefound (text: "Sign On", waitfor: 3, textDifference:1, caseSensitive: yes) 
+		Click text :"User" 
+		typetext tab, UserID 
+		typetext tab, Password
+		typetext returnKey
+		typetext returnKey 
+	end if
+	(*	typetext windowsKey, upArrow*)
+	if imagefound (text: "Type command", waitfor: 3, caseSensitive: yes) 
+		typetext d, returnkey
+	end if
+	if imagefound (text: "System Master Menu", waitfor: 5, caseSensitive: yes,EnableAggressiveTextExtraction:"Yes")  = false
+		logerror "Main Menu not found"
+		capturescreen {name: "Main Menu not found_" & today & hour(time) & "_" & minute(time) &second(time) , increment: yes} 
+	else
+		logsuccess "Main Menu found"
+		capturescreen {name: "Main Menu found_" & today & hour(time) & "_" & minute(time) &second(time) , increment: yes} 
+	end if
+	
+	
+	
+end Login_IL
+
+on Login_out
+	repeat until imagefound (text: "Sign on", waitfor: 3) or repeatindex() = 10
+		typetext F3
+		set var_found = "Y" 
+	end repeat
+	
+	
+	if var_found <> "Y"
+		logerror "Log out not successful"
+		capturescreen {name: "Log out not successful_" & today & hour(time) & "_" & minute(time) &second(time) , increment: yes} 
+		else
+		logsuccess "Log out  successful"
+		capturescreen {name: "Log out successful_" & today & hour(time) & "_" & minute(time) &second(time) , increment: yes} 
+		typetext altKey, F4
+	end if
+	
+	
+	
+	
+end Login_out

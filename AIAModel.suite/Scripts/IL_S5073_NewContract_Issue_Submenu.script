@@ -1,0 +1,123 @@
+﻿on enter_AIAPolNo
+	(*	set global var_AIAPolNo = "46656053"*)
+	
+	click text: "Contract Number"
+	typetext tabKey, global var_AIAPolNo 
+	
+end enter_AIAPolNo
+
+
+on enter_Action
+	(*	set global var_Contract_Issuance_Action = "Contract Issuance"*)
+	set the SearchRectangle to Common_Functions.ScreenPart("BottomHalf")
+	
+	click text : "Action", caseSensitive: Yes
+	if  global var_Contract_Issuance_Action is...
+		"Contract Issuance"      : set var_Contract_Issuance_Action = "A"
+	end if
+	typetext  tabKey, var_Contract_Issuance_Action
+	
+	CaptureScreen {Name: "Contract Issue Submenu_S5073" & "_" & Today & "_" & time, increment: true, imageFormat: JPG}
+
+	Set the searchrectangle to empty
+	
+end enter_Action
+
+on Hit_Enter
+	Typetext return
+	wait 1
+	
+	If Imagefound(text: "Contract Issue", CaseSensitive:Yes, Waitfor: 5)
+		CaptureScreen {Name: "Contract Issue_S5074" & "_" & Today & "_" & time, increment: true, imageFormat: JPG}
+		LogSuccess "Able to view in Contract Issue Details"
+	else
+		CaptureScreen {Name: "Contract Issue_S5074" & "_" & Today & "_" & time, increment: true, imageFormat: JPG}
+		LogError "Unable to view in Contract Issue Details"
+	End If
+end Hit_Enter
+
+on Policy_Enquiry
+	if imagefound(text:"Proposal/New Business M Menu")
+		logsuccess "Proposal/New Business M Menu found" 
+		capturescreen {name: "Proposal_New Business M Menu found found_" & today & hour(time) & "_" & minute(time) &second(time) , increment: yes} 
+	else
+		logerror "Proposal/New Business M Menu found not found " 
+		capturescreen {name: "Proposal_New Business M Menu found not found_" & today & hour(time) & "_" & minute(time) &second(time) , increment: yes} 
+	end if
+	
+	if imagefound(text:"New Contract Proposal",caseSensitive:yes)
+		click FoundImageLocation()
+		typetext returnKey
+		if imagefound(text:"New Contract Proposal Submenu")
+			logsuccess "New Contract Proposal Submenu found" 
+			capturescreen {name: "New Contract Proposal Submenu found_" & today & hour(time) & "_" & minute(time) &second(time) , increment: yes} 
+		else
+			logerror "New Contract Proposal Submenu not found" 
+			capturescreen {name: "New Contract Proposal Submenu not found_" & today & hour(time) & "_" & minute(time) &second(time) , increment: yes} 
+		end if
+	end if
+	
+	(*set global var_AIAPolNo = "46656877"*)
+	click text : "Contract Number"
+	typetext tabKey, global var_AIAPolNo
+	
+	(*set global var_contractissued = "Y"*)
+	If global var_contractissued = "Y"
+		set the SearchRectangle to Common_Functions.ScreenPart("BottomHalf")
+		
+		Wait 5
+		
+		click text : "Action"
+		typetext  tabKey,"F"
+		Set the searchrectangle to empty
+		capturescreen {name: "Action F - Contract Enquiry" & today & hour(time) & "_" & minute(time) &second(time) , increment: yes} 
+
+		Typetext return
+		Wait 1
+		
+		capturescreen {name: "Contract Enquiry Details" & today & hour(time) & "_" & minute(time) &second(time) , increment: yes}
+
+		if imagefound(text:"Contract Status",caseSensitive:yes, waitfor: 5)
+			Put ImageRectangle (text: "Contract Status",caseSensitive:yes, waitfor: 5) into var_StatLoc
+			Log ReadText ([var_StatLoc.bottomleft + [210,-15],var_StatLoc.bottomright + [170,5]])
+			Put ReadText ([var_StatLoc.bottomleft + [210,-15],var_StatLoc.bottomright + [170,5]]) into var_StatCheck
+			Log var_StatCheck
+			delete space from var_StatCheck
+			Log var_StatCheck
+			
+			If var_StatCheck = "Inforce"
+				LogSuccess "Policy has been issued successfully"
+				Typetext return
+			else
+				LogError "Policy is not issued"
+				Typetext return
+			end if
+		End If
+		
+	End If
+	
+	(*set global var_contractissued = "N"*)
+	If global var_contractissued = "N"
+		set the SearchRectangle to Common_Functions.ScreenPart("BottomHalf")
+		
+		click text : "Action"
+		typetext  tabKey,"E"
+		Set the searchrectangle to empty
+		capturescreen {name: "Action E - Contract Proposal Enquiry" & today & hour(time) & "_" & minute(time) &second(time) , increment: yes} 
+
+		Typetext return
+		Wait 1
+		
+		capturescreen {name: "Contract Proposal Enquiry Details" & today & hour(time) & "_" & minute(time) &second(time) , increment: yes} 
+
+		if imagefound(text:"Work With Proposal",caseSensitive:yes, waitfor: 5)
+			LogWarning "Policy not yet issued"
+		else
+			Logerror "Work With Proposal Screen not shown"
+		End If
+		
+		Typetext return
+		
+	End If
+	
+end Policy_Enquiry

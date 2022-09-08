@@ -1,0 +1,64 @@
+﻿//======================================================
+//                                           AIA SINGAPORE
+//======================================================
+// Name        : Common_Functions
+// Descripton : This contains all common functions for Integral Life application suite
+//======================================================
+//  REVISION
+//-------------------------------------------------------------------------------------------------------------------------
+// Date          |  Author                              | Description
+//----------------- -------------------------------- ----------------------------------------------------------------------
+// 20220410    Automation Team -Colleen    Initial Version for IL Proposal submenu 
+//-------------------------------------------------------------------------------------------------------------------------
+
+
+on click_NewContractProposal
+	if imagefound(text:"New Contract Proposal",caseSensitive:yes,waitfor: 5)
+		click FoundImageLocation()
+		typetext returnKey
+		if imagefound(text:"New Contract Proposal Submenu")
+			logsuccess "New Contract Proposal Submenu found" 
+			capturescreen {name: "New Contract Proposal Submenu found_" & today & hour(time) & "_" & minute(time) &second(time) , increment: yes} 
+		else
+			logerror "New Contract Proposal Submenu not found" 
+			capturescreen {name: "New Contract Proposal Submenu not found_" & today & hour(time) & "_" & minute(time) &second(time) , increment: yes} 
+		end if
+	end if
+end click_NewContractProposal
+
+
+on click_Contract_Issue
+	if imagefound(text:"Contract Issue",caseSensitive:yes,waitfor: 5)
+		click FoundImageLocation()
+		typetext returnKey
+		if imagefound(text:"New Contract Issue Submenu")
+			logsuccess "New Contract Issue Submenu found" 
+			capturescreen {name: "New Contract Issue Submenu found_" & today & hour(time) & "_" & minute(time) &second(time) , increment: yes} 
+		else
+			logerror "New Contract Issue Submenu not found" 
+			capturescreen {name: "New Contract Issue Submenu not found_" & today & hour(time) & "_" & minute(time) &second(time) , increment: yes} 
+		end if
+	else
+		logerror "Contract Issue  not found" 
+		capturescreen {name: "Contract Issue  not found_" & today & hour(time) & "_" & minute(time) &second(time) , increment: yes} 
+	end if
+end click_Contract_Issue
+
+
+on Click_Receipts
+	if imagefound(text:"Receipts",caseSensitive:yes,waitfor: 5)
+		click FoundImageLocation()
+		typetext returnKey
+		if imagefound(text:"Cash Receipt Submenu")
+			logsuccess "Cash Receipt Submenu found" 
+			capturescreen {name: "Cash Receipt Submenu found_" & today & hour(time) & "_" & minute(time) &second(time) , increment: yes} 
+		else
+			logerror "Cash Receipt Submenu not found" 
+			capturescreen {name: "Cash Receipt Submenu not found_" & today & hour(time) & "_" & minute(time) &second(time) , increment: yes} 
+		end if
+	else
+		logerror "Receipts not found" 
+		capturescreen {name: "Receipts found_" & today & hour(time) & "_" & minute(time) &second(time) , increment: yes} 
+	end if
+end Click_Receipts
+

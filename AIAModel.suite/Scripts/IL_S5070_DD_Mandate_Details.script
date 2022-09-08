@@ -1,0 +1,70 @@
+﻿//                                           AIA SINGAPORE
+//======================================================
+// Name        : IntegralLife_S5070
+// Descripton : This script is for Integral Life DD Mandate Details (Proposal)
+//======================================================
+//  REVISION
+//-------------------------------------------------------------------------------------------------------------------------
+// Date          |  Author                     | Description
+//----------------- -------------------------------- ----------------------------------------------------------------------
+// 20220419     Reginal                       Initial Version
+//-------------------------------------------------------------------------------------------------------------------------
+
+OptionFor_Mandate
+IL_S6276_DD_Mandate_List.Select_Mandate
+
+// Mandate Number option
+To Handle OptionFor_Mandate
+	--set global var_MandateNo_Option = "Select Existing"
+	
+	If global var_MandateNo_Option is ...  
+		"Input"                                                  : Input_MandateNo
+		"Select Existing"                                      : SelectCreate_MandateNo
+		"Create New"                                           : SelectCreate_MandateNo
+	End If
+	
+	return global var_MandateNo_Option
+End OptionFor_Mandate
+
+// Input Mandate Number
+To Handle Input_MandateNo
+	--set global var_MandateNo = "00004"
+	
+	Set the searchRectangle to Common_Functions.ScreenPart("HorizontalMiddle") + [[570,150], [-530,70]]
+	Click [30,130]
+	Typetext Altkey
+	Click text:"Mandate No", CaseSensitive:yes, waitfor:5
+	Typetext Tab, global var_MandateNo
+	Typetext F5
+	Set the SearchRectangle to empty
+End Input_MandateNo
+
+// Select Mandate Number
+To Handle SelectCreate_MandateNo
+	--set global var_MandateNo = "00008"
+	
+	Set the searchRectangle to Common_Functions.ScreenPart("HorizontalMiddle") + [[570,150], [-530,70]]
+	Common_Functions.Press_F4 "Mandate No"
+	Set the SearchRectangle to empty
+End SelectCreate_MandateNo
+
+// Input Preferred day
+To Handle Input_PreferredDeductionDay
+	--set global var_PreferredDeductionDay = "24"
+	
+	Set the searchRectangle to Common_Functions.ScreenPart("HorizontalMiddle") + [[570,150], [-530,70]]
+	Click [30,130]
+	Typetext Altkey
+	Click text:"Pref. Ded. Day", CaseSensitive:yes, waitfor:5
+	Typetext Tab, global var_PreferredDeductionDay
+	Typetext F5
+	Set the SearchRectangle to empty
+End Input_PreferredDeductionDay
+
+
+To Check_Next_Screen 
+
+	put  Common_Functions.Check_Next_Screen (global var_env)  into var_next_screen
+	return var_next_screen
+	
+End Check_Next_Screen

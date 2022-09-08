@@ -1,0 +1,984 @@
+{
+  "path": "",
+  "tags": [
+    {
+      "id": 1,
+      "name": "",
+      "values": ""
+    }
+  ],
+  "ePFhost": "",
+  "version": "6.0.1-8",
+  "ePFsuite": "",
+  "elements": [
+    {
+      "id": 0,
+      "name": "IL_SR556_UnderwritingApprovalUpdate_CounterOffer",
+      "type": "Root",
+      "parameters": [
+        {
+          "id": 1,
+          "name": "var_index",
+          "type": "Integer",
+          "random": "Non-generated",
+          "ranges": [
+            {
+              "values": "1",
+              "weight": 100,
+              "numBins": 10,
+              "distribution": "Flat"
+            }
+          ],
+          "initial": "",
+          "parameterUuid": "20b4c3da-be95-44d2-94d9-3e87ec784420"
+        },
+        {
+          "id": 2,
+          "name": "var_xlsFilename",
+          "type": "Text",
+          "random": "Non-generated",
+          "ranges": [],
+          "initial": "C:\\Users\\STSSC46\\OneDrive - AIA Group Ltd\\2021. Eggplant\\IntegralLife.suite\\Resources\\IL_TestData.xlsx",
+          "parameterUuid": "22d4e620-181a-4f1d-b5e8-b5cf6b6eb19c"
+        },
+        {
+          "id": 3,
+          "name": "var_xlsSheet",
+          "type": "Text",
+          "random": "Non-generated",
+          "ranges": [],
+          "initial": "Policy",
+          "parameterUuid": "4fbb9e4b-5652-42ef-b441-f5b87ddf42a5"
+        },
+        {
+          "id": 4,
+          "name": "var_xlsSheet_Life01",
+          "type": "Text",
+          "random": "Non-generated",
+          "ranges": [],
+          "initial": "Life01",
+          "parameterUuid": "35e60163-2cc0-46e3-94dd-0fce418360af"
+        },
+        {
+          "id": 5,
+          "name": "UserID",
+          "type": "Text",
+          "random": "Non-generated",
+          "ranges": [],
+          "initial": "",
+          "parameterUuid": "8b002961-1d9d-42ed-a3d3-0ab49ca48082"
+        },
+        {
+          "id": 6,
+          "name": "Password",
+          "type": "Text",
+          "random": "Non-generated",
+          "ranges": [],
+          "initial": "",
+          "parameterUuid": "4cb4dd97-9b3f-448f-9dbe-b51e0d4e7f85"
+        },
+        {
+          "id": 7,
+          "name": "Ben_Amt_done",
+          "type": "True or False",
+          "random": "Non-generated",
+          "ranges": [],
+          "initial": "false",
+          "parameterUuid": "24ef218d-600b-46f8-9667-7603ce9a7280"
+        },
+        {
+          "id": 8,
+          "name": "Mat_Age_done",
+          "type": "True or False",
+          "random": "Non-generated",
+          "ranges": [],
+          "initial": "false",
+          "parameterUuid": "baf1f5e9-3859-496b-a4ae-9db44e99ba20"
+        },
+        {
+          "id": 9,
+          "name": "Prem_Cess_Age_done",
+          "type": "True or False",
+          "random": "Non-generated",
+          "ranges": [],
+          "initial": "false",
+          "parameterUuid": "f8400fa5-91fe-433b-a07e-efbda31091b4"
+        },
+        {
+          "id": 10,
+          "name": "SumAssured_done",
+          "type": "True or False",
+          "random": "Non-generated",
+          "ranges": [],
+          "initial": "false",
+          "parameterUuid": "0cd22582-a5dc-4c02-878d-221fc565e275"
+        },
+        {
+          "id": 11,
+          "name": "Premium_done",
+          "type": "True or False",
+          "random": "Non-generated",
+          "ranges": [],
+          "initial": "false",
+          "parameterUuid": "bc0534b1-3856-49e4-82df-6bade73f06e7"
+        },
+        {
+          "id": 12,
+          "name": "var_env",
+          "type": "Text",
+          "random": "Non-generated",
+          "ranges": [],
+          "initial": "SLUUA3",
+          "parameterUuid": "fcf7507e-10a7-4f10-a0fd-e3fa3bd5a6d3"
+        },
+        {
+          "id": 13,
+          "name": "var_next_screen",
+          "type": "Text",
+          "random": "Non-generated",
+          "ranges": [],
+          "initial": "",
+          "parameterUuid": "03c9e6dc-5dd8-42dc-9402-e1bfd1de6886"
+        },
+        {
+          "id": 14,
+          "name": "var_status",
+          "type": "Text",
+          "random": "Non-generated",
+          "ranges": [],
+          "initial": "PS",
+          "parameterUuid": "1f13de54-c957-421a-80fd-b992bf0315e1"
+        },
+        {
+          "id": 15,
+          "name": "var_inquire_done",
+          "type": "Text",
+          "random": "Non-generated",
+          "ranges": [],
+          "initial": "false",
+          "parameterUuid": "83f10eb4-90ae-4146-b242-d67a3e1481cf"
+        },
+        {
+          "id": 16,
+          "name": "var_xlsSheet_UW",
+          "type": "Text",
+          "random": "Non-generated",
+          "ranges": [],
+          "initial": "UW",
+          "parameterUuid": "0c9abe34-e6d8-436e-89cd-f654881687df"
+        }
+      ],
+      "elementUuid": "62229ba4-2032-4bf3-8dfd-30a15f2d6406"
+    },
+    {
+      "id": 929398608661,
+      "name": "Exit",
+      "type": "State",
+      "parentId": 0,
+      "invisible": true,
+      "stateType": "Normal",
+      "parameters": [],
+      "elementUuid": "606b19e6-6780-4938-b9dd-6560cec1b1da",
+      "sortingType": "Z"
+    },
+    {
+      "id": 1295324716276,
+      "name": "Error",
+      "type": "State",
+      "parentId": 0,
+      "invisible": true,
+      "stateType": "Exception",
+      "parameters": [],
+      "elementUuid": "c2b0ac63-8708-43bc-b6ae-04d7b7c9c704",
+      "sortingType": "X"
+    },
+    {
+      "id": 1201815855765,
+      "name": "Cleanup",
+      "type": "State",
+      "parentId": 0,
+      "invisible": true,
+      "stateType": "Cleanup",
+      "parameters": [],
+      "elementUuid": "c3833eed-7313-4d12-a9db-1257a1107b99",
+      "sortingType": "Y"
+    },
+    {
+      "dx": 40,
+      "dy": 20,
+      "id": 1452329589836,
+      "name": "Initial",
+      "type": "State",
+      "textX": 20,
+      "textY": 25,
+      "parentId": 0,
+      "invisible": false,
+      "stateType": "Start",
+      "parameters": [],
+      "shapeWidth": 120,
+      "elementUuid": "1bf801d0-eecb-40b1-bb53-696eb742e2c3",
+      "shapeHeight": 100,
+      "sortingType": "A"
+    },
+    {
+      "dx": 80,
+      "dy": 200,
+      "id": 1452329589902,
+      "name": "Underwriting Approval Update_Counter Offer",
+      "type": "State",
+      "textX": 20,
+      "textY": 25,
+      "parentId": 0,
+      "invisible": false,
+      "stateType": "Normal",
+      "parameters": [
+        {
+          "id": 0,
+          "name": "",
+          "type": "",
+          "random": "",
+          "ranges": [],
+          "initial": "",
+          "parameterUuid": "36add156-0046-4105-9c09-321e3ef460c4"
+        }
+      ],
+      "shapeWidth": 900,
+      "elementUuid": "5e274692-b906-4fd4-9eae-812896342061",
+      "shapeHeight": 400,
+      "sortingType": "B"
+    },
+    {
+      "dx": 20,
+      "dy": 40,
+      "id": 1452329589837,
+      "name": "Launch IL",
+      "type": "Action",
+      "textX": 15,
+      "textY": 22,
+      "weight": 100,
+      "parentId": 1452329589836,
+      "snippets": [
+        {
+          "name": "GlobalGetExcelData",
+          "type": "custom",
+          "inputs": [
+            {
+              "order": 2,
+              "parameterRef": {
+                "id": 1,
+                "name": "var_index",
+                "type": "Integer",
+                "random": "Generated",
+                "ranges": [
+                  {
+                    "values": "1",
+                    "weight": 100,
+                    "numBins": 10,
+                    "distribution": "Flat"
+                  }
+                ],
+                "initial": "",
+                "parameterUuid": "20b4c3da-be95-44d2-94d9-3e87ec784420"
+              }
+            },
+            {
+              "order": 3,
+              "parameterRef": {
+                "id": 2,
+                "name": "var_xlsFilename",
+                "type": "Text",
+                "random": "Non-generated",
+                "ranges": [],
+                "initial": "D:\\CTestAutomation\\IL\\IL_NB.suite\\Resources\\IL_TestData.xlsx",
+                "parameterUuid": "22d4e620-181a-4f1d-b5e8-b5cf6b6eb19c"
+              }
+            },
+            {
+              "order": 4,
+              "parameterRef": {
+                "id": 3,
+                "name": "var_xlsSheet",
+                "type": "Text",
+                "random": "Non-generated",
+                "ranges": [],
+                "initial": "Policy",
+                "parameterUuid": "4fbb9e4b-5652-42ef-b441-f5b87ddf42a5"
+              }
+            }
+          ],
+          "disabled": true,
+          "fullName": "Common_Functions.script:GlobalGetExcelData",
+          "scriptPath": "Common_Functions.script:GlobalGetExcelData"
+        },
+        {
+          "name": "IL_Logon",
+          "type": "custom",
+          "inputs": [
+            {
+              "order": 6,
+              "parameterRef": {
+                "id": 5,
+                "name": "UserID",
+                "type": "Text",
+                "random": "Non-generated",
+                "ranges": [],
+                "initial": "",
+                "parameterUuid": "8b002961-1d9d-42ed-a3d3-0ab49ca48082"
+              }
+            },
+            {
+              "order": 7,
+              "parameterRef": {
+                "id": 6,
+                "name": "Password",
+                "type": "Text",
+                "random": "Non-generated",
+                "ranges": [],
+                "initial": "",
+                "parameterUuid": "4cb4dd97-9b3f-448f-9dbe-b51e0d4e7f85"
+              }
+            }
+          ],
+          "disabled": true,
+          "fullName": "IL_Logon.script",
+          "scriptPath": "IL_Logon.script"
+        },
+        {
+          "name": "GlobalGetExcelData",
+          "type": "custom",
+          "inputs": [
+            {
+              "order": 2,
+              "parameterRef": {
+                "id": 1,
+                "name": "var_index",
+                "type": "Integer",
+                "random": "Generated",
+                "ranges": [
+                  {
+                    "values": "1",
+                    "weight": 100,
+                    "numBins": 10,
+                    "distribution": "Flat"
+                  }
+                ],
+                "initial": "",
+                "parameterUuid": "20b4c3da-be95-44d2-94d9-3e87ec784420"
+              }
+            },
+            {
+              "order": 3,
+              "parameterRef": {
+                "id": 2,
+                "name": "var_xlsFilename",
+                "type": "Text",
+                "random": "Non-generated",
+                "ranges": [],
+                "initial": "D:\\CTestAutomation\\IL\\IL_NB.suite\\Resources\\IL_TestData.xlsx",
+                "parameterUuid": "22d4e620-181a-4f1d-b5e8-b5cf6b6eb19c"
+              }
+            },
+            {
+              "order": 5,
+              "parameterRef": {
+                "id": 4,
+                "name": "var_xlsSheet_Life01",
+                "type": "Text",
+                "random": "Non-generated",
+                "ranges": [],
+                "initial": "Life01",
+                "parameterUuid": "35e60163-2cc0-46e3-94dd-0fce418360af"
+              }
+            }
+          ],
+          "disabled": true,
+          "fullName": "Common_Functions.script:GlobalGetExcelData",
+          "scriptPath": "Common_Functions.script:GlobalGetExcelData"
+        },
+        {
+          "name": "GlobalGetExcelData",
+          "type": "custom",
+          "inputs": [
+            {
+              "order": 1,
+              "parameterRef": {
+                "id": 1,
+                "name": "var_index",
+                "type": "Integer",
+                "random": "Generated",
+                "ranges": [
+                  {
+                    "values": "1",
+                    "weight": 100,
+                    "numBins": 10,
+                    "distribution": "Flat"
+                  }
+                ],
+                "initial": "",
+                "parameterUuid": "20b4c3da-be95-44d2-94d9-3e87ec784420"
+              }
+            },
+            {
+              "order": 2,
+              "parameterRef": {
+                "id": 2,
+                "name": "var_xlsFilename",
+                "type": "Text",
+                "random": "Non-generated",
+                "ranges": [],
+                "initial": "C:\\Users\\STSSC46\\OneDrive - AIA Group Ltd\\2021. Eggplant\\IntegralLife.suite\\Resources\\IL_TestData.xlsx",
+                "parameterUuid": "22d4e620-181a-4f1d-b5e8-b5cf6b6eb19c"
+              }
+            },
+            {
+              "order": 3,
+              "parameterRef": {
+                "id": 16,
+                "name": "var_xlsSheet_UW",
+                "type": "Text",
+                "random": "Non-generated",
+                "ranges": [],
+                "initial": "UW",
+                "parameterUuid": "0c9abe34-e6d8-436e-89cd-f654881687df"
+              }
+            }
+          ],
+          "outputs": [
+            {
+              "order": 14,
+              "parameterRef": {
+                "id": 12,
+                "name": "var_env",
+                "type": "Text",
+                "random": "Non-generated",
+                "ranges": [],
+                "initial": "SLUUA3",
+                "parameterUuid": "fcf7507e-10a7-4f10-a0fd-e3fa3bd5a6d3"
+              }
+            }
+          ],
+          "fullName": "Common_Functions.script:GlobalGetExcelData",
+          "scriptPath": "Common_Functions.script:GlobalGetExcelData"
+        }
+      ],
+      "callLimit": 0,
+      "actionType": "Normal",
+      "parameters": [
+        {
+          "id": 0,
+          "name": "",
+          "type": "",
+          "random": "",
+          "ranges": [],
+          "initial": "",
+          "parameterUuid": "f10442f1-0c2c-48f7-b1d4-2e27d42004fe"
+        }
+      ],
+      "shapeWidth": 80,
+      "elementUuid": "d7632340-238a-4ee1-8e07-a00f6d84d7ac",
+      "shapeHeight": 40,
+      "sortingType": "C",
+      "connectedStates": [
+        {
+          "stateRef": 1452329589902
+        }
+      ]
+    },
+    {
+      "dx": 460,
+      "dy": 40,
+      "id": 1452329589903,
+      "name": "Input_DecisionCode",
+      "type": "Action",
+      "textX": 15,
+      "textY": 22,
+      "weight": 100,
+      "parentId": 1452329589902,
+      "snippets": [
+        {
+          "name": "Input_DecisionCode",
+          "type": "normal",
+          "fullName": "IL_SR556_UnderwritingApprovalUpdate_CounterOffer.script:Input_DecisionCode",
+          "scriptPath": "IL_SR556_UnderwritingApprovalUpdate_CounterOffer.script:Input_DecisionCode"
+        }
+      ],
+      "callLimit": 0,
+      "actionType": "Sequent",
+      "parameters": [
+        {
+          "id": 0,
+          "name": "",
+          "type": "",
+          "random": "",
+          "ranges": [],
+          "initial": "",
+          "parameterUuid": "69177b15-034f-4cae-8ce3-a7622e71a71d"
+        }
+      ],
+      "elementUuid": "bf3722e0-9302-4409-be5e-580973fc0c15",
+      "sortingType": "C",
+      "connectedStates": [
+        {
+          "stateRef": 1452329589909
+        }
+      ]
+    },
+    {
+      "dx": 20,
+      "dy": 40,
+      "id": 1452329589904,
+      "name": "Validate_DisplayedScreen",
+      "type": "Action",
+      "textX": 15,
+      "textY": 22,
+      "weight": 100,
+      "parentId": 1452329589902,
+      "snippets": [
+        {
+          "name": "Validate_DisplayedScreen",
+          "type": "normal",
+          "fullName": "IL_SR556_UnderwritingApprovalUpdate_CounterOffer.script:Validate_DisplayedScreen",
+          "scriptPath": "IL_SR556_UnderwritingApprovalUpdate_CounterOffer.script:Validate_DisplayedScreen"
+        }
+      ],
+      "callLimit": 0,
+      "actionType": "Normal",
+      "parameters": [
+        {
+          "id": 0,
+          "name": "",
+          "type": "",
+          "random": "",
+          "ranges": [],
+          "initial": "",
+          "parameterUuid": "11b18b0b-710f-4fca-b354-f50dd32d7151"
+        }
+      ],
+      "shapeWidth": 182,
+      "elementUuid": "697a8357-f349-4cc8-baa1-be9a239112ad",
+      "shapeHeight": 40,
+      "sortingType": "C",
+      "connectedStates": [
+        {
+          "stateRef": 1452329589906
+        }
+      ]
+    },
+    {
+      "dx": 640,
+      "dy": 240,
+      "id": 1452329589905,
+      "name": "Input_PMRUpdate",
+      "type": "Action",
+      "textX": 15,
+      "textY": 22,
+      "weight": 100,
+      "parentId": 1452329589902,
+      "snippets": [
+        {
+          "name": "Input_PMRUpdate",
+          "type": "normal",
+          "fullName": "IL_SR556_UnderwritingApprovalUpdate_CounterOffer.script:Input_PMRUpdate",
+          "scriptPath": "IL_SR556_UnderwritingApprovalUpdate_CounterOffer.script:Input_PMRUpdate"
+        }
+      ],
+      "callLimit": 0,
+      "actionType": "Sequent",
+      "parameters": [
+        {
+          "id": 0,
+          "name": "",
+          "type": "",
+          "random": "",
+          "ranges": [],
+          "initial": "",
+          "parameterUuid": "e6cf0359-fb18-46f0-9e94-f5d7a767f028"
+        }
+      ],
+      "elementUuid": "57843ddf-8c09-49c2-90de-227d06642196",
+      "sortingType": "C",
+      "connectedStates": [
+        {
+          "stateRef": 1452329589911
+        }
+      ]
+    },
+    {
+      "dx": 260,
+      "dy": 40,
+      "id": 1452329589906,
+      "name": "Validate_LifeAssured",
+      "type": "Action",
+      "textX": 15,
+      "textY": 22,
+      "weight": 100,
+      "parentId": 1452329589902,
+      "snippets": [
+        {
+          "name": "Validate_LifeAssured",
+          "type": "normal",
+          "fullName": "IL_SR556_UnderwritingApprovalUpdate_CounterOffer.script:Validate_LifeAssured",
+          "scriptPath": "IL_SR556_UnderwritingApprovalUpdate_CounterOffer.script:Validate_LifeAssured"
+        }
+      ],
+      "callLimit": 0,
+      "actionType": "Sequent",
+      "parameters": [
+        {
+          "id": 0,
+          "name": "",
+          "type": "",
+          "random": "",
+          "ranges": [],
+          "initial": "",
+          "parameterUuid": "8190651d-ccda-437d-b6fa-e8251efe4535"
+        }
+      ],
+      "elementUuid": "49d16114-4d3b-4109-89e2-5237a92f6adc",
+      "sortingType": "C",
+      "connectedStates": [
+        {
+          "stateRef": 1452329589903
+        }
+      ]
+    },
+    {
+      "dx": 720,
+      "dy": 140,
+      "id": 1452329589907,
+      "name": "Select_SpecProvisions",
+      "type": "Action",
+      "textX": 15,
+      "textY": 22,
+      "weight": 100,
+      "parentId": 1452329589902,
+      "snippets": [
+        {
+          "name": "Select_SpecProvisions",
+          "type": "normal",
+          "fullName": "IL_SR556_UnderwritingApprovalUpdate_CounterOffer.script:Select_SpecProvisions",
+          "scriptPath": "IL_SR556_UnderwritingApprovalUpdate_CounterOffer.script:Select_SpecProvisions"
+        }
+      ],
+      "callLimit": 0,
+      "actionType": "Sequent",
+      "parameters": [
+        {
+          "id": 0,
+          "name": "",
+          "type": "",
+          "random": "",
+          "ranges": [],
+          "initial": "",
+          "parameterUuid": "41d6c7e6-b595-48ac-b964-1a17cfdbd2f5"
+        }
+      ],
+      "elementUuid": "854d7950-1ca5-4610-9ad0-d7411196fb41",
+      "sortingType": "C",
+      "connectedStates": [
+        {
+          "stateRef": 1452329589910
+        }
+      ]
+    },
+    {
+      "dx": 320,
+      "dy": 140,
+      "id": 1452329589908,
+      "name": "Validate_Errors",
+      "type": "Action",
+      "textX": 15,
+      "textY": 22,
+      "weight": 100,
+      "parentId": 1452329589902,
+      "snippets": [
+        {
+          "name": "Validate_Errors",
+          "type": "normal",
+          "fullName": "IL_SR556_UnderwritingApprovalUpdate_CounterOffer.script:Validate_Errors",
+          "scriptPath": "IL_SR556_UnderwritingApprovalUpdate_CounterOffer.script:Validate_Errors"
+        }
+      ],
+      "callLimit": 0,
+      "actionType": "Sequent",
+      "parameters": [
+        {
+          "id": 0,
+          "name": "",
+          "type": "",
+          "random": "",
+          "ranges": [],
+          "initial": "",
+          "parameterUuid": "c650940f-c008-4812-9221-3f5997aca18f"
+        }
+      ],
+      "elementUuid": "7d50abe9-d07f-40e2-afb7-9d65571a65c7",
+      "sortingType": "C",
+      "connectedStates": [
+        {
+          "stateRef": 1452329589913
+        }
+      ]
+    },
+    {
+      "dx": 680,
+      "dy": 40,
+      "id": 1452329589909,
+      "name": "Select_Exclusion",
+      "type": "Action",
+      "textX": 15,
+      "textY": 22,
+      "weight": 100,
+      "parentId": 1452329589902,
+      "snippets": [
+        {
+          "name": "Select_Exclusion",
+          "type": "normal",
+          "fullName": "IL_SR556_UnderwritingApprovalUpdate_CounterOffer.script:Select_Exclusion",
+          "scriptPath": "IL_SR556_UnderwritingApprovalUpdate_CounterOffer.script:Select_Exclusion"
+        }
+      ],
+      "callLimit": 0,
+      "actionType": "Sequent",
+      "parameters": [
+        {
+          "id": 0,
+          "name": "",
+          "type": "",
+          "random": "",
+          "ranges": [],
+          "initial": "",
+          "parameterUuid": "07083f48-5823-452a-96b4-e542aac92047"
+        }
+      ],
+      "elementUuid": "6f6861d6-6eae-4629-9a15-7a525f917ea8",
+      "sortingType": "C",
+      "connectedStates": [
+        {
+          "stateRef": 1452329589907
+        }
+      ]
+    },
+    {
+      "dx": 500,
+      "dy": 140,
+      "id": 1452329589910,
+      "name": "Select_PMRUpdate",
+      "type": "Action",
+      "textX": 15,
+      "textY": 22,
+      "weight": 100,
+      "parentId": 1452329589902,
+      "snippets": [
+        {
+          "name": "Select_PMRUpdate",
+          "type": "normal",
+          "fullName": "IL_SR556_UnderwritingApprovalUpdate_CounterOffer.script:Select_PMRUpdate",
+          "scriptPath": "IL_SR556_UnderwritingApprovalUpdate_CounterOffer.script:Select_PMRUpdate"
+        }
+      ],
+      "callLimit": 0,
+      "actionType": "Sequent",
+      "parameters": [
+        {
+          "id": 0,
+          "name": "",
+          "type": "",
+          "random": "",
+          "ranges": [],
+          "initial": "",
+          "parameterUuid": "84f8fde8-f071-4ac4-b449-760e64522213"
+        }
+      ],
+      "elementUuid": "f92c2112-d987-46fd-a2f6-1d94c85df837",
+      "sortingType": "C",
+      "connectedStates": [
+        {
+          "stateRef": 1452329589908
+        }
+      ]
+    },
+    {
+      "dx": 700,
+      "dy": 320,
+      "id": 1452329589911,
+      "name": "Complete_UW_Substd",
+      "type": "Action",
+      "textX": 15,
+      "textY": 22,
+      "weight": 100,
+      "parentId": 1452329589902,
+      "snippets": [
+        {
+          "name": "Complete_UW_Substd",
+          "type": "normal",
+          "fullName": "IL_SR556_UnderwritingApprovalUpdate_CounterOffer.script:Complete_UW_Substd",
+          "scriptPath": "IL_SR556_UnderwritingApprovalUpdate_CounterOffer.script:Complete_UW_Substd"
+        }
+      ],
+      "callLimit": 0,
+      "actionType": "Sequent",
+      "parameters": [
+        {
+          "id": 0,
+          "name": "",
+          "type": "",
+          "random": "",
+          "ranges": [],
+          "initial": "",
+          "parameterUuid": "9e6c9a57-bc05-4752-9d6a-ce5fd1c8e129"
+        }
+      ],
+      "elementUuid": "b7cbeb58-e306-4cf8-adcd-06ab06e19136",
+      "sortingType": "C",
+      "connectedStates": [
+        {
+          "stateRef": 929398608661
+        }
+      ]
+    },
+    {
+      "dx": 40,
+      "dy": 240,
+      "id": 1452329589912,
+      "name": "Input_ExclusionsScreen",
+      "type": "Action",
+      "textX": 15,
+      "textY": 22,
+      "weight": 100,
+      "parentId": 1452329589902,
+      "snippets": [
+        {
+          "name": "Input_ExclusionsScreen",
+          "type": "normal",
+          "fullName": "IL_SR556_UnderwritingApprovalUpdate_CounterOffer.script:Input_ExclusionsScreen",
+          "scriptPath": "IL_SR556_UnderwritingApprovalUpdate_CounterOffer.script:Input_ExclusionsScreen"
+        }
+      ],
+      "callLimit": 0,
+      "actionType": "Sequent",
+      "parameters": [
+        {
+          "id": 0,
+          "name": "",
+          "type": "",
+          "random": "",
+          "ranges": [],
+          "initial": "",
+          "parameterUuid": "26a7af93-580f-43f1-8367-8477e24eb7d8"
+        }
+      ],
+      "elementUuid": "9da6d47f-8d86-4333-abde-6733a39d9edf",
+      "sortingType": "C",
+      "connectedStates": [
+        {
+          "stateRef": 1452329589914
+        }
+      ]
+    },
+    {
+      "dx": 80,
+      "dy": 140,
+      "id": 1452329589913,
+      "name": "Proceed_NextScreen",
+      "type": "Action",
+      "textX": 15,
+      "textY": 22,
+      "weight": 100,
+      "parentId": 1452329589902,
+      "snippets": [
+        {
+          "name": "Proceed_NextScreen",
+          "type": "normal",
+          "fullName": "IL_SR556_UnderwritingApprovalUpdate_CounterOffer.script:Proceed_NextScreen",
+          "scriptPath": "IL_SR556_UnderwritingApprovalUpdate_CounterOffer.script:Proceed_NextScreen"
+        }
+      ],
+      "callLimit": 0,
+      "actionType": "Sequent",
+      "parameters": [
+        {
+          "id": 0,
+          "name": "",
+          "type": "",
+          "random": "",
+          "ranges": [],
+          "initial": "",
+          "parameterUuid": "f133f831-a15b-41b3-80e8-15ac2c7a038c"
+        }
+      ],
+      "elementUuid": "360b8d97-7402-45f2-96b1-51b114a83f98",
+      "sortingType": "C",
+      "connectedStates": [
+        {
+          "stateRef": 1452329589912
+        }
+      ]
+    },
+    {
+      "dx": 320,
+      "dy": 240,
+      "id": 1452329589914,
+      "name": "Input_SpecProvisionsScreen",
+      "type": "Action",
+      "textX": 15,
+      "textY": 22,
+      "weight": 100,
+      "parentId": 1452329589902,
+      "snippets": [
+        {
+          "name": "Input_SpecProvisionsScreen",
+          "type": "normal",
+          "fullName": "IL_SR556_UnderwritingApprovalUpdate_CounterOffer.script:Input_SpecProvisionsScreen",
+          "scriptPath": "IL_SR556_UnderwritingApprovalUpdate_CounterOffer.script:Input_SpecProvisionsScreen"
+        }
+      ],
+      "callLimit": 0,
+      "actionType": "Sequent",
+      "parameters": [
+        {
+          "id": 0,
+          "name": "",
+          "type": "",
+          "random": "",
+          "ranges": [],
+          "initial": "",
+          "parameterUuid": "eba9241f-1879-432c-b0ce-0d86496ce5a0"
+        }
+      ],
+      "elementUuid": "5b31eb9a-24d1-4c31-88a3-4a4c7cd382be",
+      "sortingType": "C",
+      "connectedStates": [
+        {
+          "stateRef": 1452329589905
+        }
+      ]
+    }
+  ],
+  "modeluuid": "a6e58d2a-b024-4c34-9ddf-6122ae0d4b57",
+  "suitePath": "",
+  "testcases": [
+    {
+      "id": 0,
+      "fails": "",
+      "tests": "",
+      "testIds": "",
+      "testcase": "State Initial, State \"Underwriting Approval Update_Counter Offer\"",
+      "testcaseName": "CNTF",
+      "testcaseTags": "",
+      "testcaseOrigin": "",
+      "testcaseExternalID": "",
+      "testcaseDescription": ""
+    }
+  ],
+  "verbosity": 32512,
+  "snippetFull": true,
+  "stateCounter": 16,
+  "actionCounter": 62,
+  "parameterCounter": 0,
+  "performanceTests": [],
+  "performanceTimings": true,
+  "allSnippetsDisabled": false,
+  "runCleanupAfterAbort": true,
+  "allowGlobalActionsInInitialStates": true
+}

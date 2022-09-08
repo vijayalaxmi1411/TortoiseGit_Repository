@@ -1,0 +1,225 @@
+﻿to handle openingEmail
+
+	if imagefound (text: "Results", caseSensitive: yes, waitfor:1)
+		LogSuccess "Doctor Email is found"
+		
+		put ImageRectangle(text:"Results", caseSensitive: yes , waitfor: 3 ) into var_loc
+		put [var_loc.topleft +[-50,-50], var_loc.bottomright + [300,500] ] into var_rec
+		set the SearchRectangle to var_rec
+		Wait 1
+		
+		if imagefound (text: "Dear Doctor", caseSensitive: yes, waitfor:1)
+			doubleclick FoundImageLocation()
+		end if
+	else
+		LogError "not able to search the email to the doctor"
+		
+	end if 
+	
+	set the SearchRectangle to empty
+	
+	if imagefound (text: "Dear Doctor", caseSensitive:yes, waitfor:3)
+		
+		typetext f11
+		typetext controlkey, "+"
+		typetext controlkey, "+"
+		typetext controlkey, "+"
+		typetext controlkey, "+"
+		
+		wait 1
+		
+		validate_eRefNo_OnEmail
+	end if
+	
+	
+end openingEmail
+
+
+To handle search_DoctorLink var_xlsFilename , var_index
+	if imagefound (text:"Please refer to attachment", caseSensitive:yes , WaitFor:1)
+		LogSuccess "Doctor link is found in the letter"
+		
+		put ImageRectangle(Text:"https", caseSensitive:yes , WaitFor:1) into var_loc
+		doubleclick var_loc.bottomleft
+		typetext shiftkey, endKey
+		typetext controlKey, c
+		put RemoteClipboard() into var_DoctorLink
+		log var_DoctorLink
+		
+		delete all space from var_DoctorLink
+		delete last char of var_DoctorLink
+		
+		log var_DoctorLink
+		
+		set the SearchRectangle to empty
+		
+		write_to_file var_xlsFilename, var_index, var_DoctorLink
+	else
+		LogError "doctor link not found in the letter"
+	end if
+	
+	
+end search_DoctorLink
+
+
+To handle closingOfEmail
+
+	typetext controlkey, "-"
+	typetext controlkey, "-"
+	typetext controlkey, "-"
+	typetext controlkey, "-"
+	
+	typetext f11
+	typetext controlkey, W
+	if ImageFound(imagename: arrow_image, waitfor:2)
+		click foundimagelocation()
+		LogSuccess "doctor email is already closed"
+		CaptureScreen {Name: "Ref No." & Today & "_" & time, increment: true, imageFormat: JPG}
+
+	else
+		LogError "doctor email not closed"
+		
+	end if
+	
+	
+end closingOfEmail
+
+
+
+on write_to_file var_xlsFilename, var_index, var_DoctorLink
+	set myExcelDB to {type: "excel", file: var_xlsFilename, name:"Doctor_Flow", writable:yes}
+put the records of myExcelDB into var_exceldata
+	put var_xlsFilename into global var_xlsFilename
+	set rowdata to the record of myExcelDB where SN = var_index
+	set rowdata.DoctorLink = var_DoctorLink
+	log var_DoctorLink
+	
+end write_to_file
+
+
+To handle validate_eRefNo_OnEmail
+
+	log global var_eRefNo
+	
+	if ImageFound(Text:global var_eRefNo, caseSensitive:"Yes", IgnoreSpaces:"Yes")
+	logsuccess "PASSED: Ref No. found on screen "
+		CaptureScreen {Name: "Ref No." & Today & "_" & time, increment: true, imageFormat: JPG}
+		wait 1
+	Else
+		Logerror "FAILED: Ref No. not displayed on screen"
+		CaptureScreen {Name: "Ref No." & Today & "_" & time, increment: true, imageFormat: JPG}			
+		wait 1
+	end if 
+	
+end validate_eRefNo_OnEmail
+
+
+To handle launch_browser
+	typetext altkey
+	typetext windowsKey, s
+	typetext "edge", returnkey
+wait 1
+	typetext Windowskey, upArrow
+	
+	
+end launch_browser
+
+
+To handle open_MS_account
+	if imagefound(text: "New tab", caseSensitive:yes, waitfor:3)
+		wait 1
+		logSuccess "Edge browser displayed on screen"
+		click ImageLocation(text:"New tab", caseSensitive: yes, waitfor:1) +[50,50]
+		
+		Typetext altKey, Alt
+		typetext "portal.office.com", returnkey
+		Typetext altKey, Alt
+		wait 5
+		
+	else
+		LogError "Edge browser not launched"
+		
+	end if
+end open_MS_account
+
+
+To handle click_MSAccount
+	Typetext altKey, Alt
+	if imagefound (text:"Pick an account", caseSensitive:yes, ignoreSpaces:yes, waitfor:1)
+		LogSuccess "able to proceed to open MS"
+		if imagefound (text: global var_user_emailAdd, waitfor: 5)
+			click FoundImageLocation()
+			wait 1
+		end if
+	else
+		LogError "unable to proceed to open MS"
+		
+	end if
+	
+end click_MSAccount
+
+
+
+To handle signIn_MSAccount
+	if imagefound(text: "Sign in", caseSensitive: yes, ignorespaces:yes, waitfor:5)
+		click imagelocation(text: "Sign in", caseSensitive: yes, ignorespaces:yes, waitfor:1)
+		LogSuccess "Sign in button is available"
+	else
+		LogError "unable to proceed as Sign in button not avaible"
+		
+	end if
+	wait 3
+	
+end signIn_MSAccount
+
+
+To handle open_Outlook 
+	if imagefound (text: "Good", caseSensitive: yes, waitfor:3)
+	wait 3
+		LogSuccess "Outlook is found on screen"
+		
+		put ImageRectangle(text:"Good", caseSensitive: yes , waitfor: 2) into var_loc
+		put [var_loc.topleft +[-130,-10], var_loc.bottomright + [50,400] ] into var_rec
+		set the SearchRectangle to var_rec
+		
+		if imagefound (text: "Outlook", caseSensitive: yes, waitfor:1)
+			click FoundImageLocation()
+		end if
+		set the SearchRectangle to empty
+		
+	else 
+		LogError "unable to open Outlook"
+	end if
+	wait 1
+	
+End open_Outlook
+
+to handle search_emailSubject var_emailTo, var_emailSubject, var_emailContent
+
+	log var_emailTo
+	log var_emailSubject
+	log var_emailContent
+	
+	if imagefound (text: "Search", caseSensitive:yes, waitfor:5)
+		wait 2
+		LogSuccess "email Search box is found on screen"
+		
+		click FoundImageLocation() 
+		wait 1
+		
+		typetext "To:" & var_emailTo & " and "
+		typetext "Subject:" & var_emailSubject &" and " 
+		typetext "Body:" & var_emailContent, returnkey
+		
+	else
+		LogError "email Search box is not found on screen"
+		
+	end if
+	
+	
+end search_emailSubject	
+
+
+
+
+

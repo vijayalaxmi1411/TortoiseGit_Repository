@@ -1,0 +1,36 @@
+﻿To handle Validate_Contract_Issue_Screen
+	If Imagefound(text: "S5074", Waitfor: 5)
+		CaptureScreen {Name: "Contract Issue Screen is displayed" & "_" & Today & "_" & time, increment: true, imageFormat: JPG}
+		LogSuccess "Contract Issue Screen is displayed"
+	else
+		CaptureScreen {Name: "Contract Issue Screen is not displayed" & "_" & Today & "_" & time, increment: true, imageFormat: JPG}
+		LogError "Contract Issue Screen is not displayed"
+	End If
+	
+End Validate_Contract_Issue_Screen
+
+To handle Contract_Issue_NotReadyF5
+	If Imagefound(text: "Not ready - F5", Waitfor: 5)
+		CaptureScreen {Name: "Contract Issue - Not ready - F5 is displayed" & "_" & Today & "_" & time, increment: true, imageFormat: JPG}
+		LogSuccess "Contract Issue - Not ready - F5 is displayed"
+	else
+		CaptureScreen {Name: "Contract Issue - Not ready - F5 is displayed" & "_" & Today & "_" & time, increment: true, imageFormat: JPG}
+		LogError  "Contract Issue - Not ready - F5 is not displayed"
+	End If
+	
+	Typetext F5
+	Wait 2
+	
+	If Imagefound(text: "Pre-Issue Proposal Validation", Waitfor: 5)
+		CaptureScreen {Name: "Pre-Issue Proposal Validation" & "_" & Today & "_" & time, increment: true, imageFormat: JPG}
+		LogSuccess "Pre-Issue Proposal Validation is displayed"
+	else
+		CaptureScreen {Name: "Pre-Issue Proposal Validation" & "_" & Today & "_" & time, increment: true, imageFormat: JPG}
+		LogError  "Pre-Issue Proposal Validation is not displayed"
+	End If
+	
+End Contract_Issue_NotReadyF5
+
+
+
+

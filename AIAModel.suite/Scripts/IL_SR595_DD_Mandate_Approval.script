@@ -1,0 +1,20 @@
+﻿//======================================================
+//                                           AIA SINGAPORE
+//======================================================
+// Name        : IntegralLife_SR595
+// Descripton : This script is for Integral Life DD Mandate approval
+//======================================================
+//  REVISION
+//-------------------------------------------------------------------------------------------------------------------------
+// Date          |  Author                     | Description
+//----------------- -------------------------------- ----------------------------------------------------------------------
+// 20220420     Reginal                       Initial Version
+//-------------------------------------------------------------------------------------------------------------------------
+
+To Handle Input_BankAccessApproval
+	Click [30,130]
+	Typetext Altkey
+	Click text:"Bank Access Approval No", CaseSensitive:yes, TextDifference:1, waitfor:5
+	Typetext Tab, global var_BankAccessApproval
+	Typetext F5
+End Input_BankAccessApproval

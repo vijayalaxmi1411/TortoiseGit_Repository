@@ -1,0 +1,258 @@
+﻿To Validate_PolicyNumber
+	(*	set var_login_index=1
+	set MyExcelDB to {type:"excel", file:ResourcePath("IL_TestData.xlsx")}
+	set MyExcelDBData to table ("Policy") of MyExcelDB
+	put the records of MyExcelDB into var_exceldata
+	repeat with each item rowData of var_exceldata
+		if repeatindex() = var_login_index
+			put rowData.AIAPolNo into var_AIAPolNo
+			log var_AIAPolNo*)
+	
+	Put ImageRectangle(text:"Cross Ref Typ", casesensitive: yes) into var_loc
+	Log readtext ([var_loc.bottomleft +[280,-20],var_loc.bottomright + [400,0]])
+	
+	Put ReadText ([var_loc.bottomleft +[280,-20],var_loc.bottomright + [400,0]]) into var_DisplayPolicyNumber
+	log "Policy Number displayed is " & var_DisplayPolicyNumber
+	delete space from var_DisplayPolicyNumber
+	log var_DisplayPolicyNumber
+	
+	log "Policy Number per test data is "& global var_AIAPolNo
+	delete space from global var_AIAPolNo
+	log global var_AIAPolNo
+	
+	If var_DisplayPolicyNumber = global var_AIAPolNo
+		Logsuccess {PASS:"Data Matched"}
+		capturescreen {name:"Correct policy number_" & today & hour(time) & "_" & minute(time) & second(time)}
+	else
+		Logerror {FAILED:"Data Mismatched, please check the policy number again."}
+		capturescreen {name:"Wrong policy number_" & today & hour(time) & "_" & minute(time) & second(time)}
+	End If
+	
+End Validate_PolicyNumber
+
+To Validate_DisplayedPlanName
+
+	
+	Put ImageRectangle(text: global var_env, casesensitive: yes) into var_loc
+	Log readtext ([var_loc.bottomleft +[200,-20],var_loc.bottomright + [830,40]])
+
+	Put ReadText ([var_loc.bottomleft +[200,-20],var_loc.bottomright + [830,40]]) into var_DisplayPlanDesc
+	log "Plan Description displayed is " & var_DisplayPlanDesc
+	delete space from var_DisplayPlanDesc
+	log var_DisplayPlanDesc
+	
+	log "Plan Description per test data is "& global var_PlanDesc
+	delete space from global var_PlanDesc
+	log global var_PlanDesc
+	If var_DisplayPlanDesc = global var_PlanDesc
+		Logsuccess {PASS:"Data Matched"}
+		capturescreen {name:"Correct plan desc displayed_" & today & hour(time) & "_" & minute(time) & second(time)}
+	else
+		Logerror {FAILED:"Data Mismatched, please check the plan description again."}
+		capturescreen {name:"Wrong plan desc displayed_" & today & hour(time) & "_" & minute(time) & second(time)}
+	End If
+	
+End Validate_DisplayedPlanName
+
+To Input_Owner
+
+	Click [30,130]
+	Click ImageLocation(text:"Owner", casesensitive: yes)
+	typetext tabKey
+	
+	log global varOwner
+	log global varOwnerName
+	typetext global varOwner
+	typetext f5
+	
+	//name validation
+	
+	Put ImageRectangle(text:"Owner", casesensitive: yes) into var_loc
+	Log readtext ([var_loc.bottomleft +[375,-20],var_loc.bottomright + [800,10]])
+	
+	Put ReadText ([var_loc.bottomleft +[375,-20],var_loc.bottomright + [1000,10]]) into var_DisplayName
+	log "Name displayed is " & var_DisplayName
+	delete space from var_DisplayName
+	log var_DisplayName
+	
+	log "Name per test data is "& global varOwnerName
+	delete space from global varOwnerName
+	log global varOwnerName
+	If var_DisplayName = global varOwnerName
+		Logsuccess {PASS:"Data Matched"}
+		capturescreen {name:"Correct owner name displayed_" & today & hour(time) & "_" & minute(time) & second(time)}
+	else
+		Log {FAILED:"Data Mismatched, please check the owner's name."}
+		capturescreen {name:"Wrong owner name displayed_" & today & hour(time) & "_" & minute(time) & second(time)}
+	End If
+	
+End Input_Owner
+
+To Input_SvcAgent
+
+	Click [30,130]
+	Click ImageLocation(text:"Svc Agnt", casesensitive: yes, LowResolutionMode:"Yes", WaitFor:8)
+	typetext tabKey
+	
+	log global varSvcAgent
+	log global varSvcAgentName
+	typetext global varSvcAgent
+	typetext f5
+	
+	//SvcAgent validation
+	
+	Put ImageRectangle(text:"Svc Agnt", casesensitive: yes, LowResolutionMode:"Yes", WaitFor:8) into var_loc
+	Log readtext ([var_loc.bottomleft +[375,-20],var_loc.bottomright + [800,10]])
+	
+	Put ReadText ([var_loc.bottomleft +[375,-20],var_loc.bottomright + [1000,10]]) into var_DisplaySvcAgentName
+	log "Name displayed is " & var_DisplaySvcAgentName
+	delete space from var_DisplaySvcAgentName
+	log var_DisplaySvcAgentName
+	
+	log "Name per test data is "& global varSvcAgentName
+	delete space from global varSvcAgentName
+	log global varSvcAgentName
+	If var_DisplaySvcAgentName =global varSvcAgentName
+		Logsuccess {PASS:"Data Matched"}
+		capturescreen {name:"Correct Svc agent displayed_" & today & hour(time) & "_" & minute(time) & second(time)}
+	else
+		Log {FAILED:"Data Mismatched, please check the agent's name."}
+		capturescreen {name:"Wrong Svc agent displayed_" & today & hour(time) & "_" & minute(time) & second(time)}
+	End If
+	
+End Input_SvcAgent
+
+
+To Input_BillingFreq
+	
+	Click [30,130]
+	Click ImageLocation(text:"Billing Freq", casesensitive: yes)
+	typetext tabKey
+	
+	log global varBillingFreq
+	typetext global varBillingFreq
+	typetext f5
+	
+End Input_BillingFreq
+
+To Input_MOP
+	Click [30,130]
+	if global varMOP<>""
+		Click ImageLocation(text:"MOP", casesensitive: yes)
+		typetext tabKey
+		
+		
+		log global varMOP
+		typetext global varMOP
+		typetext f5
+	else
+		Log ("No Input needed.")
+		capturescreen {name:"MOP_" & today & hour(time) & "_" & minute(time) & second(time)} 
+	end if
+End Input_MOP
+
+To Input_DeliveryMode
+
+	Click [30,130]
+	Click ImageLocation(text:"Delivery Mode", casesensitive: yes)
+	typetext tabKey
+	
+	log global varDeliveryMode
+	typetext global varDeliveryMode
+	typetext f5
+	
+End Input_DeliveryMode
+
+To Input_Register
+
+	Click [30,130]
+	Click ImageLocation(text:"Register", casesensitive: yes)
+	typetext tabKey
+	
+	log global varRegister
+	typetext global varRegister
+	typetext f5
+	
+End Input_Register
+
+To Input_Campaign
+
+	Click [30,130]
+	if global varCampaign <>""
+		Click ImageLocation(text:"Campaign", casesensitive: yes)
+		typetext tabKey
+		
+		log global varCampaign
+		typetext global varCampaign
+		typetext f5
+	else
+		Log ["No data input of campaign needed."] 
+	end if
+	
+End Input_Campaign
+
+To Input_OffShoreInd
+
+	Click [30,130]
+	Click ImageLocation(text:"Off Shore Ind", casesensitive: yes)
+	typetext tabKey
+	
+	log global varOffShoreInd
+	typetext global varOffShoreInd
+	typetext f5
+	
+End Input_OffShoreInd
+
+To Input_DirectDebit
+
+	Click [30,130]
+	If global varDirectDebit="Y"
+		Click ImageLocation(text:"Direct Debit", casesensitive: yes)
+		typetext tabKey
+		
+		log global varDirectDebit
+		typetext "X", return
+		
+	else
+		Log "No Input needed."
+		capturescreen {name:"Direct Debit_" & today & hour(time) & "_" & minute(time) & second(time)} 
+	end if
+	
+	return global varDirectDebit
+End Input_DirectDebit
+
+To Validate_Errors
+	typetext f5
+	put ImageRectangle(Text:"Follow Ups", caseSensitive:yes , WaitFor:1) into var_loc 
+	put [var_loc.bottomleft+[-50,150],var_loc.bottomright+[1000,250]] into var_rec
+	set the SearchRectangle to var_rec
+	put readtext (var_rec) into varError
+	log varError
+	
+	If varError<> ""
+		LogError varError & " error displayed"
+		capturescreen {name:"Error displayed_" & today & hour(time) & "_" & minute(time) & second(time)}
+		set the SearchRectangle to empty
+	else
+		Logsuccess {PASS:"Proposal Page input fullfilled, no error prompt."}
+		capturescreen {name:"Success_" & today & hour(time) & "_" & minute(time) & second(time)}
+		set the SearchRectangle to empty
+	End If
+End Validate_Errors
+
+To Proceed_NextScreen var_env
+	typetext returnKey
+	put common_functions.Check_Next_Screen (var_env) into var_next_screen
+	return var_next_screen
+	
+End Proceed_NextScreen
+
+
+To Input_Stat_code
+	click text: "Statistical Code"
+	typetext tabkey
+	repeat with each item of global var_Statistical_code
+		typetext item repeatindex() of global  var_Statistical_code
+	end repeat
+	
+End Input_Stat_code

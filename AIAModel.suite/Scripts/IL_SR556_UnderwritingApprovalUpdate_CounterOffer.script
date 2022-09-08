@@ -1,0 +1,630 @@
+﻿//======================================================
+//                                           AIA SINGAPORE
+//======================================================
+// Name        : IntegralLife_SR556
+// Descripton : This script is for Integral Life UW approval -non ASTD
+//======================================================
+//  REVISION
+//-------------------------------------------------------------------------------------------------------------------------
+// Date          |  Author                     | Description
+//----------------- -------------------------------- ----------------------------------------------------------------------
+// 20220420     Sonia Soong                       Initial Version
+//-------------------------------------------------------------------------------------------------------------------------
+
+To Validate_DisplayedScreen
+
+	Put ImageRectangle(text:global var_env, casesensitive: yes,waitfor: 5) into var_loc
+	Log readtext ([var_loc.bottomleft +[200,-20],var_loc.bottomright + [830,40]])
+
+	Put ReadText ([var_loc.bottomleft +[200,-20],var_loc.bottomright + [830,40]]) into var_DisplayScreenName
+	log "Screen name displayed is " & var_DisplayScreenName
+	delete space from var_DisplayScreenName
+	log var_DisplayScreenName
+	
+	Put ["Underwriting Approval Update"] into var_ScreenName
+	log "Screen name expected is "& var_ScreenName
+	delete space from var_ScreenName
+	log var_ScreenName
+	
+	If var_DisplayScreenName = var_ScreenName
+		Logsuccess {PASS:"Data Matched, correct screen displayed."}
+		capturescreen {name:"Correct screen displayed_" & today & hour(time) & "_" & minute(time) & second(time)}
+		set the SearchRectangle to empty
+	else
+		Logerror {FAILED:"Data Mismatched, please check the expected screen again."}
+		capturescreen {name:"Wrong screen displayed_" & today & hour(time) & "_" & minute(time) & second(time)}
+		set the SearchRectangle to empty
+	End If
+End Validate_DisplayedScreen
+
+To Validate_LifeAssured
+	(*Common_Functions.GlobalGetExcelData 1,"IL_TestData.xlsx", "Policy"*)
+	
+	Put ImageRectangle(text:"Life Assured", casesensitive: yes) into var_loc
+	Log readtext ([var_loc.bottomleft +[380,-20],var_loc.bottomright + [1000,10]])
+	
+	Put ReadText ([var_loc.bottomleft +[380,-20],var_loc.bottomright + [1000,10]]) into var_DisplayLAName
+	log "Name displayed is " & var_DisplayLAName
+	delete space from var_DisplayLAName
+	log var_DisplayLAName
+	
+	log "Life Assured name per test data is "& global varLifeAssuredName
+	delete space from global varLifeAssuredName
+	log global varLifeAssuredName
+	If var_DisplayLAName = global varLifeAssuredName
+		Logsuccess {PASS:"Data Matched"}
+		capturescreen {name:"Correct Life Assured name displayed_" & today & hour(time) & "_" & minute(time) & second(time)}
+	else
+		Log {FAILED:"Data Mismatched, please check the owner's name."}
+		capturescreen {name:"Wrong Life Assured name displayed_" & today & hour(time) & "_" & minute(time) & second(time)}
+End If
+End Validate_LifeAssured
+
+To Input_DecisionCode
+	(*Common_Functions.GlobalGetExcelData 1,"IL_TestData.xlsx", "UW"*)
+	
+	Click ImageLocation(text:"U/W Decision Code", casesensitive: yes)
+	typetext tabKey
+	
+	log global var_UWDecisionCode
+	typetext global var_UWDecisionCode
+	typetext f5
+	capturescreen {name:"UW decision_" & today & hour(time) & "_" & minute(time) & second(time)}
+End Input_DecisionCode
+
+
+To Select_Exclusion
+	(*Common_Functions.GlobalGetExcelData 1,"IL_TestData.xlsx", "UW"*)
+	If global var_Exclusion="Y"
+		Click ImageLocation(text:"Exclusions", casesensitive: yes)
+		typetext tabKey
+		log global var_Exclusion
+		typetext "X"
+		typetext f5
+		capturescreen {name:"Decision code_" & today & hour(time) & "_" & minute(time) & second(time)}
+	else
+		Log "Incorrect decision code, please check the test data."
+		capturescreen {name:"Incorrect decision code_" & today & hour(time) & "_" & minute(time) & second(time)}
+	end if
+End Select_Exclusion
+
+To Select_SpecProvisions
+	(*Common_Functions.GlobalGetExcelData 1,"IL_TestData.xlsx", "UW"*)
+	If global var_Spec_Provisions="Y"
+		Click ImageLocation(text:"Provisions", casesensitive: yes)
+		typetext tabKey
+		log global var_Spec_Provisions
+		typetext "X"
+		typetext f5
+	else
+		Log "No spec provision needed."
+		capturescreen {name:"Spec provisions error_" & today & hour(time) & "_" & minute(time) & second(time)}
+	end if
+End Select_SpecProvisions
+
+To Select_PMRUpdate
+	(*Common_Functions.GlobalGetExcelData 1,"IL_TestData.xlsx", "UW"*)
+	If global var_PMR_Update="Y"
+		Click ImageLocation(text:"PMR Update", casesensitive: yes)
+		typetext tabKey
+		log global var_PMR_Update
+		typetext "X"
+		typetext f5
+		capturescreen {name:"PMR Update_" & today & hour(time) & "_" & minute(time) & second(time)}
+	else
+		LogError {FAILED:"Please check the test data to input PMR Update."}
+		capturescreen {name:"PMR Update error_" & today & hour(time) & "_" & minute(time) & second(time)}
+		exit handler
+	end if
+End Select_PMRUpdate
+
+To Validate_Errors
+	typetext f5
+	put ImageRectangle(Text:"Loading", caseSensitive:yes , WaitFor:1) into var_loc 
+	put [var_loc.bottomleft+[-50,350],var_loc.bottomright+[1000,470]] into var_rec
+	set the SearchRectangle to var_rec
+	put readtext (var_rec) into varError
+	log varError
+	
+	If varError<> ""
+		LogError varError & " error displayed"
+		capturescreen {name:"Error displayed_" & today & hour(time) & "_" & minute(time) & second(time)}
+		set the SearchRectangle to empty
+		exit handler
+	else
+		Logsuccess {PASS:"Underwriting Approval Update page input fullfilled, no error prompt."}
+		capturescreen {name:"Success_" & today & hour(time) & "_" & minute(time) & second(time)}
+		set the SearchRectangle to empty
+	End If
+End Validate_Errors
+
+To Proceed_NextScreen
+	typetext returnKey
+	
+	set the searchrectangle to Common_Functions.ScreenPart("TopHalf")
+	If ImageFound(text:"Exclusions", waitfor:5)
+		LogSuccess "Exclusions screen found. Please proceed."
+		capturescreen {name:"Success_" & today & hour(time) & "_" & minute(time) & second(time)}
+	else
+		Log "Please check the missing fields or error displayed."
+		capturescreen {name:"Error_" & today & hour(time) & "_" & minute(time) & second(time)}
+	End If
+	
+	If ImageFound(text:"Special Provisions", waitfor:5)
+		LogSuccess "Special provisions screen found. Please proceed."
+		capturescreen {name:"Success_" & today & hour(time) & "_" & minute(time) & second(time)}
+	else
+		Log "Please check the missing fields or error displayed."
+		capturescreen {name:"Error_" & today & hour(time) & "_" & minute(time) & second(time)}
+	End If
+	
+	If ImageFound(text:"PMR Records Maintenance", waitfor:5)
+		LogSuccess "PMR Records Maintenance screen found. Please proceed."
+		capturescreen {name:"Success_" & today & hour(time) & "_" & minute(time) & second(time)}
+	else
+		Log "Please check the missing fields or error displayed."
+		capturescreen {name:"Error_" & today & hour(time) & "_" & minute(time) & second(time)}
+	End If
+	set the SearchRectangle to empty
+End Proceed_NextScreen
+
+To Input_ExclusionsScreen
+	(*Common_Functions.GlobalGetExcelData 1,"IL_TestData.xlsx", "UW"*)
+	
+	//Exclusion_Clause1
+	If global var_Exclusion="Y"
+		set the searchrectangle to Common_Functions.ScreenPart("TopHalf")
+		If ImageFound(text:"Exclusions", waitfor:5)
+			Log "Correct screen, proceed."
+			set the SearchRectangle to empty
+		else
+			LogError {FAILED:"Not Exclusion screen, please check the screen."}
+			exit handler
+		end if
+		Click {text:"Clause"}
+		typetext tabkey
+		typetext global var_Exclusion_Clause1
+		typetext f5
+		If global var_Exclusion_Clause_ExtendedText1<>""
+			Click text:global var_Exclusion_Clause1
+			typetext tabkey
+			
+			typetext "X"
+			typetext returnkey
+			typetext global var_Exclusion_Clause_ExtendedText1
+			typetext returnkey
+			
+		end if
+		
+		
+		//Exclusion_Clause2
+		If global var_Exclusion="Y"
+			If global var_Exclusion_Clause2<>""
+				Click {text:"Clause"}
+				typetext tabkey
+				typetext tabkey
+				typetext tabkey
+				typetext global var_Exclusion_Clause2
+				typetext F5
+				If global var_Exclusion_Clause_ExtendedText2<>""
+					Click text:global var_Exclusion_Clause2
+					typetext tabkey
+					
+					typetext "X"
+					typetext returnkey
+					typetext global var_Exclusion_Clause_ExtendedText2
+					typetext returnkey
+					
+				end if 
+			else
+				Log "No exclusion clause 2."
+			End If
+		end if
+		
+		//Exclusion_Clause3
+		If global var_Exclusion="Y"
+			If global var_Exclusion_Clause3<>""
+				Click {text:"Clause"}
+				typetext tabkey
+				typetext tabkey
+				typetext tabkey
+				typetext tabkey
+				typetext tabkey
+				typetext global var_Exclusion_Clause3
+				typetext F5
+				If global var_Exclusion_Clause_ExtendedText3<>""
+					Click text:global var_Exclusion_Clause3
+					typetext tabkey
+					
+					typetext "X"
+					typetext returnkey
+					typetext global var_Exclusion_Clause_ExtendedText3
+					typetext returnkey
+					
+				end if 
+			else
+				Log "No exclusion clause 3."
+			End If
+		end if
+		
+		//Exclusion_Clause4
+		If global var_Exclusion="Y"
+			If global var_Exclusion_Clause4<>""
+				Click {text:"Clause"}
+				typetext tabkey
+				typetext tabkey
+				typetext tabkey
+				typetext tabkey
+				typetext tabkey
+				typetext tabkey
+				typetext tabkey
+				typetext global var_Exclusion_Clause4
+				typetext F5
+				If global var_Exclusion_Clause_ExtendedText4<>""
+					Click text:global var_Exclusion_Clause4
+					typetext tabkey
+					
+					typetext "X"
+					typetext returnkey
+					typetext global var_Exclusion_Clause_ExtendedText4
+					typetext returnkey
+					
+				end if
+			else
+				Log "No exclusion clause 4."
+			End If
+		end if
+		
+		//Exclusion_Clause5
+		If global var_Exclusion="Y"
+			If global var_Exclusion_Clause5<>""
+				Click {text:"Clause"}
+				typetext tabkey
+				typetext tabkey
+				typetext tabkey
+				typetext tabkey
+				typetext tabkey
+				typetext tabkey
+				typetext tabkey
+				typetext tabkey
+				typetext tabkey
+				typetext global var_Exclusion_Clause5
+				typetext F5
+				If global var_Exclusion_Clause_ExtendedText5<>""
+					Click text:global var_Exclusion_Clause5
+					typetext tabkey
+					
+					typetext "X"
+					typetext returnkey
+					typetext global var_Exclusion_Clause_ExtendedText5
+					typetext returnkey
+					
+				end if
+			end if
+		else
+			Log "No exclusion clause 5."
+		End If
+		
+		//Validate Erros
+		typetext F5
+		put ImageRectangle(Text:"Clause", caseSensitive:yes , WaitFor:1) into var_loc 
+		put [var_loc.bottomleft+[-50,410],var_loc.bottomright+[1000,530]] into var_rec
+		set the SearchRectangle to var_rec
+		put readtext (var_rec) into varError
+		log varError
+		
+		If varError<> ""
+			LogError varError & " error displayed"
+			capturescreen {name:"Error displayed_" & today & hour(time) & "_" & minute(time) & second(time)}
+			set the SearchRectangle to empty
+			exit handler
+		else
+			Logsuccess {PASS:"Exclusions screen input fullfilled, no error prompt."}
+			capturescreen {name:"Success_" & today & hour(time) & "_" & minute(time) & second(time)}
+			set the SearchRectangle to empty
+		End If
+		typetext returnKey
+	else
+		Log "No exclusion."
+		capturescreen {name:"no exclusion_" & today & hour(time) & "_" & minute(time) & second(time)}
+	end if
+End Input_ExclusionsScreen
+
+
+To Input_SpecProvisionsScreen
+	(*Common_Functions.GlobalGetExcelData 1,"IL_TestData.xlsx", "UW"*)
+	
+	//SP_Clause1
+	If global var_Spec_Provisions="Y"
+		set the searchrectangle to Common_Functions.ScreenPart("TopHalf")
+		If ImageFound(text:"Special Provisions", waitfor:5)
+			Log "Correct screen, proceed."
+			set the SearchRectangle to empty
+		else
+			LogError {FAILED:"Not Special Provisions screen, please check the screen."}
+			exit handler
+		end if
+		Click {text:"Clause"}
+		typetext tabkey
+		typetext global var_SP_Clause1
+		typetext f5
+		If global var_SP_Clause_ExtText1<>""
+			Click text:global var_SP_Clause1
+			typetext tabkey
+			
+			typetext "X"
+			typetext returnkey
+			typetext global var_SP_Clause_ExtText1
+			typetext returnkey
+			
+		end if
+		
+		
+		//SP_Clause2
+		If global var_Spec_Provisions="Y"
+			If global var_SP_Clause2<>""
+				Click {text:"Clause"}
+				typetext tabkey
+				typetext tabkey
+				typetext tabkey
+				typetext global var_SP_Clause2
+				typetext F5
+				If global var_SP_Clause_ExtText2<>""
+					Click text:global var_SP_Clause2
+					typetext tabkey
+					
+					typetext "X"
+					typetext returnkey
+					typetext global var_SP_Clause_ExtText2
+					typetext returnkey
+					
+				end if 
+			else
+				Log "No Spec Provision clause 2."
+			End If
+		end if
+		
+		//SP_Clause3
+		If global var_Spec_Provisions="Y"
+			If global var_SP_Clause3<>""
+				Click {text:"Clause"}
+				typetext tabkey
+				typetext tabkey
+				typetext tabkey
+				typetext tabkey
+				typetext tabkey
+				typetext global var_SP_Clause3
+				typetext F5
+				If global var_SP_Clause_ExtText3<>""
+					Click text: global var_SP_Clause3
+					typetext tabkey
+					
+					typetext "X"
+					typetext returnkey
+					typetext global var_SP_Clause_ExtText3
+					typetext returnkey
+					
+				end if 
+			else
+				Log "No Spec Provision clause 3."
+			End If
+		end if
+		
+		//SP_Clause4
+		If global var_Spec_Provisions="Y"
+			If global var_SP_Clause4<>""
+				Click {text:"Clause"}
+				typetext tabkey
+				typetext tabkey
+				typetext tabkey
+				typetext tabkey
+				typetext tabkey
+				typetext tabkey
+				typetext tabkey
+				typetext global var_SP_Clause4
+				typetext F5
+				If global var_SP_Clause_ExtText4<>""
+					Click text:global var_SP_Clause4
+					typetext tabkey
+					
+					typetext "X"
+					typetext returnkey
+					typetext global var_SP_Clause_ExtText4
+					typetext returnkey
+					
+				end if
+			else
+				Log "No Spec Provision clause 4."
+			End If
+		end if
+		
+		//SP_Clause5
+		If global var_Spec_Provisions="Y"
+			If global var_SP_Clause5<>""
+				Click {text:"Clause"}
+				typetext tabkey
+				typetext tabkey
+				typetext tabkey
+				typetext tabkey
+				typetext tabkey
+				typetext tabkey
+				typetext tabkey
+				typetext tabkey
+				typetext tabkey
+				typetext global var_SP_Clause5
+				typetext F5
+				If global var_SP_Clause_ExtText5<>""
+					Click text:global var_SP_Clause5
+					typetext tabkey
+					
+					typetext "X"
+					typetext returnkey
+					typetext global var_SP_Clause_ExtText5
+					typetext returnkey
+					
+				end if
+			end if
+		else
+			Log "No Spec Provisions clause 5."
+		End If
+		
+		//Validate Erros
+		typetext F5
+		put ImageRectangle(Text:"Clause", caseSensitive:yes , WaitFor:1) into var_loc 
+		put [var_loc.bottomleft+[-50,410],var_loc.bottomright+[1000,530]] into var_rec
+		set the SearchRectangle to var_rec
+		put readtext (var_rec) into varError
+		log varError
+		
+		If varError<> ""
+			LogError varError & " error displayed"
+			capturescreen {name:"Error displayed_" & today & hour(time) & "_" & minute(time) & second(time)}
+			set the SearchRectangle to empty
+			exit handler
+		else
+			Logsuccess {PASS:"Special Provisions screen input fullfilled, no error prompt."}
+			capturescreen {name:"Success_" & today & hour(time) & "_" & minute(time) & second(time)}
+			set the SearchRectangle to empty
+		End If
+		typetext returnKey
+	else
+		Log "No Spec Provisions."
+		capturescreen {name:"no spec provisions_" & today & hour(time) & "_" & minute(time) & second(time)}
+	end if
+	
+End Input_SpecProvisionsScreen
+
+To Input_PMRUpdate
+	(*Common_Functions.GlobalGetExcelData 1,"IL_TestData.xlsx", "UW"*)
+	
+	set the searchrectangle to Common_Functions.ScreenPart("TopHalf")
+	If ImageFound(text:"PMR Records Maintenance", waitfor:5)
+		Log "Correct screen, proceed."
+		set the SearchRectangle to empty
+		
+		//RiskType
+		If global Risk_Type<>""
+			Click text:"Risk Type"
+			typetext tabkey
+			typetext global Risk_Type
+			typetext F5
+		else
+			LogError {FAILED:"Risk Type is a mandatory field, please check the test data."}
+			capturescreen {name:"Risk type_" & today & hour(time) & "_" & minute(time) & second(time)}
+			exit handler
+		end if
+		
+		//Hospitalise
+		If global Hospitalise_Days<>""
+			Click text:"Hospitalise"
+			typetext tabkey
+			typetext global Hospitalise_Days
+			typetext F5
+		else
+			Log "No Hospitalise - number of days input needed."
+		end if
+		
+		//Postpone Duration
+		If global Postpone_DurationYr<>""
+			Click text:"Postpone Duration"
+			typetext tabkey
+			typetext global Postpone_DurationYr
+			typetext global Postpone_DurationMths
+			typetext F5
+		else
+			Log "No Postpone Duration input needed."
+		end if
+		
+		//Medical Codes1
+		If global Medical_Codes1<>""
+			Click text:"Medical Codes"
+			typetext tabkey
+			typetext global Medical_Codes1
+			
+			typetext F5
+		else
+			LogError {FAILED:"At least one medical code is needed, please check test data."}
+			capturescreen {name:"Missing Medical Codes_" & today & hour(time) & "_" & minute(time) & second(time)}
+			exit handler
+		end if
+		
+		//Medical Codes2
+		If global Medical_Codes2<>""
+			Click text:"Medical Codes"
+			typetext tabkey
+			typetext tabkey
+			typetext global Medical_Codes2
+			typetext F5
+		else
+			Log "No medical codes2 input."
+		end if
+		
+		//Medical Codes3
+		If global Medical_Codes3<>""
+			Click text:"Medical Codes"
+			typetext tabkey
+			typetext tabkey
+			typetext tabkey
+			typetext global Medical_Codes3
+			typetext F5
+		else
+			Log "No medical codes3 input."
+		end if
+		
+		//Validate Erros
+		typetext F5
+		put ImageRectangle(Text:"Risk Type", caseSensitive:yes , WaitFor:1) into var_loc 
+		put [var_loc.bottomleft+[-50,290],var_loc.bottomright+[1000,400]] into var_rec
+		set the SearchRectangle to var_rec
+		put readtext (var_rec) into varError
+		log varError
+		
+		If varError<> ""
+			LogError varError & " error displayed"
+			capturescreen {name:"Error displayed_" & today & hour(time) & "_" & minute(time) & second(time)}
+			set the SearchRectangle to empty
+			exit handler
+		else
+			Logsuccess {PASS:"PMR Records Maintenance input fullfilled, no error prompt."}
+			capturescreen {name:"Success_" & today & hour(time) & "_" & minute(time) & second(time)}
+			set the SearchRectangle to empty
+		End If
+		typetext returnKey
+	else
+		LogError {FAILED:"Not PMR Records Maintenance screen, please check the screen."}
+		exit handler
+	end if
+End Input_PMRUpdate
+
+To Complete_UW_Substd
+	typetext f5
+	put ImageRectangle(Text:"Loading", caseSensitive:yes , WaitFor:1) into var_loc 
+	put [var_loc.bottomleft+[-50,350],var_loc.bottomright+[1000,470]] into var_rec
+	set the SearchRectangle to var_rec
+	put readtext (var_rec) into varError
+	log varError
+	
+	If varError=""
+		Logsuccess {PASS:"Underwriting Approval Update page input fullfilled, no error prompt."}
+		capturescreen {name:"Success_" & today & hour(time) & "_" & minute(time) & second(time)}
+		set the SearchRectangle to empty
+		
+		typetext returnkey 
+		
+		
+		set the searchrectangle to Common_Functions.ScreenPart("BottomHalf")
+		If Imagefound(text:"Last transaction processed")
+			Logsuccess {PASS:"Policy issued with counter offer decision, no error prompt."}
+			capturescreen {name:"Success_" & today & hour(time) & "_" & minute(time) & second(time)} 
+		else
+			LogError {FAILED:"Error found, underwriting unsuccessful."}
+			capturescreen {name:"Error_" & today & hour(time) & "_" & minute(time) & second(time)} 
+		End If
+		set the searchrectangle to empty
+	else
+		LogError varError & " error displayed"
+		capturescreen {name:"Error displayed_" & today & hour(time) & "_" & minute(time) & second(time)}
+		set the SearchRectangle to empty
+	end if
+End Complete_UW_Substd
+

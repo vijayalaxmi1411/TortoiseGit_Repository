@@ -1,0 +1,136 @@
+﻿//======================================================
+//                                           AIA SINGAPORE
+//======================================================
+// Name        : Common_Functions
+// Descripton : This contains all common functions for Integral Life application suite
+//======================================================
+//  REVISION
+//-------------------------------------------------------------------------------------------------------------------------
+// Date          |  Author                              | Description
+//----------------- -------------------------------- ----------------------------------------------------------------------
+// 20220410    Automation Team -Gian    Initial Version for IL Proposal submenu 
+//-------------------------------------------------------------------------------------------------------------------------
+
+
+(*-LIFE ASSURED S5005
+Validate_LifeInsured_Screen
+Input_LifeInsured_Number
+Input_Medical_Evidence
+Input_Smoking
+Input_Vitality_Discount_Eligibility
+Validate_LifeInsured_Error*)
+
+To handle Validate_LifeInsured_Screen
+	If Imagefound(text: "S5005", Waitfor: 5)
+		Typetext F5
+		Wait 2
+		CaptureScreen {Name: "Lives Assured Screen is displayed" & "_" & Today & "_" & time, increment: true, imageFormat: JPG}
+		LogSuccess "Lives Assured Screen is displayed"
+	else
+		CaptureScreen {Name: "Lives Assured Screen is not displayed" & "_" & Today & "_" & time, increment: true, imageFormat: JPG}
+		LogError "Lives Assured Screen is not displayed"
+	End If
+End Validate_LifeInsured_Screen
+
+To Input_LifeInsured_Number
+	If Imagefound(text: "Life No", CaseSensitive:Yes, Waitfor: 5)
+		Typetext shiftKey
+		Click FoundImageLocation()
+		Typetext tabkey, global var_Life_clientnum
+		(*Typetext "03484249" --global var*)
+		Typetext F5
+		CaptureScreen {Name: "Life Assured Number" & "_" & Today & "_" & time, increment: true, imageFormat: JPG}
+		LogSuccess "Able to key in Life Assured Number"
+	else
+		CaptureScreen {Name: "Life Assured Number" & "_" & Today & "_" & time, increment: true, imageFormat: JPG}
+		LogError "Not able to key in Life Assured Number"
+	End If
+End Input_LifeInsured_Number
+
+To Input_Medical_Evidence
+	If Imagefound(text: "Medical Evidence", CaseSensitive:Yes, Waitfor: 5)
+		Click FoundImageLocation()
+		Typetext tabkey, global var_Medical_Evidence_Item
+		(*	Typetext "0" --global var*)
+		CaptureScreen {Name: "Medical Evidence" & "_" & Today & "_" & time, increment: true, imageFormat: JPG}
+		LogSuccess "Able to key in Medical Evidence"
+		else
+		CaptureScreen {Name: "Medical Evidence" & "_" & Today & "_" & time, increment: true, imageFormat: JPG}
+		LogError "Not able to key in Medical Evidence"
+	End If
+End Input_Medical_Evidence
+
+To Input_Smoking
+	If Imagefound(text: "Smoking", CaseSensitive:Yes, Waitfor: 5)
+		Click FoundImageLocation()
+		Typetext tabkey, global var_Smoking_Item
+		(*Typetext "N" --global var*)
+		CaptureScreen {Name: "Smoking" & "_" & Today & "_" & time, increment: true, imageFormat: JPG}
+		LogSuccess "Able to key in Smoking"
+	else
+		CaptureScreen {Name: "Smoking" & "_" & Today & "_" & time, increment: true, imageFormat: JPG}
+		LogError "Not able to key in Smoking"
+	End If
+End Input_Smoking
+
+To Input_Vitality_Discount_Eligibility
+	If Imagefound(Text:"Vitality Discount Eligiblity: Y", IgnoreUnderscores:"Yes", caseSensitive:"Yes", EnableAggressiveTextExtraction:"Yes", IgnoreSpaces:"Yes", WaitFor:3)
+		if  global var_Vitality_Discount_Eligibility <> ""
+			CaptureScreen {Name: "Vitality Discount Eligibility is prefilled so  test data ignored " & "_" & Today & "_" & time, increment: true, imageFormat: JPG}
+			Logwarning "Vitality Discount Eligibility is prefilled so  test data ignored"
+		end if
+		exit handler 
+	end if
+	
+	
+	If Imagefound(text: "Vitality Discount", CaseSensitive:Yes, Waitfor: 5)
+		Click FoundImageLocation()
+		Typetext tabkey, global var_Vitality_Discount_Eligibility
+		(*	Typetext "N" --global var*)
+		CaptureScreen {Name: "Vitality Discount" & "_" & Today & "_" & time, increment: true, imageFormat: JPG}
+		LogSuccess "Able to key in Vitality Discount"
+	else
+		CaptureScreen {Name: "Vitality Discount" & "_" & Today & "_" & time, increment: true, imageFormat: JPG}
+		LogError "Not able to key in Vitality Discount"
+	End If
+End Input_Vitality_Discount_Eligibility
+
+
+To handle Validate_LifeInsured_ErrorCheck_HitEnter
+
+	Typetext F5
+	Wait 1
+	
+	Put ImageRectangle (text: "Clt Detail",caseSensitive:yes, waitfor: 5) into var_ErrorLoc
+	Log ReadText ([var_ErrorLoc.bottomleft + [-100,200],var_ErrorLoc.bottomright + [900,33]])
+	Put ReadText ([var_ErrorLoc.bottomleft + [-100,200],var_ErrorLoc.bottomright + [900,33]]) into var_ErrorCheck
+	Log var_ErrorCheck
+	
+	
+	if var_ErrorCheck <> ""
+		CaptureScreen {Name: "Unable to provide complete_correct details" & "_" & Today & "_" & time, increment: true, imageFormat: JPG}
+Logerror "Unable to provide complete / correct details"
+	else
+		CaptureScreen {Name: "Able to provide complete_correct details" & "_" & Today & "_" & time, increment: true, imageFormat: JPG}
+		LogSuccess "Able to provide complete / correct details"
+	end if
+	
+	wait 1
+	Set the SearchRectangle to Empty
+	--put readtext on error
+	Typetext return
+	wait 1
+	
+	(*	If Imagefound(text: "Select Cover Required", CaseSensitive:Yes, Waitfor: 5)
+		CaptureScreen {Name: "Life Assured Details" & "_" & Today & "_" & time, increment: true, imageFormat: JPG}
+		LogSuccess "Able to key in Life Assured Details"
+	else
+		CaptureScreen {Name: "Life Assured Details" & "_" & Today & "_" & time, increment: true, imageFormat: JPG}
+		LogError "Unable to key in Life Assured Details"
+	End If*)
+	
+End Validate_LifeInsured_ErrorCheck_HitEnter
+
+
+
+

@@ -1,0 +1,28 @@
+﻿//======================================================
+//                                           AIA SINGAPORE
+//======================================================
+// Name        : Common_Functions
+// Descripton : This contains ILP Proposal for Annual Prem  for Integral Life application suite
+//======================================================
+//  REVISION
+//-------------------------------------------------------------------------------------------------------------------------
+// Date          |  Author                              | Description
+//----------------- -------------------------------- ----------------------------------------------------------------------
+// 20220410    Automation Team -Colleen    Initial Version for ILP Proposal for Annual Prem 
+//-------------------------------------------------------------------------------------------------------------------------
+
+
+on Enter_Annual_Premium 
+	if imagefound (text: "Annual Premium",waitfor: 3)
+		click FoundImageLocation() 
+		typetext  tabKey, global var_ILP_Annual_Premium
+		LogSuccess "ILP Annual Premium keyed i "
+		CaptureScreen {Name: "ILP Annual Premium keyed in " & today & hour(time) & "_" & minute(time) &second(time) }
+		TypeText returnKey
+	else
+		LogError "Annual Premium field is not found"
+		CaptureScreen {Name: "Annual Premium field is not found " & today & hour(time) & "_" & minute(time) &second(time) }
+	end if
+	
+end Enter_Annual_Premium
+

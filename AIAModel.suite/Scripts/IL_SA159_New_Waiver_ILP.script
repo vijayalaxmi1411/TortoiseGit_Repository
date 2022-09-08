@@ -1,0 +1,53 @@
+﻿On Check_Waived_Comp
+	repeat each line of global waived_comp
+		put repeatindex() into var_waived_lineno 
+		if repeatindex() = global var_cov_lineno
+			put line repeatIndex() of global waived_comp into var_line_waived_comp
+			repeat each item of var_line_waived_comp
+				put repeatindex() into var_waived_itemno 
+				Check_Marked_Waived_Comp 
+				Enter_Waived_SA
+			end repeat
+		end if
+	end repeat
+End Check_Waived_Comp
+
+
+on Check_Marked_Waived_Comp
+
+	put  ImageRectangle(Text:"Coverage", LowResolutionMode:"Yes", caseSensitive:"Yes", EnableAggressiveTextExtraction:"Yes", EnhanceLocalContrast:"Yes", TextDifference:"1", WaitFor:1)  into var_loc
+	put  [var_loc.topleft +[-100,0], var_loc.bottomright + [-50,10] ] into var_rec_cov
+	set the SearchRectangle to var_rec_cov
+	
+	if imagefound (Text:"X", LowResolutionMode:"Yes", IgnoreUnderscores:"Yes", caseSensitive:"Yes", IgnoreSpaces:"Yes", EnableAggressiveTextExtraction:"Yes", contrastColor:[0,0,0], EnhanceLocalContrast:"Yes", contrast:"On", TextDifference:"1", WaitFor:1, contrastTolerance:"45")
+		logsuccess 
+	else
+		Logerror 
+	end if
+end Check_Marked_Waived_Comp
+
+On Enter_Waived_SA
+
+End Enter_Waived_SA
+
+on Check_For_Errors
+	typetext f5 
+	put  ImageRectangle(Text:"F1=Help", caseSensitive:yes , WaitFor:1)  into var_loc
+	put  [var_loc.bottomleft +[-10,30], var_loc.bottomright + [1000,70] ] into var_rec 
+	set the SearchRectangle to var_rec 
+	
+	put readtext(var_rec) into var_error
+	if var_error  <>  "" 
+		logerror var_error & " error displayed"
+		capturescreen {name: "Error displayed_" & today & hour(time) & "_" & minute(time) &second(time) , increment: yes} 
+	else
+		logsuccess "Screen has no error prompt"
+	end if
+	
+end Check_For_Errors
+
+
+On Enter_Waived_SA
+	--readtext if populated, then compare with test data , else type
+	
+End Enter_Waived_SA

@@ -1,0 +1,62 @@
+﻿//======================================================
+//                                           AIA SINGAPORE
+//======================================================
+// Name        : IntegralLife_S0217
+// Descripton : This script is for Integral Life Factoring House List
+//======================================================
+//  REVISION
+//-------------------------------------------------------------------------------------------------------------------------
+// Date          |  Author                     | Description
+//----------------- -------------------------------- ----------------------------------------------------------------------
+// 20220420     Reginal                       Initial Version
+//-------------------------------------------------------------------------------------------------------------------------
+
+To Handle Clear_SearchField
+	Click text:"starting", CaseSensitive:yes
+	Typetext tab, Endkey, return
+End Clear_SearchField
+
+// Select Table Item
+To Handle Select_TableItem 
+	(*Set global var_TableItem = "FN"
+	Set global var_ErrorMsg = "test error"*)
+	Set var_ItemFound = "N"
+	Set var_counter = 0
+	
+	Click Text:"Select", caseSensitive:yes, TextDifference:1, waitfor:8
+	Typetext tab
+	
+	Set the searchRectangle to Common_Functions.ScreenPart("RightHalf") + [[50,0], [-800,0]]
+	(*Repeat until var_ItemFound = "Y" or var_counter = 5
+		If Imagefound(Text:global var_TableItem, CaseSensitive:Yes, waitfor:8)
+			Set var_ItemFound = "Y"
+		Else
+			TypeText pageDown
+			Set var_counter = var_counter + 1
+		End If
+	End Repeat
+	
+	If var_ItemFound = "Y"
+		Click Text:var_TableItem, CaseSensitive:Yes, waitfor:8
+		Typetext shiftKey, tab
+		Typetext "1"
+	Else 
+		LogError "Error : " & global var_ErrorMsg
+	End If*)
+	
+	Common_Functions.Select_Item global var_TableItem, global var_ErrorMsg
+	
+	Set the searchRectangle to empty
+End Select_TableItem
+
+// Search using description
+To Handle Search_ItemDescription
+	--set global var_ItemDescription = "DBS"
+	
+	Set the searchRectangle to Common_Functions.ScreenPart("Center")
+	Click text:"starting", CaseSensitive:yes
+	Typetext tab, global var_ItemDescription, return
+	Set the searchRectangle to empty
+End Search_ItemDescription
+
+

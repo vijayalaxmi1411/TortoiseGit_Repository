@@ -1,0 +1,184 @@
+﻿--------------------------------------------------------
+///     IL - Extra Details in Proposal     ///
+--------------------------------------------------------
+//      Author: Michelle Raz                 //
+//      Date: 21 April 2022                  //
+-------------------------------------------------------
+
+
+
+//To validate Client and Policy info on Extra Details Screen
+To Validate_ExtraDetails_Screen var_index
+
+	if imagefound (text:"SCB15" , casesensitive:yes, waitfor:1)     
+		capturescreen {name: "Extra details for Proposal displayed on screen " , increment:yes &   "_" & today & time } 
+		logsuccess "PASSED: Extra details for Proposal screen displayed on screen "
+	else
+		logerror "FAILED: Extra details for Proposal screen not displayed"
+		exit handler
+	end if
+	
+End Validate_ExtraDetails_Screen
+
+// Input Promotion Code
+To Input_ExtraDetails_Promo_Code
+
+
+	Click text:"Promotion", CaseSensitive:yes
+	Typetext tabkey
+	Typetext global var_Promo_Code
+	
+End Input_ExtraDetails_Promo_Code
+
+
+
+// Input Target Retirement Age
+To Input_ExtraDetails_Tar_Ret_Age
+
+
+	Click text:"Age", CaseSensitive:yes
+	Typetext tabkey
+	Typetext global var_Tar_Ret_Age
+	
+End Input_ExtraDetails_Tar_Ret_Age
+
+
+// Input Target Payout Period
+To Input_ExtraDetails_Tar_Payout_Pd
+	
+	Click text:"Period", CaseSensitive:yes
+	Typetext tabkey
+	Typetext global var_Tar_Payout_Pd
+	
+End Input_ExtraDetails_Tar_Payout_Pd
+
+
+// Input Target Monthly Income
+To Input_ExtraDetails_Target_Mo_Inc
+
+	
+	If ImageFound(Text:"Monthly Income", caseSensitive:"Yes", EnableAggressiveTextExtraction:"Yes", IgnoreSpaces:"Yes", EnhanceLocalContrast:"Yes", WaitFor:5)
+		click FoundImageLocation()
+		Typetext tabkey
+		Typetext global var_Target_Mo_Inc
+	else
+		Logerror "Monthly income not displayed" 
+		CaptureScreen {Name: "Monthly income not displayed " & today & hour(time) & "_" & minute(time) &second(time) , increment: yes}
+		
+	End If
+	
+	
+End Input_ExtraDetails_Target_Mo_Inc
+
+
+// Input Stepped Up Income
+To Input_ExtraDetails_StepUp_Inc
+
+
+	Click text:"Stepped", CaseSensitive:yes
+	Typetext tabkey
+	Typetext global var_StepUp_Inc
+	
+	
+End Input_ExtraDetails_StepUp_Inc
+
+
+
+
+To Input_Remote_Sig
+	If ImageFound(Text:"Remote Signature", caseSensitive:"Yes", EnableAggressiveTextExtraction:"Yes", IgnoreSpaces:"Yes", EnhanceLocalContrast:"Yes", WaitFor:5)
+		click FoundImageLocation()
+		Typetext tabkey
+		Typetext  global var_Remote_Sig
+	else
+		Logerror "Remote Signature not displayed" 
+		CaptureScreen {Name: "Remote Signature not displayed " & today & hour(time) & "_" & minute(time) &second(time) , increment: yes}
+	End If
+	
+End Input_Remote_Sig
+
+
+To Input_Ac_Invest
+	If ImageFound(Text:"Accrd", caseSensitive:"Yes", EnableAggressiveTextExtraction:"Yes", IgnoreSpaces:"Yes", EnhanceLocalContrast:"Yes", WaitFor:5)
+		click FoundImageLocation()
+		Typetext tabkey
+		Typetext  global var_Ac_Invest
+	else
+		Logerror "Accredited Invest not displayed" 
+		CaptureScreen {Name: "Accredited Invest not displayed " & today & hour(time) & "_" & minute(time) &second(time) , increment: yes}
+	End If
+	
+End Input_Ac_Invest
+
+To Input_Sign_SG 
+	If ImageFound(Text:"Signed in SG", caseSensitive:"Yes", EnableAggressiveTextExtraction:"Yes", IgnoreSpaces:"Yes", EnhanceLocalContrast:"Yes", WaitFor:5)
+		click FoundImageLocation()
+		Typetext tabkey
+		Typetext  global var_Sign_SG
+	else
+		Logerror "Signed in SG not displayed" 
+		CaptureScreen {Name: "Signed in SG not displayed " & today & hour(time) & "_" & minute(time) &second(time) , increment: yes}
+	End If
+	
+End Input_Sign_SG
+
+
+To Input_Sign_Location
+	If ImageFound(Text:"Sign Loc", caseSensitive:"Yes", EnableAggressiveTextExtraction:"Yes", IgnoreSpaces:"Yes", EnhanceLocalContrast:"Yes", WaitFor:5)
+		click FoundImageLocation()
+		Typetext tabkey
+		Typetext  global var_Sign_Loc
+	else
+		Logerror "Sign Location not displayed" 
+		CaptureScreen {Name: "Sign Location not displayed " & today & hour(time) & "_" & minute(time) &second(time) , increment: yes}
+	End If
+	
+End Input_Sign_Location
+
+
+To Input_isNFTF
+	If ImageFound(Text:"isNFTF", caseSensitive:"Yes", EnableAggressiveTextExtraction:"Yes", IgnoreSpaces:"Yes", EnhanceLocalContrast:"Yes", WaitFor:5)
+		click FoundImageLocation()
+		Typetext tabkey
+		Typetext  global var_isNFTF
+	else
+		Logerror "is NFTF not displayed" 
+		CaptureScreen {Name: "is NFTF not displayed " & today & hour(time) & "_" & minute(time) &second(time) , increment: yes}
+	End If
+End Input_isNFTF
+
+// Hit Enter
+To Hit_Enter var_env
+	typetext F5
+	Check_For_Errors "Refresh", -500,10 
+	Typetext returnKey
+	if Common_Functions.Check_Next_Screen (var_env) = "S5004"
+		Logsuccess "Contract Details screen displayed"
+		Capturescreen {name: "Contract Details screen displayed_" & today & hour(time) & "_" & minute(time) &second(time) , increment: yes} 
+		Typetext returnKey
+	else
+		Logerror  "Contract Details screen not displayed"
+		Capturescreen {name: "Contract Details screen not  displayed_" & today & hour(time) & "_" & minute(time) &second(time) , increment: yes} 	
+	end if
+End Hit_Enter
+
+
+
+to Check_For_Errors var_text_to_check , var_topleft_X, var_topleft_y
+	put  ImageRectangle(Text:var_text_to_check, caseSensitive:yes , WaitFor:1)  into var_loc
+	put  [var_loc.bottomleft +[var_topleft_X ,var_topleft_y], var_loc.bottomright + [1000,120] ] into var_rec 
+	set the SearchRectangle to var_rec 
+	
+	put readtext(var_rec) into var_error
+	if var_error  <>  "" 
+		logerror var_error & " error displayed"
+		capturescreen {name: "Error displayed_" & today & hour(time) & "_" & minute(time) &second(time) , increment: yes} 
+	else
+		logsuccess "Screen has no error prompt"
+	end if
+	
+	set the SearchRectangle to empty 
+	
+	
+end Check_For_Errors 
+

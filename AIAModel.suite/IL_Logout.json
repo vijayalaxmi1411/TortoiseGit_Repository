@@ -1,0 +1,236 @@
+{
+  "path": "",
+  "tags": [
+    {
+      "id": 1,
+      "name": "",
+      "values": ""
+    }
+  ],
+  "ePFhost": "STSS055",
+  "version": "6.0.1-8",
+  "ePFsuite": "",
+  "elements": [
+    {
+      "id": 0,
+      "name": "IL_Logout",
+      "type": "Root",
+      "parameters": [
+        {
+          "id": 1,
+          "name": "",
+          "type": "",
+          "random": "",
+          "ranges": [],
+          "initial": "",
+          "parameterUuid": "33481dc1-c80b-497d-abc8-6b0b1f550b95"
+        }
+      ],
+      "elementUuid": "370e9405-b68a-46a1-954c-f02d15c523ef"
+    },
+    {
+      "id": 1,
+      "name": "Exit",
+      "type": "State",
+      "parentId": 0,
+      "invisible": true,
+      "stateType": "Normal",
+      "parameters": [
+        {
+          "id": 0,
+          "name": "",
+          "type": "",
+          "random": "",
+          "ranges": [],
+          "initial": "",
+          "parameterUuid": "06c2d7db-292a-4671-b578-fcfc86a6591c"
+        }
+      ],
+      "elementUuid": "d4e2b782-27ce-4aa6-9559-f232c3255f33",
+      "sortingType": "Z"
+    },
+    {
+      "id": 2,
+      "name": "Error",
+      "type": "State",
+      "parentId": 0,
+      "invisible": true,
+      "stateType": "Exception",
+      "parameters": [
+        {
+          "id": 0,
+          "name": "",
+          "type": "",
+          "random": "",
+          "ranges": [],
+          "initial": "",
+          "parameterUuid": "abeba9ab-6902-401d-a4ed-638818aa81f4"
+        }
+      ],
+      "elementUuid": "748fd175-09d0-4236-ae3b-cbb519ee291b",
+      "sortingType": "X"
+    },
+    {
+      "id": 3,
+      "name": "Cleanup",
+      "type": "State",
+      "parentId": 0,
+      "invisible": true,
+      "stateType": "Cleanup",
+      "parameters": [
+        {
+          "id": 0,
+          "name": "",
+          "type": "",
+          "random": "",
+          "ranges": [],
+          "initial": "",
+          "parameterUuid": "8d0e2f1c-20dd-4af1-a5fc-faaf605b2e74"
+        }
+      ],
+      "elementUuid": "ddca38a9-0a01-441a-9c99-008db34aec49",
+      "sortingType": "Y"
+    },
+    {
+      "dx": 100,
+      "dy": 60,
+      "id": 4,
+      "name": "Initial",
+      "type": "State",
+      "textX": 20,
+      "textY": 25,
+      "parentId": 0,
+      "invisible": false,
+      "stateType": "Start",
+      "parameters": [
+        {
+          "id": 0,
+          "name": "",
+          "type": "",
+          "random": "",
+          "ranges": [],
+          "initial": "",
+          "parameterUuid": "a23ffa0e-51f6-42c3-b7af-0859821adabb"
+        }
+      ],
+      "shapeWidth": 120,
+      "elementUuid": "a30167a2-cad3-481b-a667-122295f3d648",
+      "shapeHeight": 100,
+      "sortingType": "A"
+    },
+    {
+      "dx": 300,
+      "dy": 60,
+      "id": 6,
+      "name": "Log out from IL",
+      "type": "State",
+      "textX": 20,
+      "textY": 25,
+      "parentId": 0,
+      "invisible": false,
+      "stateType": "Normal",
+      "parameters": [
+        {
+          "id": 0,
+          "name": "",
+          "type": "",
+          "random": "",
+          "ranges": [],
+          "initial": "",
+          "parameterUuid": "898fa770-ee04-467f-a32f-5956194025da"
+        }
+      ],
+      "shapeWidth": 140,
+      "elementUuid": "d8d821b4-9b47-466e-88aa-29a81938063c",
+      "shapeHeight": 120,
+      "sortingType": "B"
+    },
+    {
+      "dx": 20,
+      "dy": 40,
+      "id": 5,
+      "name": "Launch IL",
+      "type": "Action",
+      "textX": 15,
+      "textY": 22,
+      "weight": 100,
+      "parentId": 4,
+      "callLimit": 0,
+      "actionType": "Normal",
+      "parameters": [
+        {
+          "id": 0,
+          "name": "",
+          "type": "",
+          "random": "",
+          "ranges": [],
+          "initial": "",
+          "parameterUuid": "14e5ea29-5aed-41d6-acde-22f3c5032947"
+        }
+      ],
+      "shapeWidth": 80,
+      "elementUuid": "ed42e3b4-489a-4c20-8984-0c6f5e219c0a",
+      "shapeHeight": 40,
+      "sortingType": "C",
+      "connectedStates": [
+        {
+          "stateRef": 6
+        }
+      ]
+    },
+    {
+      "dx": 20,
+      "dy": 40,
+      "id": 7,
+      "name": "Sign out",
+      "type": "Action",
+      "textX": 15,
+      "textY": 22,
+      "weight": 100,
+      "parentId": 6,
+      "snippets": [
+        {
+          "name": "Login_out",
+          "type": "normal",
+          "fullName": "IL_Logon.script:Login_out",
+          "scriptPath": "IL_Logon.script:Login_out"
+        }
+      ],
+      "callLimit": 0,
+      "actionType": "Normal",
+      "parameters": [
+        {
+          "id": 0,
+          "name": "",
+          "type": "",
+          "random": "",
+          "ranges": [],
+          "initial": "",
+          "parameterUuid": "58942c8f-2615-40f0-8e67-9e5f81dcdb2f"
+        }
+      ],
+      "shapeWidth": 80,
+      "elementUuid": "771c1302-333f-4931-a3b1-57010585ee08",
+      "shapeHeight": 40,
+      "sortingType": "C",
+      "connectedStates": [
+        {
+          "stateRef": 1
+        }
+      ]
+    }
+  ],
+  "modeluuid": "19b18090-8e46-4c88-8829-dddd469abf6b",
+  "suitePath": "integrallife.suite",
+  "testcases": [],
+  "verbosity": 27392,
+  "snippetFull": false,
+  "stateCounter": 6,
+  "actionCounter": 3,
+  "parameterCounter": 0,
+  "performanceTests": [],
+  "performanceTimings": false,
+  "allSnippetsDisabled": false,
+  "runCleanupAfterAbort": false,
+  "allowGlobalActionsInInitialStates": true
+}

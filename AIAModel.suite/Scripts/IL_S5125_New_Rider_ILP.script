@@ -1,0 +1,82 @@
+﻿//======================================================
+//                                           AIA SINGAPORE
+//======================================================
+// Name        : Common_Functions
+// Descripton : This contains all common functions for Integral Life application suite
+//======================================================
+//  REVISION
+//-------------------------------------------------------------------------------------------------------------------------
+// Date          |  Author                              | Description
+//----------------- -------------------------------- ----------------------------------------------------------------------
+// 20220410    Automation Team -Colleen    Initial Version for IL Proposal for Rider Cov 
+//-------------------------------------------------------------------------------------------------------------------------
+
+on Check_Ben_Amt_Exists
+	if imagefound(text:"Benefit Amount",waitfor: 1  )  
+		put "true" into var_ben_amt_exists
+	else
+		put "false" into var_ben_amt_exists
+	end if
+	return var_ben_amt_exists 
+	
+	
+end Check_Ben_Amt_Exists
+
+on Check_For_Errors
+
+	typetext f5 
+	put  ImageRectangle(Text:"Special Terms", caseSensitive:yes , WaitFor:1)  into var_loc
+	put  [var_loc.bottomleft +[-10,30], var_loc.bottomright + [1000,120] ] into var_rec 
+	set the SearchRectangle to var_rec 
+	
+	put readtext(var_rec) into var_error
+	if var_error  <>  "" 
+		logerror var_error & " error displayed"
+		capturescreen {name: "Error displayed_" & today & hour(time) & "_" & minute(time) &second(time) , increment: yes} 
+	else
+		logsuccess "Screen has no error prompt"
+	end if
+	
+	set the SearchRectangle to empty 
+	
+end Check_For_Errors
+
+on Hit_Enter
+	capturescreen {name: "Image before Hit Enter" & today & hour(time) & "_" & minute(time) &second(time)  } 
+	typetext returnkey
+end Hit_Enter
+
+
+on Enter_Ben_Amt
+	repeat each line of global var_Sum_Assured_Ben_Amt
+		if repeatindex() = global var_cov_lineno
+			put line repeatIndex() of global var_Sum_Assured_Ben_Amt into var_line_ben_amt
+			repeat each item of var_line_ben_amt
+				put repeatindex() into var_item_index
+				if var_item_index = global var_cov_itemno
+					put item global var_cov_itemno of var_line_ben_amt into  var_ben_amt
+					exit repeat 
+				end if
+			end repeat
+		end if
+	end repeat
+	if imagefound(text: "Benefit Amount",waitfor: 1) = true or imagefound(text: "Sum Assured", waitfor: 1) 
+		click FoundImageLocation()
+		typetext tabKey, var_ben_amt
+	end if
+	
+	
+end Enter_Ben_Amt
+
+
+
+on Set_Ben_Amt_done  var_ben_amt_exists
+	if var_ben_amt_exists="false"
+		set var_Ben_Amt_done = "true"
+	else
+		set var_Ben_Amt_done = "false"
+	end if
+	return var_Ben_Amt_done
+	
+	
+end Set_Ben_Amt_done

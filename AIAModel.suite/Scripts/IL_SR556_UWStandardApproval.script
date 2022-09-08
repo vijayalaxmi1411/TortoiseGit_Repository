@@ -1,0 +1,109 @@
+﻿//======================================================
+//                                           AIA SINGAPORE
+//======================================================
+// Name        : IntegralLife_SR556
+// Descripton : This script is for Integral Life UW approval - ASTD
+//======================================================
+//  REVISION
+//-------------------------------------------------------------------------------------------------------------------------
+// Date          |  Author                     | Description
+//----------------- -------------------------------- ----------------------------------------------------------------------
+// 20220420     Shiemei                       Initial Version
+//-------------------------------------------------------------------------------------------------------------------------
+
+
+To handle UW_Approval_Update  
+	If ImageFound(text: "SR556", caseSensitive: Yes, waitFor:3)
+		If global var_index <> 0
+			set var_UWDecisionCode = global var_UWDecisionCode
+		End If
+		
+		Log var_UWDecisionCode
+		
+		If ImageFound(text: "U/W Decision Code", caseSensitive: Yes, waitFor:3)
+			Click FoundImageLocation()
+			Typetext tabKey
+			Typetext  var_UWDecisionCode
+			
+		Else
+			LogError "Unable to search for Contract field."
+			capturescreen {name: "Unable to search for Contract field" , increment:yes & "_" & today & time}
+		End If
+		(*		Click Text: "U/W Decision Code" , caseSensitive: Yes*)
+		Typetext F5
+		capturescreen {name: "UW Decision" , increment:yes & "_" & today & time}
+		
+		Else		
+		LogError "Not at UW Approval Screen - SR556."
+		capturescreen {name: "Not at UW Approval Screen - SR556" , increment:yes & "_" & today & time}
+	End If
+End UW_Approval_Update
+
+
+to Exit_Due_To_Validations
+	capturescreen {name: "Validation Errors" , increment:yes & "_" & today & time}
+	TypeText F3
+	wait 1
+	capturescreen {name: "Upon F3" , increment:yes & "_" & today & time}
+	
+	
+end Exit_Due_To_Validations
+
+to Hit_Enter
+	typetext F5
+	put Check_For_Errors ("Refresh", -500 ,10) into var_error
+	
+	if var_error="Y"
+		exit handler
+	end if
+	
+	Typetext returnKey	
+	
+	Set the searchRectangle to Common_Functions.ScreenPart("BottomHalf")
+	put imagerectangle (text: "Action") into var_loc
+	put [var_loc.topleft +[-350,110],var_loc.topright + [100,140] ] into var_rec
+	put readtext(var_rec) into var_check
+	log "Transaction Done=" & var_check
+	
+	If var_check = "Last transaction processed"
+		LogSuccess "UW Done."
+		capturescreen {name: "Underwriting Approval Update - SR556" , increment:yes & "_" & today & time}
+	Else
+		LogSuccess "UW Failed."
+		capturescreen {name: "UW Failed" , increment:yes & "_" & today & time}
+	End If
+	set the searchrectangle to empty
+	
+end Hit_Enter
+
+
+Function  Check_For_Errors var_text_to_check , var_topleft_X, var_topleft_y
+	put  ImageRectangle(Text:var_text_to_check, caseSensitive:yes , WaitFor:1)  into var_loc
+	put  [var_loc.bottomleft +[var_topleft_X ,var_topleft_y], var_loc.bottomright + [1000,120] ] into var_rec 
+	set the SearchRectangle to var_rec 
+	
+	put readtext(var_rec) into var_error
+	if var_error  <>  "" 
+		logerror var_error & " error displayed"
+capturescreen {name: "Error displayed_" & today & hour(time) & "_" & minute(time) &second(time) , increment: yes} 
+		put "Y" into var_error
+	else
+		logsuccess "Screen has no error prompt"
+	end if
+	
+	set the SearchRectangle to empty 
+	
+	return  var_error 
+end Check_For_Errors 
+
+To Check_UW_Approval var_next_screen
+	if global var_UWDecisionCode ="ASTD"
+		set var_UW = "ASTD"
+	else
+		set var_UW = "NON_ASTD"
+	end if
+	if var_next_screen is not in ["SR556", "SV075"] 
+		LogError "Not able to load correct UW screen"
+	end if
+	return var_UW
+End Check_UW_Approval

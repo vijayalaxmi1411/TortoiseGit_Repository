@@ -1,0 +1,56 @@
+﻿//                                           AIA SINGAPORE
+//======================================================
+// Name        : IntegralLife_S6276
+// Descripton : This script is for Integral Life Mandate List 
+//======================================================
+//  REVISION
+//-------------------------------------------------------------------------------------------------------------------------
+// Date          |  Author                     | Description
+//----------------- -------------------------------- ----------------------------------------------------------------------
+// 20220419     Reginal                       Initial Version
+//-------------------------------------------------------------------------------------------------------------------------
+
+// Select Bank Code
+To Handle Select_Mandate 
+	
+	(*	Set var_ItemFound = "N"
+	Set var_counter = 0*)
+	
+	Click Text:"Select", caseSensitive:yes, waitfor:8
+	Typetext tab
+	
+	Set the searchRectangle to Common_Functions.ScreenPart("LeftHalf") + [[530,0], [-340,0]]
+	(*	Repeat until var_ItemFound = "Y" or var_counter = 5
+		If Imagefound(Text:global var_MandateNo, CaseSensitive:Yes, waitfor:8)
+			Set var_ItemFound = "Y"
+		Else
+			TypeText pageDown
+			set var_counter = var_counter + 1
+		End If
+	End Repeat
+	
+	If var_ItemFound = "N"
+		Set var_counter = 0
+		Repeat until var_ItemFound = "Y" or var_counter = 5
+			If Imagefound(Text:global var_MandateNo, CaseSensitive:Yes, waitfor:8)
+				Set var_ItemFound = "Y"
+			Else
+				TypeText pageUp
+				set var_counter = var_counter + 1
+			End If
+		End Repeat
+	End If
+	
+	If var_ItemFound = "Y"
+		Click Text:global var_MandateNo, CaseSensitive:Yes, waitfor:8
+		Typetext shiftKey, tab
+		Typetext "1"
+	Else
+		LogError "S6276 : Mandate not found"
+	End If*)
+	
+	Common_Functions.Select_Item global var_MandateNo, "(S6276) Mandate not found"
+	Set the searchRectangle to Empty
+	--Typetext "1", return
+End Select_Mandate
+

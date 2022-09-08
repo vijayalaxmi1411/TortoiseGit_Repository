@@ -1,0 +1,25 @@
+﻿To handle derive_emailSubject
+	
+	(*set var_emailSubject = quote & "AIA HealthShield Pre-Authorisation Request (CPA Ref No. " & global var_eRefNo & ")" & quote
+	return var_emailSubject*)
+	
+End derive_emailSubject
+
+
+To handle derive_emailTo
+	
+	(*	set var_emailTo = global var_Doctor_Email 
+	return var_emailTo	*)
+	
+	
+End derive_emailTo
+
+
+To handle derive_emailContent
+
+	(*set var_emailContent = "Please refer to attachment"
+	return var_emailContent
+	*)
+End derive_emailContent
+
+

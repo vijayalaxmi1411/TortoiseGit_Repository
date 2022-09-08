@@ -1,0 +1,91 @@
+﻿//======================================================
+//                                           AIA SINGAPORE
+//======================================================
+// Name        : IntegralLife_S5417
+// Descripton : This script is for Integral Life Fund Direction 
+//======================================================
+//  REVISION
+//-------------------------------------------------------------------------------------------------------------------------
+// Date          |  Author                     | Description
+//----------------- -------------------------------- ----------------------------------------------------------------------
+// 20220420     Mita Padhi                     Initial Version
+//-------------------------------------------------------------------------------------------------------------------------
+
+
+To handle PageloadPremiumDirection
+	Set the searchRectangle to Common_Functions.ScreenPart("tophalf")
+	if ImageFound(text:"S5417", waitFor:2)
+		LogSuccess "Premium Direction page load success"
+	else 
+		logerror "Premium Direction page load not success" 
+		capturescreen {name: "Premium Direction page load not success_" & today & hour(time) & "_" & minute(time) &second(time) , increment: yes} 
+
+	end if
+	Set the searchRectangle to empty
+End PageloadPremiumDirection
+
+
+To handle Mercer
+	log global var_MercerPortfolio
+	log global var_MercerEffDate
+	Set the searchRectangle to Common_Functions.ScreenPart("HorizontalMiddle") + [[400,120], [-400,70]]
+	If global var_MercerPortfolio<>""
+		Click text:"Portfolio", CaseSensitive:yes, ignoreSpaces:Yes
+		Typetext Tabkey
+		click[100,300]
+		typetext global var_MercerPortfolio
+		Typetext Tabkey
+		typetext global var_MercerEffDate
+		Typetext F5
+	End If
+	Set the SearchRectangle to empty
+End Mercer
+
+To Handle SelectFund
+	If global var_MercerPortfolio=""
+		Set the searchRectangle to Common_Functions.ScreenPart("HorizontalMiddle") + [[400,120], [-400,70]]
+		wait 1
+		Click item 2 of everyimagelocation(text:"Fund", CaseSensitive:yes, ignoreSpaces:Yes,waitfor:8)
+		Typetext Tabkey
+		click[100,300]
+		repeat with each line of global var_Fund
+			Put repeatindex() into Fund_slno
+			Put line(Fund_slno) of global var_Fund into Fund
+			Put line(Fund_slno) of global var_Percentage into Percentage
+			typetext Fund
+			typetext Percentage
+			Typetext Tabkey
+			Typetext Tabkey
+		end repeat
+	end if
+	
+	Set the SearchRectangle to empty
+End SelectFund
+
+
+on Hit_Enter
+	// twice hit F5 to clear warning message if any//
+	typetext F5
+	typetext F5
+	Set the searchRectangle to Common_Functions.ScreenPart("BottomHalf") + [[0,330], [0,-100]]
+	wait 1
+	Put ReadText ([searchrectangle().topleft, searchrectangle().bottomright], contrastColor:[255,255,255], contrast:"On" ) into global var_ErrorMessage
+	log  global var_ErrorMessage
+	
+	If global var_ErrorMessage =""
+		capturescreen {name: "Premium redirection _" & today & hour(time) & "_" & minute(time) &second(time) , increment: yes} 
+		Set the searchRectangle to Empty
+		typetext returnkey
+		Set the searchRectangle to Empty
+		Return "true"
+	else 
+	(*If global var_ErrorMessage <>""
+		if global var_ErrorMessage <>"Please revisit CKA."*)
+		LogWarning "Error : " & global var_ErrorMessage
+		capturescreen {name: "Screen Error found_" & today & hour(time) & "_" & minute(time) &second(time) , increment: yes} 
+		Set the searchRectangle to Empty
+		Return "False"
+	end if
+	
+end Hit_Enter
+

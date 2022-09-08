@@ -1,0 +1,386 @@
+﻿//======================================================
+//                                           AIA SINGAPORE
+//======================================================
+// Name        : Receipting screens
+// Descripton : This contains all  functions for Integral Life application suite - Receipting module
+//======================================================
+//  REVISION
+//-------------------------------------------------------------------------------------------------------------------------
+// Date          |  Author                              | Description
+//----------------- -------------------------------- ----------------------------------------------------------------------
+// 20220410    Automation Team - Prabhu    Receipting Screens
+//-------------------------------------------------------------------------------------------------------------------------
+
+
+
+To Validate_ReceiptScreen
+	set the SearchRectangle to []
+	if imagefound (text:"S2067", LowResolutionMode:"Yes", InvertImage:"Yes", EnableAggressiveTextExtraction:"Yes", WaitFor:5)
+		capturescreen {name: "Receipt Menu displayed on screen " , increment:yes } 
+		logsuccess "PASSED: Receipt Menu screen S2067 displayed"
+	else
+		logerror "FAILED: Receipt Menu screen S2067 NOT displayed"
+		capturescreen {name: "Receipt Menu screen S2067 NOT displayed " , increment:yes } 
+		exit handler
+	end if
+	
+End Validate_ReceiptScreen	
+
+To Input_BankCode
+
+	set the SearchRectangle to []
+
+	
+	if imagefound (text:"Bank Code", caseSensitive:"Yes", LowResolutionMode:"Yes", InvertImage:"Yes", EnableAggressiveTextExtraction:"Yes", WaitFor:5)
+		Click {Text:"Bank Code", LowResolutionMode:"Yes", caseSensitive:"Yes", InvertImage:"Yes", EnableAggressiveTextExtraction:"Yes", EnhanceLocalContrast:"Yes", WaitFor:5}
+		TypeText tabKey
+		log global var_BankCode, global var_Action
+		typetext global var_BankCode
+		Wait 1
+		Click {Text:"Sub Receipt No", LowResolutionMode:"Yes", caseSensitive:"Yes", EnableAggressiveTextExtraction:"Yes", EnhanceLocalContrast:"Yes", WaitFor:5}
+		typetext Tabkey
+		typetext Tabkey
+		capturescreen {name: "Bank Code & Action displayed on screen " , increment:yes  } 
+		logsuccess "PASSED  " & global var_BankCode & " and "  &  global var_Action & "  entered on screen"
+		Typetext returnKey
+		
+		
+		
+	Else
+		logerror "FAILED: Bank Code and Action Field NOT displayed"
+		capturescreen {name: "Bank Code and Action Field NOT displayed" } 
+	end if
+	
+End Input_BankCode
+
+To Input_Action
+	click text: "Sub Receipt No"
+	typetext Tabkey, Tabkey 
+	typetext global var_Action
+	
+End Input_Action
+
+To Validate_ReceiptHeaderScreen
+
+	set the SearchRectangle to []
+
+	if imagefound (text:"SR289", LowResolutionMode:"Yes", InvertImage:"Yes", EnableAggressiveTextExtraction:"Yes", WaitFor:5)
+		capturescreen {name: "Receipt Menu displayed on screen " , increment:yes  } 
+		logsuccess "PASSED: Receipt Header Menu screen SR289 displayed"
+		
+	else
+		
+		logerror "FAILED: Receipt Header Menu screen SR289 NOT displayed"
+		capturescreen {name: "Receipt Header Menu screen SR289 NOT displayed", increment: yes} 
+		exit handler
+	end if
+	
+End Validate_ReceiptHeaderScreen	
+
+To Input_CPF_Ind
+
+	click text: "CPF indic"
+	typetext Tabkey ,global var_CPF_ind
+	
+	
+End Input_CPF_Ind
+
+
+
+To Validate_PaymentType_New  
+
+
+	log global var_PaymentType
+	put  global var_PaymentType into var_PaymentType
+	Return  var_PaymentType
+	
+End Validate_PaymentType_New
+
+
+To Input_PaymentType
+	if imagefound (Text:"Clearing Bank Code", LowResolutionMode:"Yes", caseSensitive:"Yes", EnableAggressiveTextExtraction:"Yes", EnhanceLocalContrast:"Yes", WaitFor:5)
+		Click {Text:"Clearing Bank Code", LowResolutionMode:"Yes", caseSensitive:"Yes", EnableAggressiveTextExtraction:"Yes", EnhanceLocalContrast:"Yes", WaitFor:5}
+		Wait 1
+		TypeText tabKey
+		typetext global var_PaymentType
+		
+	Else
+		logerror "FAILED: Clearing Bank Code NOT displayed"
+		capturescreen {name: "Clearing Bank Code NOT displayed" , increment: yes } 
+	end if
+	
+End Input_PaymentType
+
+To Input_NonGIRO_Header_Details
+
+	set the SearchRectangle to []
+
+	if imagefound (Text:"Clearing Bank Code", LowResolutionMode:"Yes", caseSensitive:"Yes", EnableAggressiveTextExtraction:"Yes", EnhanceLocalContrast:"Yes", WaitFor:5)
+		Click {Text:"Clearing Bank Code", LowResolutionMode:"Yes", caseSensitive:"Yes", EnableAggressiveTextExtraction:"Yes", EnhanceLocalContrast:"Yes", WaitFor:5}
+		Wait 1
+		TypeText tabKey, tabKey
+		TypeText global var_PremiumAmt
+		TypeText F5
+		Check_For_Errors "More", -1100 ,30
+		logsuccess "Payment Type  " & var_PaymentType & " : " & var_PremiumAmt & "  displayed on screen" 
+		capturescreen {name: "Payment Type:   " & var_PaymentType & " and  " & var_PremiumAmt & "  entered on screen"  , increment:yes  } 
+
+		TypeText return
+		
+	Else
+		logerror "FAILED: Clearing Bank Code NOT displayed"
+		capturescreen {name: "Clearing Bank Code NOT displayed" , increment: yes } 
+	end if
+	
+End Input_NonGIRO_Header_Details
+
+To Input_ChequeNo
+	if imagefound (Text:"Clearing Bank Code", LowResolutionMode:"Yes", caseSensitive:"Yes", EnableAggressiveTextExtraction:"Yes", EnhanceLocalContrast:"Yes", WaitFor:5)
+		Click {Text:"Clearing Bank Code", LowResolutionMode:"Yes", caseSensitive:"Yes", EnableAggressiveTextExtraction:"Yes", EnhanceLocalContrast:"Yes", WaitFor:5}
+		Wait 1
+		TypeText tabKey, tabKey
+		TypeText tabKey, tabKey
+		TypeText tab, global var_ChequeNo
+	Else
+		logerror "FAILED: Clearing Bank Code NOT displayed"
+		capturescreen {name: "Clearing Bank Code NOT displayed" , increment: yes } 
+	end if
+End Input_ChequeNo
+
+
+
+To Input_GIRO_Header_Details
+
+	set the SearchRectangle to []
+	if imagefound (Text:"Bank Slip#", LowResolutionMode:"Yes", caseSensitive:"Yes", EnableAggressiveTextExtraction:"Yes", EnhanceLocalContrast:"Yes", WaitFor:5)
+		
+		Click {Text:"Bank Slip#", LowResolutionMode:"Yes", caseSensitive:"Yes", EnableAggressiveTextExtraction:"Yes", EnhanceLocalContrast:"Yes", WaitFor:5}
+		//To Input Payment Type & Premium Amount
+		TypeText tabKey , tabkey
+		TypeText global var_PremiumAmt
+		
+		Wait 1
+		
+		//To Input Card or Bank Account Details
+		Typetext tabKey
+		Typetext tabKey
+		Typetext tabKey
+		Typetext tabKey
+		
+		TypeText global var_Card_Acct_type
+		
+		TypeText global var_Chq_CCDt
+		
+		TypeText global var_BSB_Code
+		
+		Typetext tabKey
+		Typetext tabKey
+		
+		TypeText global var_Account_CCNo
+		TypeText F5
+		Check_For_Errors "More", -1100 ,30
+		log global var_Chq_CCDt &" : " & global var_BSB_Code & " : " &  global var_Account_CCNo
+		logsuccess "Payment Type Cheque Date and Bank code  " & global var_PaymentType & global var_Chq_CCDt &" : " & global var_BSB_Code & " : " & global var_Account_CCNo & " have been inputted in the screen"  
+		capturescreen {name: "Payment Type Cheque Date and Bank code haven been inputted on screen", increment: yes  } 
+		TypeText return
+	else 
+		logerror "FAILED: Missing Bank Slip in receipting screen"
+		capturescreen {name: "Missing Bank Slip in receipting screen" } 
+	end if
+End Input_GIRO_Header_Details
+
+
+To Handle_AMLScreen
+
+	if imagefound (text:"Amount Entered Exceeds the Money Laundering Check", LowResolutionMode:"Yes", InvertImage:"Yes", EnableAggressiveTextExtraction:"Yes", WaitFor:1)
+		Click {Text:"Amount Entered Exceeds the Money Laundering Check", LowResolutionMode:"Yes", caseSensitive:"Yes", EnableAggressiveTextExtraction:"Yes", EnhanceLocalContrast:"Yes", WaitFor:1}
+		TypeText tabKey
+		TypeText global var_AML_ind
+		capturescreen {name: "AML Screen displayed on screen " , increment:yes   } 
+		logsuccess "PASSED: AML Menu screen displayed"
+		TypeText returnkey 
+	else
+		capturescreen {name: "NO AML Menu screen displayed" } 
+		logsuccess "PASSED: NO AML Menu screen displayed"
+		exit handler
+	end if
+	
+End Handle_AMLScreen	
+
+
+
+To Validate_ReceiptDetailScreen
+	set the SearchRectangle to []
+	if imagefound (text:"S2610", LowResolutionMode:"Yes", InvertImage:"Yes", EnableAggressiveTextExtraction:"Yes", WaitFor:5)
+		capturescreen {name: "Receipt Details Menu displayed on screen " , increment:yes  } 
+		logsuccess "PASSED: Receipt Header Menu screen S2610 displayed"
+	else
+		logerror "FAILED: Receipt Header Menu screen S2610 NOT displayed"
+		Capturescreen {name: "Receipt Header Menu screen S2610 NOT displayed" } 
+		exit handler
+	end if
+	
+End Validate_ReceiptDetailScreen	
+
+To Input_PolicyNumber
+
+
+	set the SearchRectangle to []
+
+	if imagefound (Text:"Contract No", LowResolutionMode:"Yes", caseSensitive:"Yes", EnableAggressiveTextExtraction:"Yes", EnhanceLocalContrast:"Yes", WaitFor:5)
+		Click {Text:"Contract No", LowResolutionMode:"Yes", caseSensitive:"Yes", EnableAggressiveTextExtraction:"Yes", EnhanceLocalContrast:"Yes", WaitFor:5}
+		TypeText tabKey		
+		log global var_PolicyNumber
+		typetext global var_PolicyNumber, returnkey 
+		logsuccess "PoicyNumber  " & global var_PolicyNumber & "  displayed on screen"  
+	Else
+		Capturescreen {name: "Payment Type Field NOT displayed", increment:yes}
+		logerror "FAILED: Payment Type Field NOT displayed"
+	End if
+	
+End Input_PolicyNumber
+
+
+To Input_SacsCode_Sacstype
+	wait 1
+	
+	set the SearchRectangle to []
+
+	if imagefound (Text:"Other Reference", LowResolutionMode:"Yes", caseSensitive:"Yes", EnableAggressiveTextExtraction:"Yes", EnhanceLocalContrast:"Yes", WaitFor:5)
+		Click {Text:"Other Reference", LowResolutionMode:"Yes", caseSensitive:"Yes", EnableAggressiveTextExtraction:"Yes", EnhanceLocalContrast:"Yes", WaitFor:5}
+		TypeText tabKey
+		TypeText tabKey
+		
+		log global var_Sacscode, global var_Sacstype
+		typetext global var_Sacscode, global var_Sacstype
+		logsuccess "SacsCode Sacstype " & global var_Sacscode & global var_Sacstype & "  entered successfully on screen" 
+	Else
+		logerror "FAILED: Failed to Enter the SACSCODE : " & var_Sacscode
+	end if
+	
+End Input_SacsCode_Sacstype
+
+To Input_Header_PolicyNumber_PremiumAmount
+	set the SearchRectangle to []
+	if imagefound (Text:"Other Reference", LowResolutionMode:"Yes", caseSensitive:"Yes", EnableAggressiveTextExtraction:"Yes", EnhanceLocalContrast:"Yes", WaitFor:5)
+		
+		Click {Text:"Other Reference", LowResolutionMode:"Yes", caseSensitive:"Yes", EnableAggressiveTextExtraction:"Yes", EnhanceLocalContrast:"Yes", WaitFor:5}
+		TypeText tabKey
+		TypeText tabKey
+		TypeText tabKey
+		TypeText tabKey
+		
+		
+		log global var_PolicyNumber, global var_PremiumAmt
+		
+		typetext global var_PolicyNumber
+		wait 1
+		TypeText tabKey
+		TypeText tabKey
+		TypeText tabKey
+		TypeText tabKey
+		TypeText tabKey
+		typetext global var_PremiumAmt
+		TypeText F5
+		Check_For_Errors "Header", -1100 ,10
+		logsuccess "PolicyNumber  " & global var_PolicyNumber & "  entered successfully on screen" 
+		CaptureScreen {Name: "PolicyNumber  " & global var_PolicyNumber & "  entered successfully on screen" , increment: yes}
+		TypeText returnkey
+		
+	Else		
+		logerror "FAILED: Failed to Enter the PolicyNumber : " & var_PolicyNumber
+		CaptureScreen {Name: "Failed to Enter the PolicyNumber " & var_PolicyNumber , increment: yes}
+	end if
+	
+End Input_Header_PolicyNumber_PremiumAmount
+
+
+To Validate_FPDF_Screen
+
+	if imagefound (text:"SSM84", LowResolutionMode:"Yes", InvertImage:"Yes", EnableAggressiveTextExtraction:"Yes", WaitFor:5)
+		TypeText global var_FDPF_ind
+		capturescreen {name: "FPDF Screen displayed",increment: yes   } 
+		logsuccess "PASSED: FPDF Screen SSM84 is displayed"
+		TypeText returnKey
+	else
+		logsuccess "PASSED: NO FPDF Screen SSM84 is displayed"
+		Capturescreen {name: "NO FPDF Screen SSM84 is displayed",increment: yes   } 
+		exit handler
+	end if
+	if imagefound (text:"Policy have exceeded its future premium", WaitFor:5,EnableAggressiveTextExtraction:"Yes") 
+		if global var_FDPF_ind = "Y"
+			Typetext "Yes"
+		else
+			Typetext "No"
+		end if 
+		capturescreen {name: "FPDF confirmation screen displayed",increment: yes   } 
+		logsuccess "PASSED: FPDF confirmation screen displayed is displayed"
+		TypeText returnKey
+	end if
+	
+End Validate_FPDF_Screen	
+
+
+To Validate_End_Receipt_Creation
+	If imagefound (text:"S2067", LowResolutionMode:"Yes", InvertImage:"Yes", EnableAggressiveTextExtraction:"Yes", WaitFor:3) = true  and  imagefound(text: "created", caseSensitive:yes ,waitfor: 3)  = true 
+		capturescreen {name: "Receipt creation confirmation screen displayed" , increment:yes } 
+		logsuccess "PASSED: Receipt creation confirmation screen displayed"
+		Return_to_MainMenu
+		exit handler
+	End if 
+	
+	typetext returnKey
+	
+	if imagefound (text:"S2067", LowResolutionMode:"Yes", InvertImage:"Yes", EnableAggressiveTextExtraction:"Yes", WaitFor:5)
+		if imagefound(text: "created", caseSensitive:yes ) 
+			capturescreen {name: "Receipt creation confirmation screen displayed" , increment:yes } 
+			logsuccess "PASSED: Receipt creation confirmation screen displayed"
+		else
+			capturescreen {name: "Receipt creation confirmation screen not displayed" , increment:yes } 
+			Logerror "Failed: Receipt creation confirmation screen not displayed"
+end if
+	else
+		capturescreen {name: " Receipt Header Menu screen S2067 NOT displayed " , increment:yes } 
+		logerror "FAILED: Receipt Header Menu screen S2067 NOT displayed"
+		exit handler
+	end if
+	
+	Return_to_MainMenu
+	
+End Validate_End_Receipt_Creation	
+
+To Return_to_MainMenu
+	typetext F3, F3 
+	If imagefound (text:"System Master Menu", WaitFor:3)   
+		Capturescreen {name: "System Master Menu screen displayed" , increment:yes } 
+		Logsuccess "PASSED: System Master Menu screenscreen displayed"
+	else
+		Capturescreen {name: "System Master Menu screen displayed" , increment:yes } 
+		Logerror  "PASSED: System Master Menu screenscreen displayed"	
+	End if 
+End Return_to_MainMenu
+
+to Check_For_Errors var_text_to_check , var_topleft_X, var_topleft_y
+	put  ImageRectangle(Text:var_text_to_check, caseSensitive:yes , WaitFor:1)  into var_loc
+	put  [var_loc.bottomleft +[var_topleft_X ,var_topleft_y], var_loc.bottomright + [1000,120] ] into var_rec 
+	set the SearchRectangle to var_rec 
+	
+	put readtext(var_rec) into var_error
+	if var_error  <>  "" 
+		logerror var_error & " error displayed"
+		capturescreen {name: "Error displayed_" & today & hour(time) & "_" & minute(time) &second(time) , increment: yes} 
+	else
+		logsuccess "Screen has no error prompt"
+	end if
+	
+	set the SearchRectangle to empty 
+	
+	
+end Check_For_Errors 
+
+
+
+
+
+
+

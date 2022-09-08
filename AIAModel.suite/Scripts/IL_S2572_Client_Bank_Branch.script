@@ -1,0 +1,58 @@
+﻿//======================================================
+//                                           AIA SINGAPORE
+//======================================================
+// Name        : IntegralLife_S2572
+// Descripton : This script is for Integral Life Client Bank Branch Screen
+//======================================================
+//  REVISION
+//-------------------------------------------------------------------------------------------------------------------------
+// Date          |  Author                     | Description
+//----------------- -------------------------------- ----------------------------------------------------------------------
+// 20220418     Reginal                       Initial Version
+//-------------------------------------------------------------------------------------------------------------------------
+
+// Select Bank Code
+To Handle Select_BankCode 
+	(*Set var_ItemFound = "N"
+	Set var_counter = 0*)
+	
+	Click Text:"Bankkey", caseSensitive:yes, TextDifference:1, waitfor:8
+	Typetext tab
+	
+	Set the searchRectangle to Common_Functions.ScreenPart("LeftHalf") + [[500,0], [-340,0]]
+	(*	Repeat until var_ItemFound = "Y" or var_counter = 20
+		If Imagefound(Text:global var_BankCode, CaseSensitive:Yes, waitfor:8)
+			Set var_ItemFound = "Y"
+		Else
+			TypeText pageDown
+			Set var_counter = var_counter + 1
+		End If
+	End Repeat
+	
+	If var_ItemFound = "Y"
+		Click Text:global var_BankCode, CaseSensitive:Yes, waitfor:8
+		Typetext shiftKey, tab
+		Typetext "1", return
+	Else 
+		LogError "S2572: Bank Code not Found"
+	End If*)
+	
+	Common_Functions.Select_Item global var_BankCode, "(S2572) Bank Code not Found"
+	Set the searchRectangle to empty
+End Select_BankCode
+
+// Input Starting Bank Description
+To Handle Search_StartingBankDescription
+	--set BranchDescription = "Bank Code 7348"
+	Click item 1 of everyimagelocation(text:"Bank Description", CaseSensitive:yes)
+	Typetext tab, global var_BankDescription, return
+End Search_StartingBankDescription
+
+// INput Scan Branch Description
+To Handle Search_ScanBranchDescription
+	--set global var_BranchDescription = "Branch 922"
+	Click item 2 of everyimagelocation(text:"Branch Description", CaseSensitive:yes)
+	Typetext Shiftkey, tab
+	Typetext global var_BranchDescription, return
+End Search_ScanBranchDescription
+

@@ -1,0 +1,103 @@
+﻿on Get_Component_No
+	if imagefound (text:"S5003", waitfor: 3)  = true or imagefound (text:"SCB19", waitfor: 3) 
+		exit handler 
+	end if
+	set the SearchRectangle to empty
+	put  ImageRectangle(Text:"Cov ", caseSensitive:"Yes", EnableAggressiveTextExtraction:"Yes", IgnoreSpaces:"Yes", WaitFor:5 )  into var_loc
+	--put  [var_loc.topleft +[0,-10], var_loc.bottomright + [130,10] ] into var_rec 
+	put  [var_loc.topleft +[-80,-10], var_loc.bottomright + [-60,10] ] into var_rec 
+	set the SearchRectangle to var_rec 
+	put readtext(var_rec ) into var_readtext
+	put  last two chars of var_readtext  + 0  into global  var_cov_lifeno
+	
+	
+	set the SearchRectangle to empty
+	if imagefound (text:"S5417",waitfor:1 )
+		put  ImageRectangle(Text:"Cov", caseSensitive:yes , WaitFor:1)  into var_loc
+	else
+		put  ImageRectangle(Text:"Coverage", caseSensitive:yes , WaitFor:1)  into var_loc
+	end if
+	put  [var_loc.topleft +[0,-10], var_loc.bottomright + [120,10] ] into var_rec 
+	set the SearchRectangle to var_rec 
+	put readtext(var_rec ) into var_readtext
+	put  last two chars of var_readtext  + 0  into global var_cov_lineno
+	
+	
+	set the SearchRectangle to empty
+	put  ImageRectangle(Text:"Rider", caseSensitive:yes , WaitFor:1)  into var_loc
+	put  [var_loc.topleft +[0,-10], var_loc.bottomright + [120,10] ] into var_rec 
+	set the SearchRectangle to var_rec 
+	put readtext(var_rec ) into var_readtext
+	put  last two chars of var_readtext  + 1  into global var_cov_itemno
+	
+	set the SearchRectangle to empty
+	
+end Get_Component_No
+
+
+on Check_Cov_Screen var_env, var_screen_to_check
+	set the SearchRectangle to empty
+	
+	(*	set the SearchRectangle to Common_Functions.ScreenPart("HorizontalMiddle")
+	set var_window = false
+	if imagefound(text: var_env,waitfor: 1) =false
+		set the SearchRectangle to empty
+	else
+		set var_window = true
+	end if
+	
+	put  ImageRectangle(Text:var_env, caseSensitive:yes , WaitFor:1)  into var_loc
+	put  [var_loc.topleft +[880,-10], var_loc.bottomright + [950,10] ] into var_rec 
+	if var_window 
+		put  [var_loc.topleft +[800,-10], var_loc.bottomright + [850,10] ] into var_rec 
+	end if
+	set the SearchRectangle to var_rec 
+	put readtext(var_rec ) into var_readtext
+	put  first  5 chars of var_readtext    into  var_screenname*)
+	
+	put Common_Functions.Check_Next_Screen(var_env)  into var_screenname 
+	
+	if var_screen_to_check = 	var_screenname
+		put  "true" into var_screen_match
+	else 
+		put  "false" into var_screen_match
+	end if
+	set the SearchRectangle to empty
+	return var_screen_match
+	
+end Check_Cov_Screen
+
+(*on Catch_Coverage_Screen_Error  var_S6326_validated,   var_S5125_validated,   var_S5003_validated, var_S5417_validated
+	set  var_count = 0
+	
+	if   var_S6326_validated = "true" 
+		set  var_count = var_count + 1
+	else if var_S5125_validated = "true" 
+		set  var_count = var_count + 1
+	else if var_S5003_validated = "true"
+		set  var_count = var_count + 1
+	else if var_S5417_validated = "true"
+		set  var_count = var_count + 1
+	end if
+	
+	if var_count = 0 
+		logerror "Next screen not valid"
+		capturescreen {name: "Next screen not valid_"  & today & hour(time) & "_" & minute(time) &second(time)  }  
+	end if
+	
+	
+end Catch_Coverage_Screen_Error*)
+
+
+on Catch_Coverage_Screen_Error  var_env
+	put Common_Functions.Check_Next_Screen (var_env) into var_next_screen
+	
+	if var_next_screen begins with "S"
+		Logsuccess"Able to load valid coverage screen"
+		capturescreen {name: "Receivables  and Payables M Menu not found_" & today & hour(time) & "_" & minute(time) &second(time)}
+	else
+		LogError"Not able to load valid coverage screen" 
+	end if
+	
+	
+end Catch_Coverage_Screen_Error

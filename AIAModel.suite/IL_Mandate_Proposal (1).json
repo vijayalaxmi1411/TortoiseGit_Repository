@@ -1,0 +1,2565 @@
+{
+  "path": "",
+  "tags": [
+    {
+      "id": 1,
+      "name": "",
+      "values": ""
+    }
+  ],
+  "ePFhost": "",
+  "version": "6.0.1-8",
+  "ePFsuite": "",
+  "elements": [
+    {
+      "id": 0,
+      "name": "IL_Mandate_Proposal",
+      "type": "Root",
+      "parameters": [
+        {
+          "id": 1,
+          "name": "var_index",
+          "type": "Text",
+          "random": "Non-generated",
+          "ranges": [
+            {
+              "values": "3",
+              "weight": 100,
+              "numBins": 10,
+              "distribution": "Flat"
+            }
+          ],
+          "initial": "3",
+          "parameterUuid": "c14070a9-ffe0-4bd2-b8dd-0bdabadcf681"
+        },
+        {
+          "id": 2,
+          "name": "var_xlsFilename",
+          "type": "Text",
+          "random": "Non-generated",
+          "ranges": [],
+          "initial": "D:\\CTestAutomation\\Integral Life\\IntegralLife.suite\\Resources\\IL_TestData.xlsx",
+          "parameterUuid": "5ee54e33-f290-465e-9aeb-47bd4531ec3f"
+        },
+        {
+          "id": 3,
+          "name": "var_xlsSheet",
+          "type": "Text",
+          "random": "Non-generated",
+          "ranges": [],
+          "initial": "Mandate_Proposal",
+          "parameterUuid": "014248b5-8195-474f-a625-3afaf6e70b12"
+        },
+        {
+          "id": 4,
+          "name": "var_BankAccountOption",
+          "type": "Text",
+          "random": "Non-generated",
+          "ranges": [],
+          "initial": "",
+          "parameterUuid": "07e4526c-f7e8-4fe7-9c94-bc4854618304"
+        },
+        {
+          "id": 5,
+          "name": "var_MandateOption",
+          "type": "Text",
+          "random": "Non-generated",
+          "ranges": [],
+          "initial": "",
+          "parameterUuid": "b6d9ba5b-7756-4c39-b722-99dbaff45872"
+        },
+        {
+          "id": 6,
+          "name": "var_SearchItem",
+          "type": "Text",
+          "random": "Non-generated",
+          "ranges": [],
+          "initial": "",
+          "parameterUuid": "c1bfd429-5432-4d85-aa0a-6c4e052f98f7"
+        },
+        {
+          "id": 7,
+          "name": "var_ItemDescription",
+          "type": "Text",
+          "random": "Non-generated",
+          "ranges": [],
+          "initial": "",
+          "parameterUuid": "a008daae-5c54-485d-8a1f-cbfe5342b342"
+        },
+        {
+          "id": 8,
+          "name": "var_ErrorMsg",
+          "type": "Text",
+          "random": "Non-generated",
+          "ranges": [],
+          "initial": "",
+          "parameterUuid": "c9ee09f1-cf5a-4c83-86a8-bc87c636140d"
+        },
+        {
+          "id": 9,
+          "name": "var_ErrorFound",
+          "type": "True or False",
+          "random": "Non-generated",
+          "ranges": [],
+          "initial": "",
+          "parameterUuid": "e9cddacb-63cd-4922-b466-8acd09451bff"
+        },
+        {
+          "id": 10,
+          "name": "var_Result",
+          "type": "Text",
+          "random": "Non-generated",
+          "ranges": [],
+          "initial": "",
+          "parameterUuid": "e57ea8f0-dd14-4bb4-9f9d-2330fc557f7f"
+        },
+        {
+          "id": 11,
+          "name": "var_Message",
+          "type": "Text",
+          "random": "Non-generated",
+          "ranges": [],
+          "initial": "",
+          "parameterUuid": "e8e02e7a-29c1-40db-a43d-912e623ff4f7"
+        },
+        {
+          "id": 12,
+          "name": "var_Filename",
+          "type": "Text",
+          "random": "Non-generated",
+          "ranges": [],
+          "initial": "",
+          "parameterUuid": "b34e03e3-21c1-4144-9c7d-a2980f6f6c1e"
+        },
+        {
+          "id": 13,
+          "name": "var_xlsSheet_Policy",
+          "type": "Text",
+          "random": "Non-generated",
+          "ranges": [],
+          "initial": "Policy",
+          "parameterUuid": "dfb6f7e0-0083-4d9f-8399-d2de6461e28d"
+        },
+        {
+          "id": 14,
+          "name": "var_next_screen",
+          "type": "Text",
+          "random": "Non-generated",
+          "ranges": [],
+          "initial": "",
+          "parameterUuid": "a859f720-3086-4b56-a250-1d8b048f6a09"
+        }
+      ],
+      "elementUuid": "7a4bed01-3ed8-4041-80c2-d15e59bdb9bf"
+    },
+    {
+      "id": 1,
+      "name": "Exit",
+      "type": "State",
+      "parentId": 0,
+      "invisible": true,
+      "stateType": "Normal",
+      "parameters": [
+        {
+          "id": 0,
+          "name": "",
+          "type": "",
+          "random": "",
+          "ranges": [],
+          "initial": "",
+          "parameterUuid": "e0c7dcae-2c03-43d1-90cc-01d88dd474ca"
+        }
+      ],
+      "elementUuid": "ab60354f-2694-4743-84b5-f078ddf08036",
+      "sortingType": "Z"
+    },
+    {
+      "id": 2,
+      "name": "Error",
+      "type": "State",
+      "parentId": 0,
+      "invisible": true,
+      "stateType": "Exception",
+      "parameters": [
+        {
+          "id": 0,
+          "name": "",
+          "type": "",
+          "random": "",
+          "ranges": [],
+          "initial": "",
+          "parameterUuid": "5738819b-50c7-4791-9048-fd1cf7d86a12"
+        }
+      ],
+      "elementUuid": "47f13844-648b-4e92-a8f6-c2bf3d463f5f",
+      "sortingType": "X"
+    },
+    {
+      "id": 3,
+      "name": "Cleanup",
+      "type": "State",
+      "parentId": 0,
+      "invisible": true,
+      "stateType": "Cleanup",
+      "parameters": [
+        {
+          "id": 0,
+          "name": "",
+          "type": "",
+          "random": "",
+          "ranges": [],
+          "initial": "",
+          "parameterUuid": "479a813f-83fc-4885-85bd-82e35abc541d"
+        }
+      ],
+      "elementUuid": "aa9f83ee-fa01-4b4d-b480-3c481bd3cb12",
+      "sortingType": "Y"
+    },
+    {
+      "dx": 20,
+      "dy": 20,
+      "id": 4,
+      "name": "Initial",
+      "type": "State",
+      "textX": 20,
+      "textY": 25,
+      "parentId": 0,
+      "invisible": false,
+      "stateType": "Start",
+      "parameters": [
+        {
+          "id": 0,
+          "name": "",
+          "type": "",
+          "random": "",
+          "ranges": [],
+          "initial": "",
+          "parameterUuid": "a9cd665f-4fec-4685-aace-a1a1bcb903a4"
+        }
+      ],
+      "shapeWidth": 120,
+      "elementUuid": "220e5f1e-f989-4176-a3f8-803e2b076c9b",
+      "shapeHeight": 100,
+      "sortingType": "A"
+    },
+    {
+      "dx": 260,
+      "dy": 20,
+      "id": 6,
+      "name": "DD Mandate Detail (S5070)",
+      "type": "State",
+      "textX": 20,
+      "textY": 25,
+      "parentId": 0,
+      "snippets": [
+        {
+          "name": "Validate_CurrentScreen",
+          "type": "normal",
+          "inputs": [
+            {
+              "order": 1,
+              "parameterRef": {
+                "id": 0,
+                "name": "var_S5070",
+                "type": "Text",
+                "random": "Non-generated",
+                "ranges": [],
+                "initial": "S5070",
+                "parameterUuid": "b717a63e-69ea-4014-9108-2fb7b7ec263c"
+              }
+            }
+          ],
+          "fullName": "Common_Functions.script:Validate_CurrentScreen",
+          "scriptPath": "Common_Functions.script:Validate_CurrentScreen"
+        }
+      ],
+      "invisible": false,
+      "stateType": "Normal",
+      "parameters": [
+        {
+          "id": 0,
+          "name": "var_S5070",
+          "type": "Text",
+          "random": "Non-generated",
+          "ranges": [],
+          "initial": "S5070",
+          "parameterUuid": "b717a63e-69ea-4014-9108-2fb7b7ec263c"
+        }
+      ],
+      "shapeWidth": 440,
+      "elementUuid": "1d7a531b-e755-4fcc-9628-e63aef8a2fc5",
+      "shapeHeight": 200,
+      "sortingType": "B"
+    },
+    {
+      "dx": 220,
+      "dy": 260,
+      "id": 10,
+      "name": "Mandate List (S6276)",
+      "type": "State",
+      "textX": 20,
+      "textY": 25,
+      "parentId": 0,
+      "snippets": [
+        {
+          "name": "Validate_CurrentScreen",
+          "type": "normal",
+          "inputs": [
+            {
+              "order": 1,
+              "parameterRef": {
+                "id": 0,
+                "name": "var_S6276",
+                "type": "Text",
+                "random": "Non-generated",
+                "ranges": [],
+                "initial": "S6276",
+                "parameterUuid": "3636b2b8-bf38-47f0-9b44-d73efc2de0f9"
+              }
+            }
+          ],
+          "fullName": "Common_Functions.script:Validate_CurrentScreen",
+          "scriptPath": "Common_Functions.script:Validate_CurrentScreen"
+        }
+      ],
+      "invisible": false,
+      "stateType": "Normal",
+      "parameters": [
+        {
+          "id": 0,
+          "name": "var_S6276",
+          "type": "Text",
+          "random": "Non-generated",
+          "ranges": [],
+          "initial": "S6276",
+          "parameterUuid": "3636b2b8-bf38-47f0-9b44-d73efc2de0f9"
+        }
+      ],
+      "shapeWidth": 520,
+      "elementUuid": "4e45fb09-dc1f-4911-860e-dabed4ea4a7b",
+      "shapeHeight": 160,
+      "sortingType": "B"
+    },
+    {
+      "dx": 220,
+      "dy": 460,
+      "id": 14,
+      "name": "Create Mandate (S6278)",
+      "type": "State",
+      "textX": 20,
+      "textY": 25,
+      "parentId": 0,
+      "snippets": [
+        {
+          "name": "Validate_CurrentScreen",
+          "type": "custom",
+          "inputs": [
+            {
+              "order": 1,
+              "parameterRef": {
+                "id": 0,
+                "name": "var_S6278",
+                "type": "Text",
+                "random": "Non-generated",
+                "ranges": [],
+                "initial": "S6278",
+                "parameterUuid": "bf966984-43f9-40e4-9929-12150d1a36b8"
+              }
+            }
+          ],
+          "disabled": true,
+          "fullName": "Common_Functions.script:Validate_CurrentScreen",
+          "scriptPath": "Common_Functions.script:Validate_CurrentScreen"
+        }
+      ],
+      "invisible": false,
+      "stateType": "Normal",
+      "parameters": [
+        {
+          "id": 0,
+          "name": "var_S6278",
+          "type": "Text",
+          "random": "Non-generated",
+          "ranges": [],
+          "initial": "S6278",
+          "parameterUuid": "bf966984-43f9-40e4-9929-12150d1a36b8"
+        }
+      ],
+      "shapeWidth": 660,
+      "elementUuid": "f68e9b20-6a71-46d2-a39f-eaa6723d9539",
+      "shapeHeight": 240,
+      "sortingType": "B"
+    },
+    {
+      "dx": 1060,
+      "dy": 400,
+      "id": 23,
+      "name": "Client Bank Branch (S2572)",
+      "type": "State",
+      "textX": 20,
+      "textY": 25,
+      "parentId": 0,
+      "snippets": [
+        {
+          "name": "Validate_CurrentScreen",
+          "type": "normal",
+          "inputs": [
+            {
+              "order": 1,
+              "parameterRef": {
+                "id": 0,
+                "name": "var_S2572",
+                "type": "Text",
+                "random": "Non-generated",
+                "ranges": [],
+                "initial": "S2572",
+                "parameterUuid": "d6923b2e-ff48-43dc-b90c-60a079eb016c"
+              }
+            }
+          ],
+          "fullName": "Common_Functions.script:Validate_CurrentScreen",
+          "scriptPath": "Common_Functions.script:Validate_CurrentScreen"
+        }
+      ],
+      "invisible": false,
+      "stateType": "Normal",
+      "parameters": [
+        {
+          "id": 0,
+          "name": "var_S2572",
+          "type": "Text",
+          "random": "Non-generated",
+          "ranges": [],
+          "initial": "S2572",
+          "parameterUuid": "d6923b2e-ff48-43dc-b90c-60a079eb016c"
+        },
+        {
+          "id": 1,
+          "name": "var_BankCode",
+          "type": "True or False",
+          "random": "Non-generated",
+          "ranges": [],
+          "initial": "false",
+          "parameterUuid": "494a5902-7f78-4d87-9c80-3efb760a9a09"
+        }
+      ],
+      "shapeWidth": 360,
+      "elementUuid": "09e4dafb-2065-435a-a329-a6cb275261b7",
+      "shapeHeight": 200,
+      "sortingType": "B"
+    },
+    {
+      "dx": 1060,
+      "dy": 620,
+      "id": 28,
+      "name": "Client Bank Scroll (S2571)",
+      "type": "State",
+      "textX": 20,
+      "textY": 25,
+      "parentId": 0,
+      "snippets": [
+        {
+          "name": "Validate_CurrentScreen",
+          "type": "normal",
+          "inputs": [
+            {
+              "order": 1,
+              "parameterRef": {
+                "id": 0,
+                "name": "var_S2571",
+                "type": "Text",
+                "random": "Non-generated",
+                "ranges": [],
+                "initial": "S2571",
+                "parameterUuid": "2ef3c579-74cc-49c3-88e4-be058803d6fc"
+              }
+            }
+          ],
+          "fullName": "Common_Functions.script:Validate_CurrentScreen",
+          "scriptPath": "Common_Functions.script:Validate_CurrentScreen"
+        }
+      ],
+      "invisible": false,
+      "stateType": "Normal",
+      "parameters": [
+        {
+          "id": 0,
+          "name": "var_S2571",
+          "type": "Text",
+          "random": "Non-generated",
+          "ranges": [],
+          "initial": "S2571",
+          "parameterUuid": "2ef3c579-74cc-49c3-88e4-be058803d6fc"
+        },
+        {
+          "id": 1,
+          "name": "var_BankAccountSelected",
+          "type": "True or False",
+          "random": "Non-generated",
+          "ranges": [],
+          "initial": "false",
+          "parameterUuid": "311af0db-fa0b-4e35-a927-c72bc2cf2866"
+        }
+      ],
+      "shapeWidth": 340,
+      "elementUuid": "40e784a2-9889-4e50-85b0-d033a6cbcfe9",
+      "shapeHeight": 160,
+      "sortingType": "B"
+    },
+    {
+      "dx": 20,
+      "dy": 140,
+      "id": 44,
+      "name": "Error Handling",
+      "type": "State",
+      "textX": 20,
+      "textY": 25,
+      "parentId": 0,
+      "invisible": false,
+      "stateType": "Normal",
+      "parameters": [
+        {
+          "id": 0,
+          "name": "",
+          "type": "",
+          "random": "",
+          "ranges": [],
+          "initial": "",
+          "parameterUuid": "3058aae3-923d-4178-8656-89127602e068"
+        }
+      ],
+      "shapeWidth": 140,
+      "elementUuid": "c45a7e68-19f8-4011-af95-1cacfe6ad0ac",
+      "shapeHeight": 100,
+      "sortingType": "B"
+    },
+    {
+      "dx": 1880,
+      "dy": 20,
+      "id": 75,
+      "name": "S0271",
+      "type": "State",
+      "textX": 20,
+      "textY": 25,
+      "parentId": 0,
+      "invisible": false,
+      "stateType": "Normal",
+      "parameters": [
+        {
+          "id": 0,
+          "name": "",
+          "type": "",
+          "random": "",
+          "ranges": [],
+          "initial": "",
+          "parameterUuid": "87844417-ad63-4aca-ae49-ecc0a25135e1"
+        }
+      ],
+      "shapeWidth": 120,
+      "elementUuid": "de144fc4-24b4-4b7a-a428-3bb241ac5af8",
+      "shapeHeight": 100,
+      "sortingType": "B"
+    },
+    {
+      "dx": 20,
+      "dy": 280,
+      "id": 77,
+      "name": "Search Item",
+      "type": "State",
+      "textX": 20,
+      "textY": 25,
+      "parentId": 0,
+      "invisible": false,
+      "stateType": "Normal",
+      "parameters": [
+        {
+          "id": 0,
+          "name": "",
+          "type": "",
+          "random": "",
+          "ranges": [],
+          "initial": "",
+          "parameterUuid": "920c7e57-d0c0-451c-a4bd-f20d6bbe0018"
+        }
+      ],
+      "shapeWidth": 160,
+      "elementUuid": "18659c96-a96d-4cac-bd7e-c592916d589d",
+      "shapeHeight": 100,
+      "sortingType": "B"
+    },
+    {
+      "dx": 220,
+      "dy": 720,
+      "id": 79,
+      "name": "Direct Debit Mandate (SR595)",
+      "type": "State",
+      "textX": 20,
+      "textY": 25,
+      "parentId": 0,
+      "snippets": [
+        {
+          "name": "Validate_CurrentScreen",
+          "type": "custom",
+          "inputs": [
+            {
+              "order": 1,
+              "parameterRef": {
+                "id": 0,
+                "name": "var_SR595",
+                "type": "Text",
+                "random": "Non-generated",
+                "ranges": [],
+                "initial": "SR595",
+                "parameterUuid": "abccc601-b047-462c-a15b-8bb20e76329e"
+              }
+            }
+          ],
+          "disabled": true,
+          "fullName": "Common_Functions.script:Validate_CurrentScreen",
+          "scriptPath": "Common_Functions.script:Validate_CurrentScreen"
+        }
+      ],
+      "invisible": false,
+      "stateType": "Normal",
+      "parameters": [
+        {
+          "id": 0,
+          "name": "var_SR595",
+          "type": "Text",
+          "random": "Non-generated",
+          "ranges": [],
+          "initial": "SR595",
+          "parameterUuid": "abccc601-b047-462c-a15b-8bb20e76329e"
+        }
+      ],
+      "shapeWidth": 260,
+      "elementUuid": "1dec0ebb-0b52-4046-a2db-7351296aa7c3",
+      "shapeHeight": 160,
+      "sortingType": "B"
+    },
+    {
+      "dx": 20,
+      "dy": 40,
+      "id": 5,
+      "name": "Load Data",
+      "type": "Action",
+      "textX": 15,
+      "textY": 22,
+      "weight": 100,
+      "parentId": 4,
+      "snippets": [
+        {
+          "name": "GlobalGetExcelData",
+          "type": "normal",
+          "inputs": [
+            {
+              "order": 2,
+              "parameterRef": {
+                "id": 1,
+                "name": "var_index",
+                "type": "Text",
+                "random": "Non-generated",
+                "ranges": [
+                  {
+                    "values": "3",
+                    "weight": 100,
+                    "numBins": 10,
+                    "distribution": "Flat"
+                  }
+                ],
+                "initial": "3",
+                "parameterUuid": "c14070a9-ffe0-4bd2-b8dd-0bdabadcf681"
+              }
+            },
+            {
+              "order": 3,
+              "parameterRef": {
+                "id": 2,
+                "name": "var_xlsFilename",
+                "type": "Text",
+                "random": "Non-generated",
+                "ranges": [],
+                "initial": "D:\\CTestAutomation\\Integral Life\\IntegralLife.suite\\Resources\\IL_TestData.xlsx",
+                "parameterUuid": "5ee54e33-f290-465e-9aeb-47bd4531ec3f"
+              }
+            },
+            {
+              "order": 4,
+              "parameterRef": {
+                "id": 3,
+                "name": "var_xlsSheet",
+                "type": "Text",
+                "random": "Non-generated",
+                "ranges": [],
+                "initial": "Mandate_Proposal",
+                "parameterUuid": "014248b5-8195-474f-a625-3afaf6e70b12"
+              }
+            }
+          ],
+          "fullName": "Common_Functions.script:GlobalGetExcelData",
+          "scriptPath": "Common_Functions.script:GlobalGetExcelData"
+        },
+        {
+          "name": "GlobalGetExcelData",
+          "type": "normal",
+          "inputs": [
+            {
+              "order": 2,
+              "parameterRef": {
+                "id": 1,
+                "name": "var_index",
+                "type": "Text",
+                "random": "Non-generated",
+                "ranges": [
+                  {
+                    "values": "3",
+                    "weight": 100,
+                    "numBins": 10,
+                    "distribution": "Flat"
+                  }
+                ],
+                "initial": "3",
+                "parameterUuid": "c14070a9-ffe0-4bd2-b8dd-0bdabadcf681"
+              }
+            },
+            {
+              "order": 3,
+              "parameterRef": {
+                "id": 2,
+                "name": "var_xlsFilename",
+                "type": "Text",
+                "random": "Non-generated",
+                "ranges": [],
+                "initial": "D:\\CTestAutomation\\Integral Life\\IntegralLife.suite\\Resources\\IL_TestData.xlsx",
+                "parameterUuid": "5ee54e33-f290-465e-9aeb-47bd4531ec3f"
+              }
+            },
+            {
+              "order": 14,
+              "parameterRef": {
+                "id": 13,
+                "name": "var_xlsSheet_Policy",
+                "type": "Text",
+                "random": "Non-generated",
+                "ranges": [],
+                "initial": "Policy",
+                "parameterUuid": "dfb6f7e0-0083-4d9f-8399-d2de6461e28d"
+              }
+            }
+          ],
+          "fullName": "Common_Functions.script:GlobalGetExcelData",
+          "scriptPath": "Common_Functions.script:GlobalGetExcelData"
+        }
+      ],
+      "callLimit": 0,
+      "actionType": "Normal",
+      "parameters": [
+        {
+          "id": 0,
+          "name": "",
+          "type": "",
+          "random": "",
+          "ranges": [],
+          "initial": "",
+          "parameterUuid": "d90f4b8d-d3f7-4b95-8be8-90387a8f4983"
+        }
+      ],
+      "shapeWidth": 80,
+      "elementUuid": "380fbf9d-23e2-49b5-9a54-5ffc212207bd",
+      "shapeHeight": 40,
+      "sortingType": "C",
+      "connectedStates": [
+        {
+          "stateRef": 6
+        }
+      ]
+    },
+    {
+      "dx": 20,
+      "dy": 40,
+      "id": 7,
+      "name": "Mandate No",
+      "type": "Action",
+      "textX": 15,
+      "textY": 22,
+      "weight": 100,
+      "parentId": 6,
+      "snippets": [
+        {
+          "name": "OptionFor_Mandate",
+          "type": "custom",
+          "outputs": [
+            {
+              "order": 6,
+              "parameterRef": {
+                "id": 5,
+                "name": "var_MandateOption",
+                "type": "Text",
+                "random": "Non-generated",
+                "ranges": [],
+                "initial": "",
+                "parameterUuid": "b6d9ba5b-7756-4c39-b722-99dbaff45872"
+              }
+            }
+          ],
+          "disabled": false,
+          "fullName": "IL_S5070_DD_Mandate_Details.script:OptionFor_Mandate",
+          "scriptPath": "IL_S5070_DD_Mandate_Details.script:OptionFor_Mandate"
+        }
+      ],
+      "callLimit": 1,
+      "actionType": "Normal",
+      "parameters": [
+        {
+          "id": 0,
+          "name": "",
+          "type": "",
+          "random": "",
+          "ranges": [],
+          "initial": "",
+          "parameterUuid": "cfdaea55-1f8f-4380-b587-fc6908320030"
+        }
+      ],
+      "persistent": true,
+      "shapeWidth": 85,
+      "elementUuid": "96796689-ec0e-4779-a785-f91ce70c623f",
+      "shapeHeight": 40,
+      "sortingType": "C",
+      "connectedStates": [
+        {
+          "stateRef": 83,
+          "conditional": {
+            "value": "Input",
+            "condition": "!=",
+            "parameterName": "var_MandateOption"
+          }
+        }
+      ]
+    },
+    {
+      "dx": 180,
+      "dy": 40,
+      "id": 8,
+      "name": "Pref. Ded. Day",
+      "type": "Action",
+      "textX": 15,
+      "textY": 22,
+      "weight": 100,
+      "parentId": 6,
+      "snippets": [
+        {
+          "name": "Input_PreferredDeductionDay",
+          "type": "normal",
+          "fullName": "IL_S5070_DD_Mandate_Details.script:Input_PreferredDeductionDay",
+          "scriptPath": "IL_S5070_DD_Mandate_Details.script:Input_PreferredDeductionDay"
+        }
+      ],
+      "callLimit": 1,
+      "actionType": "Normal",
+      "parameters": [
+        {
+          "id": 0,
+          "name": "",
+          "type": "",
+          "random": "",
+          "ranges": [],
+          "initial": "",
+          "parameterUuid": "0cf2313c-62cc-4a5c-a0a6-7c4c477b1735"
+        }
+      ],
+      "persistent": true,
+      "shapeWidth": 103,
+      "elementUuid": "6a3386ff-90c7-42c9-bd64-ff72316b7d7d",
+      "shapeHeight": 40,
+      "sortingType": "C"
+    },
+    {
+      "dx": 320,
+      "dy": 40,
+      "id": 9,
+      "name": "Hit Enter",
+      "type": "Action",
+      "textX": 15,
+      "textY": 22,
+      "weight": 10,
+      "parentId": 6,
+      "snippets": [
+        {
+          "name": "Check_ScreenError",
+          "type": "normal",
+          "outputs": [
+            {
+              "order": 1,
+              "parameterRef": {
+                "id": 9,
+                "name": "var_ErrorFound",
+                "type": "True or False",
+                "random": "Non-generated",
+                "ranges": [],
+                "initial": "",
+                "parameterUuid": "e9cddacb-63cd-4922-b466-8acd09451bff"
+              }
+            }
+          ],
+          "fullName": "Common_Functions.script:Check_ScreenError",
+          "scriptPath": "Common_Functions.script:Check_ScreenError"
+        },
+        {
+          "name": "Press_EnterKey",
+          "type": "normal",
+          "fullName": "Common_Functions.script:Press_EnterKey",
+          "scriptPath": "Common_Functions.script:Press_EnterKey"
+        }
+      ],
+      "callLimit": 0,
+      "actionType": "Normal",
+      "parameters": [
+        {
+          "id": 0,
+          "name": "",
+          "type": "",
+          "random": "",
+          "ranges": [],
+          "initial": "",
+          "parameterUuid": "f2db4b95-074f-487d-8941-dcecf32c5e20"
+        }
+      ],
+      "shapeWidth": 80,
+      "elementUuid": "78c0fde6-bec2-46d4-9875-fde358724a2f",
+      "setGenerate": [
+        {
+          "value": "false",
+          "setGen": "set",
+          "parameterName": "var_ErrorFound"
+        },
+        {
+          "value": "S5070 Mandate Detail Error : ",
+          "setGen": "set",
+          "parameterName": "var_Message"
+        },
+        {
+          "value": "S5070 Mandate Detail",
+          "setGen": "set",
+          "parameterName": "var_Filename"
+        }
+      ],
+      "shapeHeight": 40,
+      "sortingType": "C",
+      "preconditions": [],
+      "connectedStates": [
+        {
+          "stateRef": 44,
+          "forceLabel": true,
+          "conditional": {
+            "value": "true",
+            "condition": "==",
+            "parameterName": "var_ErrorFound"
+          }
+        },
+        {
+          "stateRef": 48,
+          "conditional": {
+            "value": "false",
+            "condition": "==",
+            "parameterName": "var_ErrorFound"
+          }
+        }
+      ]
+    },
+    {
+      "dx": 20,
+      "dy": 100,
+      "id": 12,
+      "name": "Create Mandate (F7)",
+      "type": "Action",
+      "textX": 15,
+      "textY": 22,
+      "weight": 100,
+      "parentId": 10,
+      "snippets": [
+        {
+          "name": "Press_F7",
+          "type": "normal",
+          "fullName": "Common_Functions.script:Press_F7",
+          "scriptPath": "Common_Functions.script:Press_F7"
+        },
+        {
+          "name": "Validate_CurrentScreen",
+          "type": "normal",
+          "inputs": [
+            {
+              "order": 1,
+              "parameterRef": {
+                "id": 0,
+                "name": "var_S6278",
+                "type": "Text",
+                "random": "Non-generated",
+                "ranges": [],
+                "initial": "S6278",
+                "parameterUuid": "e6ee7346-62a9-4993-9768-c1e1f4b1abcf"
+              }
+            }
+          ],
+          "fullName": "Common_Functions.script:Validate_CurrentScreen",
+          "scriptPath": "Common_Functions.script:Validate_CurrentScreen"
+        }
+      ],
+      "callLimit": 1,
+      "actionType": "Normal",
+      "parameters": [
+        {
+          "id": 0,
+          "name": "var_S6278",
+          "type": "Text",
+          "random": "Non-generated",
+          "ranges": [],
+          "initial": "S6278",
+          "parameterUuid": "e6ee7346-62a9-4993-9768-c1e1f4b1abcf"
+        }
+      ],
+      "shapeWidth": 145,
+      "elementUuid": "1559661e-d691-4075-890a-985d55125681",
+      "shapeHeight": 40,
+      "sortingType": "C",
+      "preconditions": [
+        {
+          "value": "Create New",
+          "condition": "==",
+          "parameterName": "var_MandateOption"
+        }
+      ],
+      "connectedStates": [
+        {
+          "stateRef": 14
+        }
+      ]
+    },
+    {
+      "dx": 220,
+      "dy": 80,
+      "id": 13,
+      "name": "Hit Enter",
+      "type": "Action",
+      "textX": 15,
+      "textY": 22,
+      "weight": 10,
+      "parentId": 10,
+      "snippets": [
+        {
+          "name": "Check_ScreenError",
+          "type": "custom",
+          "outputs": [
+            {
+              "order": 10,
+              "parameterRef": {
+                "id": 9,
+                "name": "var_ErrorFound",
+                "type": "True or False",
+                "random": "Non-generated",
+                "ranges": [],
+                "initial": "",
+                "parameterUuid": "e9cddacb-63cd-4922-b466-8acd09451bff"
+              }
+            }
+          ],
+          "disabled": true,
+          "fullName": "Common_Functions.script:Check_ScreenError",
+          "scriptPath": "Common_Functions.script:Check_ScreenError"
+        },
+        {
+          "name": "Press_EnterKey",
+          "type": "normal",
+          "fullName": "Common_Functions.script:Press_EnterKey",
+          "scriptPath": "Common_Functions.script:Press_EnterKey"
+        }
+      ],
+      "callLimit": 0,
+      "actionType": "Normal",
+      "parameters": [
+        {
+          "id": 0,
+          "name": "",
+          "type": "",
+          "random": "",
+          "ranges": [],
+          "initial": "",
+          "parameterUuid": "7decf035-7d62-4a6a-a206-eaa284c21bbd"
+        }
+      ],
+      "shapeWidth": 80,
+      "elementUuid": "b7892adb-d65a-4515-a175-6555eb7ed9f4",
+      "setGenerate": [
+        {
+          "value": "S6276 Mandate List Error : ",
+          "setGen": "set",
+          "parameterName": "var_Message"
+        },
+        {
+          "value": "S6276 Mandate List",
+          "setGen": "set",
+          "parameterName": "var_Filename"
+        }
+      ],
+      "shapeHeight": 40,
+      "sortingType": "C",
+      "connectedStates": [
+        {
+          "stateRef": 46
+        }
+      ]
+    },
+    {
+      "dx": 20,
+      "dy": 40,
+      "id": 15,
+      "name": "Bank Code",
+      "type": "Action",
+      "textX": 15,
+      "textY": 22,
+      "weight": 100,
+      "parentId": 14,
+      "snippets": [
+        {
+          "name": "OptionFor_BankCode",
+          "type": "normal",
+          "outputs": [
+            {
+              "order": 1,
+              "parameterRef": {
+                "id": 0,
+                "name": "var_BankCode_Option",
+                "type": "Text",
+                "random": "Non-generated",
+                "ranges": [],
+                "initial": "",
+                "parameterUuid": "af80140e-508f-44de-82de-6c140d707822"
+              }
+            }
+          ],
+          "fullName": "IL_S6278_Create_Mandate.script:OptionFor_BankCode",
+          "scriptPath": "IL_S6278_Create_Mandate.script:OptionFor_BankCode"
+        }
+      ],
+      "callLimit": 1,
+      "actionType": "Normal",
+      "parameters": [
+        {
+          "id": 0,
+          "name": "var_BankCode_Option",
+          "type": "Text",
+          "random": "Non-generated",
+          "ranges": [],
+          "initial": "",
+          "parameterUuid": "af80140e-508f-44de-82de-6c140d707822"
+        }
+      ],
+      "persistent": true,
+      "shapeWidth": 80,
+      "elementUuid": "08639476-1ef4-47fe-9ac5-033c339fa6d6",
+      "shapeHeight": 40,
+      "sortingType": "C",
+      "connectedStates": [
+        {
+          "stateRef": 23,
+          "conditional": {
+            "value": "Input",
+            "condition": "!=",
+            "parameterName": "var_BankCode_Option"
+          }
+        }
+      ]
+    },
+    {
+      "dx": 20,
+      "dy": 80,
+      "id": 16,
+      "name": "Bank Account No.",
+      "type": "Action",
+      "textX": 15,
+      "textY": 22,
+      "weight": 100,
+      "parentId": 14,
+      "snippets": [
+        {
+          "name": "BankAcctNumber_Option",
+          "type": "normal",
+          "outputs": [
+            {
+              "order": 5,
+              "parameterRef": {
+                "id": 4,
+                "name": "var_BankAccountOption",
+                "type": "Text",
+                "random": "Non-generated",
+                "ranges": [],
+                "initial": "",
+                "parameterUuid": "07e4526c-f7e8-4fe7-9c94-bc4854618304"
+              }
+            }
+          ],
+          "fullName": "IL_S6278_Create_Mandate.script:BankAcctNumber_Option",
+          "scriptPath": "IL_S6278_Create_Mandate.script:BankAcctNumber_Option"
+        }
+      ],
+      "callLimit": 1,
+      "actionType": "Normal",
+      "parameters": [
+        {
+          "id": 0,
+          "name": "",
+          "type": "",
+          "random": "",
+          "ranges": [],
+          "initial": "",
+          "parameterUuid": "b795bee5-cfd1-4a9f-8a04-81767ca0a38b"
+        }
+      ],
+      "persistent": true,
+      "shapeWidth": 124,
+      "elementUuid": "190b1a02-9bd4-43d5-8fa1-12fd34b78634",
+      "shapeHeight": 40,
+      "sortingType": "C",
+      "connectedStates": [
+        {
+          "stateRef": 28,
+          "conditional": {
+            "value": "Input",
+            "condition": "!=",
+            "parameterName": "var_BankAccountOption"
+          }
+        }
+      ]
+    },
+    {
+      "dx": 20,
+      "dy": 160,
+      "id": 17,
+      "name": "Factoring House",
+      "type": "Action",
+      "textX": 15,
+      "textY": 22,
+      "weight": 100,
+      "parentId": 14,
+      "snippets": [
+        {
+          "name": "OptionFor_FactoringHouse",
+          "type": "normal",
+          "outputs": [
+            {
+              "order": 1,
+              "parameterRef": {
+                "id": 0,
+                "name": "var_FactHouseOption",
+                "type": "Text",
+                "random": "Non-generated",
+                "ranges": [],
+                "initial": "",
+                "parameterUuid": "b2267135-dc95-49b0-ab52-6fee1e6620cb"
+              }
+            }
+          ],
+          "fullName": "IL_S6278_Create_Mandate.script:OptionFor_FactoringHouse",
+          "scriptPath": "IL_S6278_Create_Mandate.script:OptionFor_FactoringHouse"
+        }
+      ],
+      "callLimit": 1,
+      "actionType": "Normal",
+      "parameters": [
+        {
+          "id": 0,
+          "name": "var_FactHouseOption",
+          "type": "Text",
+          "random": "Non-generated",
+          "ranges": [],
+          "initial": "",
+          "parameterUuid": "b2267135-dc95-49b0-ab52-6fee1e6620cb"
+        }
+      ],
+      "persistent": true,
+      "shapeWidth": 114,
+      "elementUuid": "38469d5f-1943-4bac-a515-e7f5e29e7eb0",
+      "setGenerate": [],
+      "shapeHeight": 40,
+      "sortingType": "C",
+      "connectedStates": [
+        {
+          "stateRef": 77,
+          "forceLabel": true,
+          "conditional": {
+            "value": "Input",
+            "condition": "!=",
+            "parameterName": "var_FactHouseOption"
+          }
+        }
+      ]
+    },
+    {
+      "dx": 180,
+      "dy": 40,
+      "id": 18,
+      "name": "Enrolment Source",
+      "type": "Action",
+      "textX": 15,
+      "textY": 22,
+      "weight": 100,
+      "parentId": 14,
+      "snippets": [
+        {
+          "name": "OptionFor_EnrolmentSource",
+          "type": "normal",
+          "outputs": [
+            {
+              "order": 1,
+              "parameterRef": {
+                "id": 0,
+                "name": "var_EnrolmentSourceOption",
+                "type": "Text",
+                "random": "Non-generated",
+                "ranges": [],
+                "initial": "",
+                "parameterUuid": "99698f53-1f8c-4cfe-b070-071f68404538"
+              }
+            }
+          ],
+          "fullName": "IL_S6278_Create_Mandate.script:OptionFor_EnrolmentSource",
+          "scriptPath": "IL_S6278_Create_Mandate.script:OptionFor_EnrolmentSource"
+        }
+      ],
+      "callLimit": 1,
+      "actionType": "Normal",
+      "parameters": [
+        {
+          "id": 0,
+          "name": "var_EnrolmentSourceOption",
+          "type": "Text",
+          "random": "Non-generated",
+          "ranges": [],
+          "initial": "",
+          "parameterUuid": "99698f53-1f8c-4cfe-b070-071f68404538"
+        }
+      ],
+      "persistent": true,
+      "shapeWidth": 125,
+      "elementUuid": "7f3f9050-89a4-4185-928f-7abc3e1a2748",
+      "setGenerate": [],
+      "shapeHeight": 40,
+      "sortingType": "C",
+      "connectedStates": [
+        {
+          "stateRef": 77,
+          "forceLabel": true,
+          "conditional": {
+            "value": "Input",
+            "condition": "!=",
+            "parameterName": "var_EnrolmentSourceOption"
+          }
+        }
+      ]
+    },
+    {
+      "dx": 180,
+      "dy": 100,
+      "id": 19,
+      "name": "Bill Ref No",
+      "type": "Action",
+      "textX": 15,
+      "textY": 22,
+      "weight": 100,
+      "parentId": 14,
+      "snippets": [
+        {
+          "name": "OptionFor_BillRefNo",
+          "type": "normal",
+          "outputs": [
+            {
+              "order": 1,
+              "parameterRef": {
+                "id": 0,
+                "name": "var_BillRefNoOption",
+                "type": "Text",
+                "random": "Non-generated",
+                "ranges": [],
+                "initial": "",
+                "parameterUuid": "ead1399f-f3f2-4c1f-81e2-f6f6c688b3c4"
+              }
+            }
+          ],
+          "fullName": "IL_S6278_Create_Mandate.script:OptionFor_BillRefNo",
+          "scriptPath": "IL_S6278_Create_Mandate.script:OptionFor_BillRefNo"
+        }
+      ],
+      "callLimit": 1,
+      "actionType": "Normal",
+      "parameters": [
+        {
+          "id": 0,
+          "name": "var_BillRefNoOption",
+          "type": "Text",
+          "random": "Non-generated",
+          "ranges": [],
+          "initial": "",
+          "parameterUuid": "ead1399f-f3f2-4c1f-81e2-f6f6c688b3c4"
+        }
+      ],
+      "persistent": true,
+      "shapeWidth": 80,
+      "elementUuid": "c7bed163-bc85-4910-926c-f4e4f651689f",
+      "setGenerate": [
+        {
+          "value": "TA771",
+          "setGen": "set",
+          "parameterName": "var_SearchItem"
+        }
+      ],
+      "shapeHeight": 40,
+      "sortingType": "C",
+      "connectedStates": [
+        {
+          "stateRef": 77,
+          "forceLabel": true,
+          "conditional": {
+            "value": "Input",
+            "condition": "!=",
+            "parameterName": "var_BillRefNoOption"
+          }
+        }
+      ]
+    },
+    {
+      "dx": 180,
+      "dy": 160,
+      "id": 20,
+      "name": "Bill Ref No Description",
+      "type": "Action",
+      "textX": 15,
+      "textY": 22,
+      "weight": 100,
+      "parentId": 14,
+      "snippets": [
+        {
+          "name": "Input_BillRefNoDesc",
+          "type": "normal",
+          "fullName": "IL_S6278_Create_Mandate.script:Input_BillRefNoDesc",
+          "scriptPath": "IL_S6278_Create_Mandate.script:Input_BillRefNoDesc"
+        }
+      ],
+      "callLimit": 1,
+      "actionType": "Normal",
+      "parameters": [
+        {
+          "id": 0,
+          "name": "",
+          "type": "",
+          "random": "",
+          "ranges": [],
+          "initial": "",
+          "parameterUuid": "62981ed1-717b-40c1-9b73-0e9eac134614"
+        }
+      ],
+      "persistent": true,
+      "shapeWidth": 156,
+      "elementUuid": "4e04e226-af17-4d5a-89e8-8bf9d3c1d39a",
+      "shapeHeight": 40,
+      "sortingType": "C"
+    },
+    {
+      "dx": 360,
+      "dy": 40,
+      "id": 21,
+      "name": "Mandate Amount",
+      "type": "Action",
+      "textX": 15,
+      "textY": 22,
+      "weight": 100,
+      "parentId": 14,
+      "snippets": [
+        {
+          "name": "Input_MandateAmount",
+          "type": "normal",
+          "fullName": "IL_S6278_Create_Mandate.script:Input_MandateAmount",
+          "scriptPath": "IL_S6278_Create_Mandate.script:Input_MandateAmount"
+        }
+      ],
+      "callLimit": 1,
+      "actionType": "Normal",
+      "parameters": [
+        {
+          "id": 0,
+          "name": "",
+          "type": "",
+          "random": "",
+          "ranges": [],
+          "initial": "",
+          "parameterUuid": "cde42a12-75e8-4efe-b014-567057656442"
+        }
+      ],
+      "persistent": true,
+      "shapeWidth": 118,
+      "elementUuid": "399ff95f-3815-4c59-8172-eec784740e88",
+      "shapeHeight": 40,
+      "sortingType": "C"
+    },
+    {
+      "dx": 360,
+      "dy": 100,
+      "id": 22,
+      "name": "Hit Enter",
+      "type": "Action",
+      "textX": 15,
+      "textY": 22,
+      "weight": 20,
+      "parentId": 14,
+      "snippets": [
+        {
+          "name": "Check_ScreenError",
+          "type": "normal",
+          "outputs": [
+            {
+              "order": 1,
+              "parameterRef": {
+                "id": 9,
+                "name": "var_ErrorFound",
+                "type": "True or False",
+                "random": "Non-generated",
+                "ranges": [],
+                "initial": "",
+                "parameterUuid": "e9cddacb-63cd-4922-b466-8acd09451bff"
+              }
+            }
+          ],
+          "fullName": "Common_Functions.script:Check_ScreenError",
+          "scriptPath": "Common_Functions.script:Check_ScreenError"
+        },
+        {
+          "name": "Press_EnterKey",
+          "type": "normal",
+          "fullName": "Common_Functions.script:Press_EnterKey",
+          "scriptPath": "Common_Functions.script:Press_EnterKey"
+        }
+      ],
+      "callLimit": 0,
+      "actionType": "Normal",
+      "parameters": [
+        {
+          "id": 0,
+          "name": "",
+          "type": "",
+          "random": "",
+          "ranges": [],
+          "initial": "",
+          "parameterUuid": "44119bbb-cd22-4837-bb91-3b3d0cafcc4a"
+        }
+      ],
+      "shapeWidth": 80,
+      "elementUuid": "a5b1ea19-5db1-4095-88e8-b0ad1375bc39",
+      "setGenerate": [
+        {
+          "value": "false",
+          "setGen": "set",
+          "parameterName": "var_ErrorFound"
+        },
+        {
+          "value": "S6278 Create Mandate Error :",
+          "setGen": "set",
+          "parameterName": "var_Message"
+        },
+        {
+          "value": "S6278 Create Mandate",
+          "setGen": "set",
+          "parameterName": "var_Filename"
+        }
+      ],
+      "shapeHeight": 40,
+      "sortingType": "C",
+      "preconditions": [],
+      "connectedStates": [
+        {
+          "stateRef": 44,
+          "forceLabel": true,
+          "conditional": {
+            "value": "true",
+            "condition": "==",
+            "parameterName": "var_ErrorFound"
+          }
+        },
+        {
+          "stateRef": 49,
+          "conditional": {
+            "value": "false",
+            "condition": "==",
+            "parameterName": "var_ErrorFound"
+          }
+        }
+      ]
+    },
+    {
+      "dx": 20,
+      "dy": 40,
+      "id": 24,
+      "name": "Select Bank Code",
+      "type": "Action",
+      "textX": 15,
+      "textY": 22,
+      "weight": 20,
+      "parentId": 23,
+      "snippets": [
+        {
+          "name": "Select_BankCode",
+          "type": "normal",
+          "fullName": "IL_S2572_Client_Bank_Branch.script:Select_BankCode",
+          "scriptPath": "IL_S2572_Client_Bank_Branch.script:Select_BankCode"
+        }
+      ],
+      "callLimit": 1,
+      "actionType": "Normal",
+      "parameters": [
+        {
+          "id": 0,
+          "name": "",
+          "type": "",
+          "random": "",
+          "ranges": [],
+          "initial": "",
+          "parameterUuid": "9ac6bec9-89a0-4394-8095-96e953aaad29"
+        }
+      ],
+      "shapeWidth": 125,
+      "elementUuid": "9d774c7b-7cf3-47dd-a29f-2e0908477478",
+      "setGenerate": [
+        {
+          "value": "true",
+          "setGen": "set",
+          "parameterName": "var_BankCode"
+        }
+      ],
+      "shapeHeight": 40,
+      "sortingType": "C",
+      "preconditions": []
+    },
+    {
+      "dx": 20,
+      "dy": 80,
+      "id": 25,
+      "name": "Search Bank Code Description",
+      "type": "Action",
+      "textX": 15,
+      "textY": 22,
+      "weight": 100,
+      "parentId": 23,
+      "snippets": [
+        {
+          "name": "Search_StartingBankDescription",
+          "type": "custom",
+          "disabled": false,
+          "fullName": "IL_S2572_Client_Bank_Branch.script:Search_StartingBankDescription",
+          "scriptPath": "IL_S2572_Client_Bank_Branch.script:Search_StartingBankDescription"
+        }
+      ],
+      "callLimit": 1,
+      "actionType": "Normal",
+      "parameters": [
+        {
+          "id": 0,
+          "name": "",
+          "type": "",
+          "random": "",
+          "ranges": [],
+          "initial": "",
+          "parameterUuid": "40a0ce00-06bc-4d79-bb07-9be54821673d"
+        }
+      ],
+      "shapeWidth": 213,
+      "elementUuid": "f980dd8c-469d-47d8-a6f7-2fc7d2a2e8b8",
+      "setGenerate": [
+        {
+          "value": "false",
+          "setGen": "set",
+          "parameterName": "var_BankCode"
+        }
+      ],
+      "shapeHeight": 40,
+      "sortingType": "C",
+      "preconditions": [
+        {
+          "value": "false",
+          "condition": "==",
+          "parameterName": "var_BankCode"
+        }
+      ]
+    },
+    {
+      "dx": 20,
+      "dy": 120,
+      "id": 26,
+      "name": "Search Branch Description",
+      "type": "Action",
+      "textX": 15,
+      "textY": 22,
+      "weight": 100,
+      "parentId": 23,
+      "snippets": [
+        {
+          "name": "Search_ScanBranchDescription",
+          "type": "normal",
+          "fullName": "IL_S2572_Client_Bank_Branch.script:Search_ScanBranchDescription",
+          "scriptPath": "IL_S2572_Client_Bank_Branch.script:Search_ScanBranchDescription"
+        }
+      ],
+      "callLimit": 1,
+      "actionType": "Normal",
+      "parameters": [
+        {
+          "id": 0,
+          "name": "",
+          "type": "",
+          "random": "",
+          "ranges": [],
+          "initial": "",
+          "parameterUuid": "49045466-0408-43ec-b055-c4977f6f9e68"
+        }
+      ],
+      "shapeWidth": 186,
+      "elementUuid": "2d0a1ac4-5f27-41ed-ad38-510e10bd0b1a",
+      "setGenerate": [
+        {
+          "value": "false",
+          "setGen": "set",
+          "parameterName": "var_BankCode"
+        }
+      ],
+      "shapeHeight": 40,
+      "sortingType": "C",
+      "preconditions": [
+        {
+          "value": "false",
+          "condition": "==",
+          "parameterName": "var_BankCode"
+        }
+      ]
+    },
+    {
+      "dx": 260,
+      "dy": 120,
+      "id": 27,
+      "name": "Hit Enter",
+      "type": "Action",
+      "textX": 15,
+      "textY": 22,
+      "weight": 10,
+      "parentId": 23,
+      "snippets": [
+        {
+          "name": "Press_EnterKey",
+          "type": "normal",
+          "fullName": "Common_Functions.script:Press_EnterKey",
+          "scriptPath": "Common_Functions.script:Press_EnterKey"
+        }
+      ],
+      "callLimit": 0,
+      "actionType": "Normal",
+      "parameters": [
+        {
+          "id": 0,
+          "name": "",
+          "type": "",
+          "random": "",
+          "ranges": [],
+          "initial": "",
+          "parameterUuid": "af76e6c3-1771-4731-8fac-738151d7a8b1"
+        }
+      ],
+      "shapeWidth": 80,
+      "elementUuid": "0599df00-e219-4fb8-bfff-21272d073844",
+      "shapeHeight": 40,
+      "sortingType": "C",
+      "connectedStates": [
+        {
+          "stateRef": 14,
+          "forceLabel": true
+        }
+      ]
+    },
+    {
+      "dx": 20,
+      "dy": 100,
+      "id": 30,
+      "name": "Create Bank Account (F7)",
+      "type": "Action",
+      "textX": 15,
+      "textY": 22,
+      "weight": 100,
+      "parentId": 28,
+      "snippets": [
+        {
+          "name": "Press_F7",
+          "type": "custom",
+          "disabled": false,
+          "fullName": "Common_Functions.script:Press_F7",
+          "scriptPath": "Common_Functions.script:Press_F7"
+        }
+      ],
+      "callLimit": 0,
+      "actionType": "Normal",
+      "parameters": [
+        {
+          "id": 0,
+          "name": "",
+          "type": "",
+          "random": "",
+          "ranges": [],
+          "initial": "",
+          "parameterUuid": "f4982406-4f31-40fe-9ac6-109217ec5422"
+        }
+      ],
+      "shapeWidth": 180,
+      "elementUuid": "754fa1ec-1356-494e-98f4-f14ba45082a0",
+      "setGenerate": [
+        {
+          "value": "true",
+          "setGen": "set",
+          "parameterName": "var_BankAccountSelected"
+        }
+      ],
+      "shapeHeight": 40,
+      "sortingType": "C",
+      "preconditions": [
+        {
+          "value": "Create New",
+          "condition": "==",
+          "parameterName": "var_BankAccountOption"
+        }
+      ]
+    },
+    {
+      "dx": 240,
+      "dy": 80,
+      "id": 31,
+      "name": "Hit Enter",
+      "type": "Action",
+      "textX": 15,
+      "textY": 22,
+      "weight": 10,
+      "parentId": 28,
+      "snippets": [
+        {
+          "name": "Press_EnterKey",
+          "type": "normal",
+          "fullName": "Common_Functions.script:Press_EnterKey",
+          "scriptPath": "Common_Functions.script:Press_EnterKey"
+        }
+      ],
+      "callLimit": 0,
+      "actionType": "Normal",
+      "parameters": [
+        {
+          "id": 0,
+          "name": "",
+          "type": "",
+          "random": "",
+          "ranges": [],
+          "initial": "",
+          "parameterUuid": "23d697dd-120f-455f-9eb5-0e5cb8c6d263"
+        }
+      ],
+      "shapeWidth": 80,
+      "elementUuid": "3b65da03-32b7-44b5-87c0-6ff84081f248",
+      "shapeHeight": 40,
+      "sortingType": "C",
+      "preconditions": [
+        {
+          "value": "true",
+          "condition": "==",
+          "parameterName": "var_BankAccountSelected"
+        }
+      ],
+      "connectedStates": [
+        {
+          "stateRef": 14,
+          "forceLabel": true
+        }
+      ]
+    },
+    {
+      "dx": 360,
+      "dy": 80,
+      "id": 46,
+      "name": "S6276 Successful",
+      "type": "Action",
+      "textX": 15,
+      "textY": 22,
+      "weight": 100,
+      "parentId": 10,
+      "snippets": [
+        {
+          "name": "LogResult_ScreenCapture",
+          "type": "normal",
+          "inputs": [
+            {
+              "order": 11,
+              "parameterRef": {
+                "id": 10,
+                "name": "var_Result",
+                "type": "Text",
+                "random": "Non-generated",
+                "ranges": [],
+                "initial": "",
+                "parameterUuid": "e57ea8f0-dd14-4bb4-9f9d-2330fc557f7f"
+              }
+            },
+            {
+              "order": 12,
+              "parameterRef": {
+                "id": 11,
+                "name": "var_Message",
+                "type": "Text",
+                "random": "Non-generated",
+                "ranges": [],
+                "initial": "",
+                "parameterUuid": "e8e02e7a-29c1-40db-a43d-912e623ff4f7"
+              }
+            },
+            {
+              "order": 13,
+              "parameterRef": {
+                "id": 12,
+                "name": "var_Filename",
+                "type": "Text",
+                "random": "Non-generated",
+                "ranges": [],
+                "initial": "",
+                "parameterUuid": "b34e03e3-21c1-4144-9c7d-a2980f6f6c1e"
+              }
+            }
+          ],
+          "fullName": "Common_Functions.script:LogResult_ScreenCapture",
+          "scriptPath": "Common_Functions.script:LogResult_ScreenCapture"
+        }
+      ],
+      "callLimit": 0,
+      "actionType": "Sequent",
+      "parameters": [
+        {
+          "id": 0,
+          "name": "",
+          "type": "",
+          "random": "",
+          "ranges": [],
+          "initial": "",
+          "parameterUuid": "039815ad-d758-4eea-9b1b-f977abe6d134"
+        }
+      ],
+      "elementUuid": "706e9301-b978-412b-8b98-a575f9c214f6",
+      "setGenerate": [
+        {
+          "value": "Success",
+          "setGen": "set",
+          "parameterName": "var_Result"
+        },
+        {
+          "value": "S6276 Successful",
+          "setGen": "set",
+          "parameterName": "var_Message"
+        }
+      ],
+      "sortingType": "C",
+      "connectedStates": [
+        {
+          "stateRef": 6,
+          "forceLabel": true
+        }
+      ]
+    },
+    {
+      "dx": 20,
+      "dy": 40,
+      "id": 47,
+      "name": "Error Logging",
+      "type": "Action",
+      "textX": 15,
+      "textY": 22,
+      "weight": 100,
+      "parentId": 44,
+      "snippets": [
+        {
+          "name": "LogResult_ScreenCapture",
+          "type": "normal",
+          "inputs": [
+            {
+              "order": 11,
+              "parameterRef": {
+                "id": 10,
+                "name": "var_Result",
+                "type": "Text",
+                "random": "Non-generated",
+                "ranges": [],
+                "initial": "",
+                "parameterUuid": "e57ea8f0-dd14-4bb4-9f9d-2330fc557f7f"
+              }
+            },
+            {
+              "order": 12,
+              "parameterRef": {
+                "id": 11,
+                "name": "var_Message",
+                "type": "Text",
+                "random": "Non-generated",
+                "ranges": [],
+                "initial": "",
+                "parameterUuid": "e8e02e7a-29c1-40db-a43d-912e623ff4f7"
+              }
+            },
+            {
+              "order": 13,
+              "parameterRef": {
+                "id": 12,
+                "name": "var_Filename",
+                "type": "Text",
+                "random": "Non-generated",
+                "ranges": [],
+                "initial": "",
+                "parameterUuid": "b34e03e3-21c1-4144-9c7d-a2980f6f6c1e"
+              }
+            }
+          ],
+          "fullName": "Common_Functions.script:LogResult_ScreenCapture",
+          "scriptPath": "Common_Functions.script:LogResult_ScreenCapture"
+        }
+      ],
+      "callLimit": 0,
+      "actionType": "Previous",
+      "parameters": [
+        {
+          "id": 0,
+          "name": "",
+          "type": "",
+          "random": "",
+          "ranges": [],
+          "initial": "",
+          "parameterUuid": "e622cbfb-be31-4a1f-bc1b-71d4b28214e3"
+        }
+      ],
+      "shapeWidth": 94,
+      "elementUuid": "fb9d5d86-7afd-49b2-9566-c896995e9175",
+      "setGenerate": [
+        {
+          "value": "Error",
+          "setGen": "set",
+          "parameterName": "var_Result"
+        }
+      ],
+      "shapeHeight": 40,
+      "sortingType": "C",
+      "connectedStates": []
+    },
+    {
+      "dx": 240,
+      "dy": 120,
+      "id": 48,
+      "name": "Mandate Detail Successful",
+      "type": "Action",
+      "textX": 15,
+      "textY": 22,
+      "weight": 100,
+      "parentId": 6,
+      "callLimit": 0,
+      "actionType": "Sequent",
+      "parameters": [
+        {
+          "id": 0,
+          "name": "",
+          "type": "",
+          "random": "",
+          "ranges": [],
+          "initial": "",
+          "parameterUuid": "7489ecfa-f363-40cf-b062-1f8a348da025"
+        }
+      ],
+      "elementUuid": "bf2939de-c8fc-4a91-9985-32d00b3b4c32",
+      "setGenerate": [
+        {
+          "value": "Success",
+          "setGen": "set",
+          "parameterName": "var_Result"
+        },
+        {
+          "value": "S5070 Mandate List Successful",
+          "setGen": "set",
+          "parameterName": "var_Message"
+        }
+      ],
+      "sortingType": "C",
+      "connectedStates": [
+        {
+          "stateRef": 1
+        }
+      ]
+    },
+    {
+      "dx": 500,
+      "dy": 100,
+      "id": 49,
+      "name": "S6278 Successful",
+      "type": "Action",
+      "textX": 15,
+      "textY": 22,
+      "weight": 100,
+      "parentId": 14,
+      "snippets": [
+        {
+          "name": "LogResult_ScreenCapture",
+          "type": "normal",
+          "inputs": [
+            {
+              "order": 11,
+              "parameterRef": {
+                "id": 10,
+                "name": "var_Result",
+                "type": "Text",
+                "random": "Non-generated",
+                "ranges": [],
+                "initial": "",
+                "parameterUuid": "e57ea8f0-dd14-4bb4-9f9d-2330fc557f7f"
+              }
+            },
+            {
+              "order": 12,
+              "parameterRef": {
+                "id": 11,
+                "name": "var_Message",
+                "type": "Text",
+                "random": "Non-generated",
+                "ranges": [],
+                "initial": "",
+                "parameterUuid": "e8e02e7a-29c1-40db-a43d-912e623ff4f7"
+              }
+            },
+            {
+              "order": 13,
+              "parameterRef": {
+                "id": 12,
+                "name": "var_Filename",
+                "type": "Text",
+                "random": "Non-generated",
+                "ranges": [],
+                "initial": "",
+                "parameterUuid": "b34e03e3-21c1-4144-9c7d-a2980f6f6c1e"
+              }
+            }
+          ],
+          "fullName": "Common_Functions.script:LogResult_ScreenCapture",
+          "scriptPath": "Common_Functions.script:LogResult_ScreenCapture"
+        },
+        {
+          "name": "Validate_CurrentScreen",
+          "type": "normal",
+          "inputs": [
+            {
+              "order": 1,
+              "parameterRef": {
+                "id": 0,
+                "name": "var_SR595",
+                "type": "Text",
+                "random": "Non-generated",
+                "ranges": [],
+                "initial": "SR595",
+                "parameterUuid": "004b8896-0bc4-4f27-8a97-d235073a7f0e"
+              }
+            }
+          ],
+          "fullName": "Common_Functions.script:Validate_CurrentScreen",
+          "scriptPath": "Common_Functions.script:Validate_CurrentScreen"
+        }
+      ],
+      "callLimit": 0,
+      "actionType": "Sequent",
+      "parameters": [
+        {
+          "id": 0,
+          "name": "var_SR595",
+          "type": "Text",
+          "random": "Non-generated",
+          "ranges": [],
+          "initial": "SR595",
+          "parameterUuid": "004b8896-0bc4-4f27-8a97-d235073a7f0e"
+        }
+      ],
+      "elementUuid": "de515ba3-0980-4f3c-89ba-ec1cd019c6c8",
+      "setGenerate": [
+        {
+          "value": "Success",
+          "setGen": "set",
+          "parameterName": "var_Result"
+        },
+        {
+          "value": "S6278 Successful",
+          "setGen": "set",
+          "parameterName": "var_Message"
+        }
+      ],
+      "sortingType": "C",
+      "connectedStates": [
+        {
+          "stateRef": 79
+        }
+      ]
+    },
+    {
+      "dx": 500,
+      "dy": 40,
+      "id": 50,
+      "name": "Detail DD Amount",
+      "type": "Action",
+      "textX": 15,
+      "textY": 22,
+      "weight": 100,
+      "parentId": 14,
+      "snippets": [
+        {
+          "name": "Input_DetailDDAmount",
+          "type": "custom",
+          "disabled": true,
+          "fullName": "IL_S6278_Create_Mandate.script:Input_DetailDDAmount",
+          "scriptPath": "IL_S6278_Create_Mandate.script:Input_DetailDDAmount"
+        }
+      ],
+      "callLimit": 1,
+      "actionType": "Normal",
+      "parameters": [
+        {
+          "id": 0,
+          "name": "",
+          "type": "",
+          "random": "",
+          "ranges": [],
+          "initial": "",
+          "parameterUuid": "3922b043-fb37-40e4-b8f7-0315bd8d8607"
+        }
+      ],
+      "persistent": true,
+      "shapeWidth": 124,
+      "elementUuid": "135e182b-a871-4934-9874-759bc36eafec",
+      "shapeHeight": 40,
+      "sortingType": "C"
+    },
+    {
+      "dx": 20,
+      "dy": 40,
+      "id": 52,
+      "name": "Select Bank Account",
+      "type": "Action",
+      "textX": 15,
+      "textY": 22,
+      "weight": 100,
+      "parentId": 28,
+      "snippets": [
+        {
+          "name": "Select_BankAccount",
+          "type": "normal",
+          "fullName": "IL_S2571_Client_Bank_Scroll.script:Select_BankAccount",
+          "scriptPath": "IL_S2571_Client_Bank_Scroll.script:Select_BankAccount"
+        }
+      ],
+      "callLimit": 1,
+      "actionType": "Normal",
+      "parameters": [
+        {
+          "id": 0,
+          "name": "",
+          "type": "",
+          "random": "",
+          "ranges": [],
+          "initial": "",
+          "parameterUuid": "8f4ebb0f-7dcd-4e96-9e8a-b3771733409e"
+        }
+      ],
+      "shapeWidth": 143,
+      "elementUuid": "b8fd9947-45b4-4301-a771-361bc905874f",
+      "setGenerate": [
+        {
+          "value": "true",
+          "setGen": "set",
+          "parameterName": "var_BankAccountSelected"
+        }
+      ],
+      "shapeHeight": 40,
+      "sortingType": "C",
+      "preconditions": [
+        {
+          "value": "Select Existing",
+          "condition": "==",
+          "parameterName": "var_BankAccountOption"
+        }
+      ]
+    },
+    {
+      "dx": 20,
+      "dy": 40,
+      "id": 76,
+      "name": "Submodel",
+      "type": "Action",
+      "textX": 15,
+      "textY": 22,
+      "weight": 100,
+      "parentId": 75,
+      "callLimit": 0,
+      "subModels": [
+        {
+          "name": "IL_ItemSearch",
+          "groups": "AIA Tech Automated Testing",
+          "modeluuid": "a58bf2bf-61d3-4c99-8312-8811556c284c"
+        }
+      ],
+      "actionType": "Normal",
+      "parameters": [
+        {
+          "id": 0,
+          "name": "",
+          "type": "",
+          "random": "",
+          "ranges": [],
+          "initial": "",
+          "parameterUuid": "e93dcee5-7bca-40cb-bd0d-1d4e576d1871"
+        }
+      ],
+      "shapeWidth": 80,
+      "elementUuid": "5a5abb22-8327-4966-8a88-2dae84e0e2d7",
+      "shapeHeight": 40,
+      "sortingType": "C"
+    },
+    {
+      "dx": 20,
+      "dy": 40,
+      "id": 78,
+      "name": "S0271 Submodel",
+      "type": "Action",
+      "textX": 15,
+      "textY": 22,
+      "weight": 100,
+      "parentId": 77,
+      "callLimit": 0,
+      "subModels": [
+        {
+          "name": "IL_ItemSearch",
+          "groups": "AIA Tech Automated Testing",
+          "modeluuid": "a58bf2bf-61d3-4c99-8312-8811556c284c"
+        }
+      ],
+      "actionType": "Previous",
+      "parameters": [
+        {
+          "id": 0,
+          "name": "",
+          "type": "",
+          "random": "",
+          "ranges": [],
+          "initial": "",
+          "parameterUuid": "ce3120b7-7387-40d1-82f7-fd776e1b8b0c"
+        }
+      ],
+      "shapeWidth": 119,
+      "elementUuid": "e3b26b01-5229-48ed-a388-d0339259d77b",
+      "shapeHeight": 40,
+      "sortingType": "C",
+      "connectedStates": []
+    },
+    {
+      "dx": 20,
+      "dy": 40,
+      "id": 80,
+      "name": "Input Bank Access Approval No",
+      "type": "Action",
+      "textX": 15,
+      "textY": 22,
+      "weight": 100,
+      "parentId": 79,
+      "snippets": [
+        {
+          "name": "Input_BankAccessApproval",
+          "type": "normal",
+          "fullName": "IL_SR595_DD_Mandate_Approval.script:Input_BankAccessApproval",
+          "scriptPath": "IL_SR595_DD_Mandate_Approval.script:Input_BankAccessApproval"
+        }
+      ],
+      "callLimit": 1,
+      "actionType": "Normal",
+      "parameters": [
+        {
+          "id": 0,
+          "name": "",
+          "type": "",
+          "random": "",
+          "ranges": [],
+          "initial": "",
+          "parameterUuid": "0cfb0f46-792e-45a9-b29c-6981ec452aa0"
+        }
+      ],
+      "shapeWidth": 218,
+      "elementUuid": "3d9dfbda-c8fc-429f-a8fd-3f452936d027",
+      "shapeHeight": 40,
+      "sortingType": "C"
+    },
+    {
+      "dx": 20,
+      "dy": 100,
+      "id": 81,
+      "name": "Hit Enter",
+      "type": "Action",
+      "textX": 15,
+      "textY": 22,
+      "weight": 10,
+      "parentId": 79,
+      "snippets": [
+        {
+          "name": "Press_EnterKey",
+          "type": "normal",
+          "fullName": "Common_Functions.script:Press_EnterKey",
+          "scriptPath": "Common_Functions.script:Press_EnterKey"
+        }
+      ],
+      "callLimit": 0,
+      "actionType": "Normal",
+      "parameters": [
+        {
+          "id": 0,
+          "name": "",
+          "type": "",
+          "random": "",
+          "ranges": [],
+          "initial": "",
+          "parameterUuid": "5d701052-a987-4508-a850-4b1e03f374e4"
+        }
+      ],
+      "shapeWidth": 80,
+      "elementUuid": "9c657eab-5300-4fb5-b0f1-50494223d9d2",
+      "shapeHeight": 40,
+      "sortingType": "C",
+      "connectedStates": [
+        {
+          "stateRef": 6
+        }
+      ]
+    },
+    {
+      "dx": 20,
+      "dy": 40,
+      "id": 82,
+      "name": "Select Mandate",
+      "type": "Action",
+      "textX": 15,
+      "textY": 22,
+      "weight": 100,
+      "parentId": 10,
+      "snippets": [
+        {
+          "name": "Select_Mandate",
+          "type": "normal",
+          "fullName": "IL_S6276_DD_Mandate_List.script:Select_Mandate",
+          "scriptPath": "IL_S6276_DD_Mandate_List.script:Select_Mandate"
+        }
+      ],
+      "callLimit": 1,
+      "actionType": "Normal",
+      "parameters": [
+        {
+          "id": 0,
+          "name": "",
+          "type": "",
+          "random": "",
+          "ranges": [],
+          "initial": "",
+          "parameterUuid": "1deff19e-3916-45a7-9d9c-9b2e5978289c"
+        }
+      ],
+      "shapeWidth": 108,
+      "elementUuid": "1afdb79c-fa44-4cd8-9932-7a1ac0163cfd",
+      "shapeHeight": 40,
+      "sortingType": "C",
+      "preconditions": [
+        {
+          "value": "Select Existing",
+          "condition": "==",
+          "parameterName": "var_MandateOption"
+        }
+      ]
+    },
+    {
+      "dx": 20,
+      "dy": 120,
+      "id": 83,
+      "name": "Check Next Screen",
+      "type": "Action",
+      "textX": 15,
+      "textY": 22,
+      "weight": 100,
+      "parentId": 6,
+      "snippets": [
+        {
+          "name": "Check_Next_Screen",
+          "type": "normal",
+          "outputs": [
+            {
+              "order": 16,
+              "parameterRef": {
+                "id": 14,
+                "name": "var_next_screen",
+                "type": "Text",
+                "random": "Non-generated",
+                "ranges": [],
+                "initial": "",
+                "parameterUuid": "a859f720-3086-4b56-a250-1d8b048f6a09"
+              }
+            }
+          ],
+          "fullName": "IL_S5070_DD_Mandate_Details.script:Check_Next_Screen",
+          "scriptPath": "IL_S5070_DD_Mandate_Details.script:Check_Next_Screen"
+        }
+      ],
+      "callLimit": 0,
+      "actionType": "Sequent",
+      "parameters": [
+        {
+          "id": 0,
+          "name": "",
+          "type": "",
+          "random": "",
+          "ranges": [],
+          "initial": "",
+          "parameterUuid": "538643e7-c166-4271-ba80-ec3537d1f2b3"
+        }
+      ],
+      "elementUuid": "47c7ea04-8ea0-4679-9414-670baa9da471",
+      "sortingType": "C",
+      "connectedStates": [
+        {
+          "stateRef": 10,
+          "conditional": {
+            "value": "S6276",
+            "condition": "==",
+            "parameterName": "var_next_screen"
+          }
+        },
+        {
+          "stateRef": 14,
+          "conditional": {
+            "value": "S6276",
+            "condition": "!=",
+            "parameterName": "var_next_screen"
+          }
+        }
+      ]
+    }
+  ],
+  "modeluuid": "93d938ce-8660-4ad5-8955-c72509c66907",
+  "suitePath": "IntegralLife.suite",
+  "testcases": [],
+  "verbosity": 27392,
+  "snippetFull": true,
+  "stateCounter": 24,
+  "actionCounter": 59,
+  "parameterCounter": 0,
+  "performanceTests": [],
+  "performanceTimings": false,
+  "allSnippetsDisabled": false,
+  "runCleanupAfterAbort": false,
+  "allowGlobalActionsInInitialStates": true
+}

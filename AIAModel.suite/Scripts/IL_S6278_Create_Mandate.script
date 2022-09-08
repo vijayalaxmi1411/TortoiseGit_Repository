@@ -1,0 +1,200 @@
+﻿//======================================================
+//                                           AIA SINGAPORE
+//======================================================
+// Name        : IntegralLife_S6278
+// Descripton : This script is for Integral Life Create Mandate
+//======================================================
+//  REVISION
+//-------------------------------------------------------------------------------------------------------------------------
+// Date          |  Author                     | Description
+//----------------- -------------------------------- ----------------------------------------------------------------------
+// 20220418     Reginal                       Initial Version
+//-------------------------------------------------------------------------------------------------------------------------
+
+
+// Bank Account Number option
+To Handle OptionFor_BankCode
+	--set global var_BankCode_Option = "Select Existing"
+	
+	If global var_BankCode_Option is ...  
+		"Input"                                                  : Input_BankCode
+		"Select Existing"                                      : Select_BankCode
+	End If
+	
+	return global var_BankCode_Option
+End OptionFor_BankCode
+
+// Input Bank Code
+To Handle Input_BankCode
+	--set global var_BankCode = "7171001"
+	
+	Click text:"Bank Sort Code", CaseSensitive:yes
+	Typetext tab, global var_BankCode
+	Typetext F5
+End Input_BankCode
+
+// Select Bank Code
+To Handle Select_BankCode
+	--set global var_BankCode = "7348922"
+	
+	Common_Functions.Press_F4 "Bank Sort Code"
+End Select_BankCode
+
+// Bank Account Number option
+To Handle BankAcctNumber_Option
+	--set global var_BankAccountNumber_Option = "Select Existing"
+	
+	If global var_BankAccountNumber_Option is ...  
+		"Input"                                                   : Input_BankAcctNumber
+		"Select Existing"                                       : SelectCreate_BankAcctNumber
+		"Create New"                                           : SelectCreate_BankAcctNumber
+	End If
+	
+	Return global var_BankAccountNumber_Option
+End BankAcctNumber_Option
+
+// Input Bank Account Number
+To Handle Input_BankAcctNumber
+	--set global var_BankAcctNumber = "12345678901"
+	
+	Click text:"Bank Account Number", CaseSensitive:yes
+	Typetext tab, global var_BankAcctNumber
+	Typetext F5
+End Input_BankAcctNumber
+
+// Select Bank Account Number
+To Handle SelectCreate_BankAcctNumber
+	--set global var_BankAcctNumber = "0173044297724444"
+	
+	Common_Functions.Press_F4 "Bank Account Number"
+End SelectCreate_BankAcctNumber
+
+// Factoring House option
+To Handle OptionFor_FactoringHouse
+	--set global var_FactoringHouse_Option = "Select Existing"
+	
+	If global var_FactoringHouse_Option is ...  
+		"Input"                                                  : Input_FactoringHouse
+		"Select Existing"                                      : Select_FactoringHouse
+	End If
+	
+	Return global var_FactoringHouse_Option
+End OptionFor_FactoringHouse
+
+// Input Factoring House
+To Handle Input_FactoringHouse
+	--set global var_FactoringHouse = "GI"
+	Click text:"Factoring House", CaseSensitive:yes
+	Typetext tab, global var_FactoringHouse
+	Typetext F5
+End Input_FactoringHouse
+
+// Select Bank Factoring house
+To Handle Select_FactoringHouse
+	Common_Functions.Press_F4 "Factoring House"
+	
+	set global var_TableItem = global var_FactoringHouse
+	set global var_ItemDescription = global var_FactHouse_Desc
+	set global var_ErrorMsg = "(S0127) Factoring House not found!"
+End Select_FactoringHouse
+
+// Enrolment Source option
+To Handle OptionFor_EnrolmentSource
+	--set global var_EnrolmentSource_Option = "Select Existing"
+	
+	If global var_EnrolmentSource_Option is ...  
+		"Input"                                                  : Input_EnrolmentSource
+		"Select Existing"                                      : Select_EnrolmentSource
+	End If
+	
+	Return global var_EnrolmentSource_Option
+End OptionFor_EnrolmentSource
+
+// Input Enrolment Source
+To Handle Input_EnrolmentSource
+	--set global var_EnrolmentSource = "ML"
+	
+	Click text:"Enrolment Source", CaseSensitive:yes
+	Typetext tab, global var_EnrolmentSource
+End Input_EnrolmentSource
+
+// Select Enrolment Source
+To Handle Select_EnrolmentSource
+	--set global var_EnrolmentSource = "ML"
+	
+	Common_Functions.Press_F4 "Enrolment Source"
+	
+	set global var_TableItem = global var_EnrolmentSource
+	set global var_ItemDescription = global var_EnrolmentSource_Desc
+	set global var_ErrorMsg = "(S0127) Enrolment Source not found!"
+End Select_EnrolmentSource
+
+// Billing Reference No option
+To Handle OptionFor_BillRefNo
+	--set global var_BillRefNo_Option = "Select Existing"
+	
+	If global var_BillRefNo_Option is ...  
+		"Input"                                                  : Input_BillRefNo
+		"Select Existing"                                      : Select_BillRefNo
+	End If
+	
+	Return global var_BillRefNo_Option
+End OptionFor_BillRefNo
+
+// Input Billing Reference No.
+To Handle Input_BillRefNo
+	--set global var_BillRefNo = "CH"
+	
+	Click text:"Billing Reference No", CaseSensitive:yes, TextDifference:1
+	Typetext tab, global var_BillRefNo
+	Typetext F5
+End Input_BillRefNo
+
+// Select Billing Reference No
+To Handle Select_BillRefNo
+	--set global var_BillRefNo = "CH"
+	
+	Common_Functions.Press_F4 "Billing Reference No"
+	set global var_TableItem = global var_BillRefNo
+	set global var_ItemDescription = global var_ItemBillRefNo_Desc
+	set global var_ErrorMsg = "(S0127) Bill Ref No not found!"
+End Select_BillRefNo
+
+// Input Billing Reference No. Descriptoin
+To Handle Input_BillRefNoDesc
+	--set global var_BillRefNoDesc = "L123456789"
+	
+	If global var_BillRefNoDesc = ""
+		Typetext F5
+	Else
+		Click text:"Billing Reference No", CaseSensitive:yes, TextDifference:1
+		Typetext tab
+		Typetext tab, global var_BillRefNoDesc
+		Typetext F5
+	End If
+	
+	(*Click text:"Billing Reference No", CaseSensitive:yes, TextDifference:1
+	Typetext tab
+	Typetext tab, global var_BillRefNoDesc*)
+End Input_BillRefNoDesc
+
+// Input Mandate Amount
+To Handle Input_MandateAmount
+	--set global var_MandateAmount = "100"
+	
+	If ImageFound(text:"Mandate Amount", CaseSensitive:yes, TextDifference:1, waitFor:5)
+		Click text:"Mandate Amount", CaseSensitive:yes, TextDifference:1
+		Typetext tab, global var_MandateAmount
+		Typetext F5
+	End If
+End Input_MandateAmount
+
+// Input Detail DD Amount
+To Handle Input_DetailDDAmount
+	--set global var_MandateAmount = "100"
+	
+	Click text:"Detail Debit Amount", CaseSensitive:yes, TextDifference:1
+	Typetext tab, global var_DetailDDAmount
+	Typetext F5
+End Input_DetailDDAmount
+

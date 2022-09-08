@@ -1,0 +1,1338 @@
+{
+  "path": "",
+  "tags": [
+    {
+      "id": 1,
+      "name": "",
+      "values": ""
+    }
+  ],
+  "ePFhost": "",
+  "version": "6.0.1-8",
+  "ePFsuite": "",
+  "elements": [
+    {
+      "id": 0,
+      "name": "IL_Receipt_Module",
+      "type": "Root",
+      "parameters": [
+        {
+          "id": 1,
+          "name": "var_index",
+          "type": "Text",
+          "random": "Non-generated",
+          "ranges": [],
+          "initial": "2",
+          "parameterUuid": "906dc020-d6ec-4ee7-95a7-581100333e5f"
+        },
+        {
+          "id": 2,
+          "name": "var_xlsFilename",
+          "type": "Text",
+          "random": "Non-generated",
+          "ranges": [],
+          "initial": "D:\\CTestAutomation\\Integral Life\\IntegralLife.suite\\Resources\\IL_TestData.xlsx",
+          "parameterUuid": "7fc82584-7014-4d2f-afa9-e42b599c4d6b"
+        },
+        {
+          "id": 3,
+          "name": "var_xlsSheet",
+          "type": "Text",
+          "random": "Non-generated",
+          "ranges": [],
+          "initial": "Receipt",
+          "parameterUuid": "6269ffd6-fa8e-4ee6-82f6-bfbf3e987530"
+        },
+        {
+          "id": 4,
+          "name": "var_PaymentType",
+          "type": "Text",
+          "random": "Non-generated",
+          "ranges": [],
+          "initial": "Payment_Type",
+          "parameterUuid": "734e888a-1798-4c80-987a-7bc5472bbc10"
+        }
+      ],
+      "elementUuid": "84937f62-ac16-4177-af1f-27d7a7a27ade"
+    },
+    {
+      "id": 1,
+      "name": "Exit",
+      "type": "State",
+      "parentId": 0,
+      "invisible": true,
+      "stateType": "Normal",
+      "parameters": [
+        {
+          "id": 0,
+          "name": "",
+          "type": "",
+          "random": "",
+          "ranges": [],
+          "initial": "",
+          "parameterUuid": "4b20e456-fae7-4e19-aeea-4b1865fe8342"
+        }
+      ],
+      "elementUuid": "f2e83a8e-2126-403b-a968-ca6c1c822f85",
+      "sortingType": "Z"
+    },
+    {
+      "id": 2,
+      "name": "Error",
+      "type": "State",
+      "parentId": 0,
+      "invisible": true,
+      "stateType": "Exception",
+      "parameters": [
+        {
+          "id": 0,
+          "name": "",
+          "type": "",
+          "random": "",
+          "ranges": [],
+          "initial": "",
+          "parameterUuid": "5ec58ed9-9247-4068-a488-817ae0917266"
+        }
+      ],
+      "elementUuid": "865c7434-f0a0-4805-a2a2-0190e6687a64",
+      "sortingType": "X"
+    },
+    {
+      "id": 3,
+      "name": "Cleanup",
+      "type": "State",
+      "parentId": 0,
+      "invisible": true,
+      "stateType": "Cleanup",
+      "parameters": [
+        {
+          "id": 0,
+          "name": "",
+          "type": "",
+          "random": "",
+          "ranges": [],
+          "initial": "",
+          "parameterUuid": "21f9db6d-b223-45ad-b8b0-70edec689a61"
+        }
+      ],
+      "elementUuid": "db4e5834-06b7-4704-99f4-1978bd976468",
+      "sortingType": "Y"
+    },
+    {
+      "dx": 20,
+      "dy": 20,
+      "id": 4,
+      "name": "Initial",
+      "type": "State",
+      "textX": 20,
+      "textY": 25,
+      "parentId": 0,
+      "invisible": false,
+      "stateType": "Start",
+      "parameters": [
+        {
+          "id": 0,
+          "name": "",
+          "type": "",
+          "random": "",
+          "ranges": [],
+          "initial": "",
+          "parameterUuid": "3bcad9b2-9ef7-4518-9777-ae4563d60d46"
+        }
+      ],
+      "shapeWidth": 140,
+      "elementUuid": "41fe5991-b1d4-447e-a432-31b78a847ebe",
+      "shapeHeight": 100,
+      "sortingType": "A"
+    },
+    {
+      "dx": 560,
+      "dy": 60,
+      "id": 5,
+      "name": "Receipt Menu",
+      "type": "State",
+      "textX": 20,
+      "textY": 25,
+      "parentId": 0,
+      "invisible": false,
+      "stateType": "Normal",
+      "parameters": [
+        {
+          "id": 0,
+          "name": "",
+          "type": "",
+          "random": "",
+          "ranges": [],
+          "initial": "",
+          "parameterUuid": "3352df4a-c3b3-4d93-8f3e-3d4a4d15e100"
+        }
+      ],
+      "shapeWidth": 200,
+      "elementUuid": "96818f93-9f1a-4440-a2a4-d3441d3107f0",
+      "shapeHeight": 240,
+      "sortingType": "B"
+    },
+    {
+      "dx": 920,
+      "dy": 80,
+      "id": 6,
+      "name": "Receipt Header",
+      "type": "State",
+      "textX": 20,
+      "textY": 25,
+      "parentId": 0,
+      "invisible": false,
+      "stateType": "Normal",
+      "parameters": [
+        {
+          "id": 0,
+          "name": "",
+          "type": "",
+          "random": "",
+          "ranges": [],
+          "initial": "",
+          "parameterUuid": "232558e4-f97f-49f8-9481-b3fba64b52af"
+        }
+      ],
+      "shapeWidth": 540,
+      "elementUuid": "bb337884-bd15-4028-ba7d-ba8312705e32",
+      "shapeHeight": 180,
+      "sortingType": "B"
+    },
+    {
+      "dx": 920,
+      "dy": 340,
+      "id": 12,
+      "name": "Non GIRO",
+      "type": "State",
+      "textX": 20,
+      "textY": 25,
+      "parentId": 0,
+      "invisible": false,
+      "stateType": "Normal",
+      "parameters": [
+        {
+          "id": 0,
+          "name": "",
+          "type": "",
+          "random": "",
+          "ranges": [],
+          "initial": "",
+          "parameterUuid": "b6cb64ab-ece7-435c-8e65-f5c66acc8200"
+        }
+      ],
+      "shapeWidth": 260,
+      "elementUuid": "101e2e00-a150-4645-b8e0-0ed4cffcb782",
+      "shapeHeight": 100,
+      "sortingType": "B"
+    },
+    {
+      "dx": 1240,
+      "dy": 340,
+      "id": 14,
+      "name": "GIRO",
+      "type": "State",
+      "textX": 20,
+      "textY": 25,
+      "parentId": 0,
+      "invisible": false,
+      "stateType": "Normal",
+      "parameters": [
+        {
+          "id": 0,
+          "name": "",
+          "type": "",
+          "random": "",
+          "ranges": [],
+          "initial": "",
+          "parameterUuid": "906cc906-215a-41a1-9971-e4d3389df1ae"
+        }
+      ],
+      "shapeWidth": 180,
+      "elementUuid": "3cb5bc98-8ed9-4900-84f2-ca12e98982cf",
+      "shapeHeight": 100,
+      "sortingType": "B"
+    },
+    {
+      "dx": 1100,
+      "dy": 520,
+      "id": 15,
+      "name": "AML Check",
+      "type": "State",
+      "textX": 20,
+      "textY": 25,
+      "parentId": 0,
+      "invisible": false,
+      "stateType": "Normal",
+      "parameters": [
+        {
+          "id": 0,
+          "name": "",
+          "type": "",
+          "random": "",
+          "ranges": [],
+          "initial": "",
+          "parameterUuid": "efb85c31-f23d-4545-b996-b104b73c9e5d"
+        }
+      ],
+      "shapeWidth": 180,
+      "elementUuid": "b2bde3c2-646b-4159-95b6-ef9689200b68",
+      "shapeHeight": 100,
+      "sortingType": "B"
+    },
+    {
+      "dx": 1020,
+      "dy": 680,
+      "id": 16,
+      "name": "Receipt Details",
+      "type": "State",
+      "textX": 20,
+      "textY": 25,
+      "parentId": 0,
+      "invisible": false,
+      "stateType": "Normal",
+      "parameters": [
+        {
+          "id": 0,
+          "name": "",
+          "type": "",
+          "random": "",
+          "ranges": [],
+          "initial": "",
+          "parameterUuid": "0925a686-87e6-45d5-80bf-2c968f81c7e9"
+        }
+      ],
+      "shapeWidth": 380,
+      "elementUuid": "192a0bb1-c25a-42c5-a75f-7ab907da33a6",
+      "shapeHeight": 220,
+      "sortingType": "B"
+    },
+    {
+      "dx": 560,
+      "dy": 740,
+      "id": 24,
+      "name": "FPDF Screen",
+      "type": "State",
+      "textX": 20,
+      "textY": 25,
+      "parentId": 0,
+      "invisible": false,
+      "stateType": "Normal",
+      "parameters": [
+        {
+          "id": 0,
+          "name": "",
+          "type": "",
+          "random": "",
+          "ranges": [],
+          "initial": "",
+          "parameterUuid": "c2c69110-0465-41f7-9d31-69214dd631fa"
+        }
+      ],
+      "shapeWidth": 180,
+      "elementUuid": "743402a5-ff18-420b-9970-c8c061909ecd",
+      "shapeHeight": 100,
+      "sortingType": "B"
+    },
+    {
+      "dx": 540,
+      "dy": 540,
+      "id": 26,
+      "name": "Complete Receipt Creation",
+      "type": "State",
+      "textX": 20,
+      "textY": 25,
+      "parentId": 0,
+      "invisible": false,
+      "stateType": "Normal",
+      "parameters": [
+        {
+          "id": 0,
+          "name": "",
+          "type": "",
+          "random": "",
+          "ranges": [],
+          "initial": "",
+          "parameterUuid": "a2c9785f-1d46-4c1f-a949-84db59366b56"
+        }
+      ],
+      "shapeWidth": 240,
+      "elementUuid": "4793c418-b790-4805-8e96-8c7a812085dd",
+      "shapeHeight": 120,
+      "sortingType": "B"
+    },
+    {
+      "dx": 200,
+      "dy": 40,
+      "id": 37,
+      "name": "Main Menu",
+      "type": "State",
+      "textX": 20,
+      "textY": 25,
+      "parentId": 0,
+      "invisible": false,
+      "stateType": "Normal",
+      "parameters": [
+        {
+          "id": 0,
+          "name": "",
+          "type": "",
+          "random": "",
+          "ranges": [],
+          "initial": "",
+          "parameterUuid": "8baf7157-391c-49c2-9754-de7ec3cadd63"
+        }
+      ],
+      "shapeWidth": 280,
+      "elementUuid": "47b7bbc4-ae28-4f03-abca-e194ee89d35c",
+      "shapeHeight": 100,
+      "sortingType": "B"
+    },
+    {
+      "dx": 200,
+      "dy": 220,
+      "id": 39,
+      "name": "Receivables Payables Main Menu",
+      "type": "State",
+      "textX": 20,
+      "textY": 25,
+      "parentId": 0,
+      "invisible": false,
+      "stateType": "Normal",
+      "parameters": [
+        {
+          "id": 0,
+          "name": "",
+          "type": "",
+          "random": "",
+          "ranges": [],
+          "initial": "",
+          "parameterUuid": "092be9f6-8dce-4d84-a910-03f96035a6d6"
+        }
+      ],
+      "shapeWidth": 280,
+      "elementUuid": "ff9ab507-bdef-4c42-85c1-f58a9cd11693",
+      "shapeHeight": 100,
+      "sortingType": "B"
+    },
+    {
+      "dx": 40,
+      "dy": 180,
+      "id": 7,
+      "name": "Enter BankCode",
+      "type": "Action",
+      "textX": 15,
+      "textY": 22,
+      "weight": 100,
+      "parentId": 5,
+      "snippets": [
+        {
+          "name": "Input_BankCode",
+          "type": "normal",
+          "fullName": "IL_Receipt Module.script:Input_BankCode",
+          "scriptPath": "IL_Receipt Module.script:Input_BankCode"
+        }
+      ],
+      "callLimit": 0,
+      "actionType": "Sequent",
+      "parameters": [
+        {
+          "id": 0,
+          "name": "",
+          "type": "",
+          "random": "",
+          "ranges": [],
+          "initial": "",
+          "parameterUuid": "a1bf747e-331a-4789-be30-172566a4242c"
+        }
+      ],
+      "elementUuid": "c37363ec-f7df-4f4e-a750-2f9c8609eb78",
+      "sortingType": "C",
+      "connectedStates": [
+        {
+          "stateRef": 6
+        }
+      ]
+    },
+    {
+      "dx": 20,
+      "dy": 40,
+      "id": 9,
+      "name": "Validate Header",
+      "type": "Action",
+      "textX": 15,
+      "textY": 22,
+      "weight": 100,
+      "parentId": 6,
+      "snippets": [
+        {
+          "name": "Validate_ReceiptHeaderScreen",
+          "type": "normal",
+          "fullName": "IL_Receipt Module.script:Validate_ReceiptHeaderScreen",
+          "scriptPath": "IL_Receipt Module.script:Validate_ReceiptHeaderScreen"
+        }
+      ],
+      "callLimit": 0,
+      "actionType": "Normal",
+      "parameters": [
+        {
+          "id": 0,
+          "name": "",
+          "type": "",
+          "random": "",
+          "ranges": [],
+          "initial": "",
+          "parameterUuid": "08534329-12ec-4e19-be59-246c1f43e68c"
+        }
+      ],
+      "shapeWidth": 112,
+      "elementUuid": "64ef0e89-5150-46a5-98f2-562d68540dc0",
+      "shapeHeight": 40,
+      "sortingType": "C",
+      "connectedStates": [
+        {
+          "stateRef": 35
+        }
+      ]
+    },
+    {
+      "dx": 380,
+      "dy": 120,
+      "id": 11,
+      "name": "Validate Payment",
+      "type": "Action",
+      "textX": 15,
+      "textY": 22,
+      "weight": 100,
+      "parentId": 6,
+      "snippets": [
+        {
+          "name": "Validate_PaymentType_New",
+          "type": "normal",
+          "inputs": [
+            {
+              "order": 1,
+              "parameterRef": {
+                "id": 4,
+                "name": "var_PaymentType",
+                "type": "Text",
+                "random": "Non-generated",
+                "ranges": [],
+                "initial": "",
+                "parameterUuid": "734e888a-1798-4c80-987a-7bc5472bbc10"
+              }
+            }
+          ],
+          "outputs": [
+            {
+              "order": 1,
+              "parameterRef": {
+                "id": 4,
+                "name": "var_PaymentType",
+                "type": "Text",
+                "random": "Non-generated",
+                "ranges": [],
+                "initial": "",
+                "parameterUuid": "734e888a-1798-4c80-987a-7bc5472bbc10"
+              }
+            }
+          ],
+          "fullName": "IL_Receipt Module.script:Validate_PaymentType_New",
+          "scriptPath": "IL_Receipt Module.script:Validate_PaymentType_New"
+        }
+      ],
+      "callLimit": 0,
+      "actionType": "Sequent",
+      "parameters": [
+        {
+          "id": 0,
+          "name": "",
+          "type": "",
+          "random": "",
+          "ranges": [],
+          "initial": "",
+          "parameterUuid": "0eb40f22-429c-441f-835e-4e33fac27a4c"
+        }
+      ],
+      "elementUuid": "5ae7fa75-9632-4980-8da7-5bc092e344d8",
+      "sortingType": "C",
+      "connectedStates": [
+        {
+          "stateRef": 12,
+          "conditional": {
+            "value": "D",
+            "condition": "!=",
+            "parameterName": "var_PaymentType"
+          }
+        },
+        {
+          "stateRef": 14,
+          "conditional": {
+            "value": "D",
+            "condition": "==",
+            "parameterName": "var_PaymentType"
+          }
+        }
+      ]
+    },
+    {
+      "dx": 20,
+      "dy": 40,
+      "id": 18,
+      "name": "Validate Receipt Details Screen",
+      "type": "Action",
+      "textX": 15,
+      "textY": 22,
+      "weight": 100,
+      "parentId": 16,
+      "snippets": [
+        {
+          "name": "Validate_ReceiptDetailScreen",
+          "type": "normal",
+          "fullName": "IL_Receipt Module.script:Validate_ReceiptDetailScreen",
+          "scriptPath": "IL_Receipt Module.script:Validate_ReceiptDetailScreen"
+        }
+      ],
+      "callLimit": 0,
+      "actionType": "Normal",
+      "parameters": [
+        {
+          "id": 0,
+          "name": "",
+          "type": "",
+          "random": "",
+          "ranges": [],
+          "initial": "",
+          "parameterUuid": "ccf5cb44-5816-481e-a521-67b123593162"
+        }
+      ],
+      "shapeWidth": 219,
+      "elementUuid": "48bf5c2b-d936-45c8-bf5b-48a16769a187",
+      "shapeHeight": 40,
+      "sortingType": "C",
+      "connectedStates": [
+        {
+          "stateRef": 19
+        }
+      ]
+    },
+    {
+      "dx": 40,
+      "dy": 100,
+      "id": 19,
+      "name": "PolicyNumber",
+      "type": "Action",
+      "textX": 15,
+      "textY": 22,
+      "weight": 100,
+      "parentId": 16,
+      "snippets": [
+        {
+          "name": "Input_PolicyNumber",
+          "type": "normal",
+          "fullName": "IL_Receipt Module.script:Input_PolicyNumber",
+          "scriptPath": "IL_Receipt Module.script:Input_PolicyNumber"
+        }
+      ],
+      "callLimit": 0,
+      "actionType": "Sequent",
+      "parameters": [
+        {
+          "id": 0,
+          "name": "",
+          "type": "",
+          "random": "",
+          "ranges": [],
+          "initial": "",
+          "parameterUuid": "8ff8ec53-3f16-4882-a187-5defca677794"
+        }
+      ],
+      "elementUuid": "4e667080-2b85-4ce6-93e3-cedebd311f38",
+      "sortingType": "C",
+      "connectedStates": [
+        {
+          "stateRef": 21
+        }
+      ]
+    },
+    {
+      "dx": 200,
+      "dy": 100,
+      "id": 21,
+      "name": "SacsCode SacsType",
+      "type": "Action",
+      "textX": 15,
+      "textY": 22,
+      "weight": 100,
+      "parentId": 16,
+      "snippets": [
+        {
+          "name": "Input_SacsCode_Sacstype",
+          "type": "normal",
+          "fullName": "IL_Receipt Module.script:Input_SacsCode_Sacstype",
+          "scriptPath": "IL_Receipt Module.script:Input_SacsCode_Sacstype"
+        }
+      ],
+      "callLimit": 0,
+      "actionType": "Sequent",
+      "parameters": [
+        {
+          "id": 0,
+          "name": "",
+          "type": "",
+          "random": "",
+          "ranges": [],
+          "initial": "",
+          "parameterUuid": "b0e7ac45-514e-4f28-9a50-b9d76ad1714a"
+        }
+      ],
+      "elementUuid": "0ca8c87f-a927-404f-be8c-65074e409a58",
+      "sortingType": "C",
+      "connectedStates": [
+        {
+          "stateRef": 22
+        }
+      ]
+    },
+    {
+      "dx": 20,
+      "dy": 160,
+      "id": 22,
+      "name": "Premium Amount",
+      "type": "Action",
+      "textX": 15,
+      "textY": 22,
+      "weight": 100,
+      "parentId": 16,
+      "snippets": [
+        {
+          "name": "Input_Header_PolicyNumber_PremiumAmount",
+          "type": "normal",
+          "fullName": "IL_Receipt Module.script:Input_Header_PolicyNumber_PremiumAmount",
+          "scriptPath": "IL_Receipt Module.script:Input_Header_PolicyNumber_PremiumAmount"
+        }
+      ],
+      "callLimit": 0,
+      "actionType": "Sequent",
+      "parameters": [
+        {
+          "id": 0,
+          "name": "",
+          "type": "",
+          "random": "",
+          "ranges": [],
+          "initial": "",
+          "parameterUuid": "f4788ec6-77a5-4c07-816b-5a045394c0e8"
+        }
+      ],
+      "elementUuid": "23342481-0127-40c5-a525-06f62c7d4fad",
+      "sortingType": "C",
+      "connectedStates": [
+        {
+          "stateRef": 24
+        }
+      ]
+    },
+    {
+      "dx": 20,
+      "dy": 40,
+      "id": 25,
+      "name": "Handle FPDF Screen",
+      "type": "Action",
+      "textX": 15,
+      "textY": 22,
+      "weight": 100,
+      "parentId": 24,
+      "snippets": [
+        {
+          "name": "Validate_FPDF_Screen",
+          "type": "normal",
+          "fullName": "IL_Receipt Module.script:Validate_FPDF_Screen",
+          "scriptPath": "IL_Receipt Module.script:Validate_FPDF_Screen"
+        }
+      ],
+      "callLimit": 0,
+      "actionType": "Normal",
+      "parameters": [
+        {
+          "id": 0,
+          "name": "",
+          "type": "",
+          "random": "",
+          "ranges": [],
+          "initial": "",
+          "parameterUuid": "cbfdfa07-8add-45e7-bd9c-70a5f114ba22"
+        }
+      ],
+      "shapeWidth": 148,
+      "elementUuid": "8d774dbc-bf6c-4b2c-9da0-7fe65a55b8b2",
+      "shapeHeight": 40,
+      "sortingType": "C",
+      "connectedStates": [
+        {
+          "stateRef": 26
+        }
+      ]
+    },
+    {
+      "dx": 20,
+      "dy": 40,
+      "id": 27,
+      "name": "Validate Receipt Completion",
+      "type": "Action",
+      "textX": 15,
+      "textY": 22,
+      "weight": 100,
+      "parentId": 26,
+      "snippets": [
+        {
+          "name": "Validate_End_Receipt_Creation",
+          "type": "normal",
+          "fullName": "IL_Receipt Module.script:Validate_End_Receipt_Creation",
+          "scriptPath": "IL_Receipt Module.script:Validate_End_Receipt_Creation"
+        }
+      ],
+      "callLimit": 0,
+      "actionType": "Normal",
+      "parameters": [
+        {
+          "id": 0,
+          "name": "",
+          "type": "",
+          "random": "",
+          "ranges": [],
+          "initial": "",
+          "parameterUuid": "e39454b5-2dcd-45fa-b70c-b7871f740ec6"
+        }
+      ],
+      "shapeWidth": 196,
+      "elementUuid": "6116f691-25a8-421b-b97a-c8e2a5d9f637",
+      "shapeHeight": 40,
+      "sortingType": "C",
+      "connectedStates": [
+        {
+          "stateRef": 1
+        }
+      ]
+    },
+    {
+      "dx": 20,
+      "dy": 40,
+      "id": 28,
+      "name": "Input Non GIRO Receipt details",
+      "type": "Action",
+      "textX": 15,
+      "textY": 22,
+      "weight": 100,
+      "parentId": 12,
+      "snippets": [
+        {
+          "name": "Input_NonGIRO_Header_Details",
+          "type": "normal",
+          "fullName": "IL_Receipt Module.script:Input_NonGIRO_Header_Details",
+          "scriptPath": "IL_Receipt Module.script:Input_NonGIRO_Header_Details"
+        }
+      ],
+      "callLimit": 0,
+      "actionType": "Normal",
+      "parameters": [
+        {
+          "id": 0,
+          "name": "",
+          "type": "",
+          "random": "",
+          "ranges": [],
+          "initial": "",
+          "parameterUuid": "0a8e214c-4ab2-4cd1-bab8-4d36c48b56d7"
+        }
+      ],
+      "shapeWidth": 218,
+      "elementUuid": "7856b2fb-f89d-4254-8692-e1e9b515b69a",
+      "shapeHeight": 40,
+      "sortingType": "C",
+      "connectedStates": [
+        {
+          "stateRef": 15
+        }
+      ]
+    },
+    {
+      "dx": 20,
+      "dy": 40,
+      "id": 29,
+      "name": "Input GIRO Details",
+      "type": "Action",
+      "textX": 15,
+      "textY": 22,
+      "weight": 100,
+      "parentId": 14,
+      "snippets": [
+        {
+          "name": "Input_GIRO_Header_Details",
+          "type": "normal",
+          "fullName": "IL_Receipt Module.script:Input_GIRO_Header_Details",
+          "scriptPath": "IL_Receipt Module.script:Input_GIRO_Header_Details"
+        }
+      ],
+      "callLimit": 0,
+      "actionType": "Normal",
+      "parameters": [
+        {
+          "id": 0,
+          "name": "",
+          "type": "",
+          "random": "",
+          "ranges": [],
+          "initial": "",
+          "parameterUuid": "cbd75774-245a-442c-a9e4-0c712a5cf06b"
+        }
+      ],
+      "shapeWidth": 131,
+      "elementUuid": "e6354189-c94c-4c6e-8755-3219c04084cc",
+      "shapeHeight": 40,
+      "sortingType": "C",
+      "connectedStates": [
+        {
+          "stateRef": 15
+        }
+      ]
+    },
+    {
+      "dx": 20,
+      "dy": 40,
+      "id": 30,
+      "name": "Handle AML Screen",
+      "type": "Action",
+      "textX": 15,
+      "textY": 22,
+      "weight": 100,
+      "parentId": 15,
+      "snippets": [
+        {
+          "name": "Handle_AMLScreen",
+          "type": "normal",
+          "fullName": "IL_Receipt Module.script:Handle_AMLScreen",
+          "scriptPath": "IL_Receipt Module.script:Handle_AMLScreen"
+        }
+      ],
+      "callLimit": 0,
+      "actionType": "Normal",
+      "parameters": [
+        {
+          "id": 0,
+          "name": "",
+          "type": "",
+          "random": "",
+          "ranges": [],
+          "initial": "",
+          "parameterUuid": "d4361b3e-92d8-47d7-9c66-b1614b96365a"
+        }
+      ],
+      "shapeWidth": 138,
+      "elementUuid": "7b535874-b5af-4116-90e7-dcf1af3fd377",
+      "shapeHeight": 40,
+      "sortingType": "C",
+      "connectedStates": [
+        {
+          "stateRef": 16
+        }
+      ]
+    },
+    {
+      "dx": 20,
+      "dy": 40,
+      "id": 31,
+      "name": "Load Test Data",
+      "type": "Action",
+      "textX": 15,
+      "textY": 22,
+      "weight": 100,
+      "parentId": 4,
+      "snippets": [
+        {
+          "name": "GlobalGetExcelData",
+          "type": "normal",
+          "inputs": [
+            {
+              "order": 1,
+              "parameterRef": {
+                "id": 1,
+                "name": "var_index",
+                "type": "Text",
+                "random": "Non-generated",
+                "ranges": [],
+                "initial": "2",
+                "parameterUuid": "906dc020-d6ec-4ee7-95a7-581100333e5f"
+              }
+            },
+            {
+              "order": 2,
+              "parameterRef": {
+                "id": 2,
+                "name": "var_xlsFilename",
+                "type": "Text",
+                "random": "Non-generated",
+                "ranges": [],
+                "initial": "D:\\Eggplant\\Project\\IL.suite\\Resources\\IL_TestData.xlsx",
+                "parameterUuid": "7fc82584-7014-4d2f-afa9-e42b599c4d6b"
+              }
+            },
+            {
+              "order": 3,
+              "parameterRef": {
+                "id": 3,
+                "name": "var_xlsSheet",
+                "type": "Text",
+                "random": "Non-generated",
+                "ranges": [],
+                "initial": "Receipt",
+                "parameterUuid": "6269ffd6-fa8e-4ee6-82f6-bfbf3e987530"
+              }
+            }
+          ],
+          "fullName": "Common_Functions.script:GlobalGetExcelData",
+          "scriptPath": "Common_Functions.script:GlobalGetExcelData"
+        }
+      ],
+      "callLimit": 0,
+      "actionType": "Normal",
+      "parameters": [
+        {
+          "id": 0,
+          "name": "",
+          "type": "",
+          "random": "",
+          "ranges": [],
+          "initial": "",
+          "parameterUuid": "bfbf2da0-359c-493d-ad14-7d20ff9e9098"
+        }
+      ],
+      "shapeWidth": 104,
+      "elementUuid": "d87291dc-72c9-4e62-9d66-8f48c968e140",
+      "shapeHeight": 40,
+      "sortingType": "C",
+      "connectedStates": [
+        {
+          "stateRef": 37
+        }
+      ]
+    },
+    {
+      "dx": 60,
+      "dy": 120,
+      "id": 32,
+      "name": "Enter Payment Method",
+      "type": "Action",
+      "textX": 15,
+      "textY": 22,
+      "weight": 100,
+      "parentId": 6,
+      "snippets": [
+        {
+          "name": "Input_PaymentType",
+          "type": "normal",
+          "fullName": "IL_Receipt Module.script:Input_PaymentType",
+          "scriptPath": "IL_Receipt Module.script:Input_PaymentType"
+        }
+      ],
+      "callLimit": 0,
+      "actionType": "Sequent",
+      "parameters": [
+        {
+          "id": 0,
+          "name": "",
+          "type": "",
+          "random": "",
+          "ranges": [],
+          "initial": "",
+          "parameterUuid": "187a86f9-0334-41c3-9902-cb50a14f0053"
+        }
+      ],
+      "elementUuid": "68c121db-03ec-435f-bb3c-4d271c22904e",
+      "sortingType": "C",
+      "connectedStates": [
+        {
+          "stateRef": 36
+        }
+      ]
+    },
+    {
+      "dx": 20,
+      "dy": 40,
+      "id": 33,
+      "name": "Validate Receipt Screen",
+      "type": "Action",
+      "textX": 15,
+      "textY": 22,
+      "weight": 100,
+      "parentId": 5,
+      "snippets": [
+        {
+          "name": "Validate_ReceiptScreen",
+          "type": "normal",
+          "fullName": "IL_Receipt Module.script:Validate_ReceiptScreen",
+          "scriptPath": "IL_Receipt Module.script:Validate_ReceiptScreen"
+        }
+      ],
+      "callLimit": 0,
+      "actionType": "Normal",
+      "parameters": [
+        {
+          "id": 0,
+          "name": "",
+          "type": "",
+          "random": "",
+          "ranges": [],
+          "initial": "",
+          "parameterUuid": "34e3ff6d-cf48-4336-9058-77675fd6ed0f"
+        }
+      ],
+      "shapeWidth": 167,
+      "elementUuid": "b57a4a77-0ee0-47b9-8a18-97f576df276a",
+      "shapeHeight": 40,
+      "sortingType": "C",
+      "connectedStates": [
+        {
+          "stateRef": 34
+        }
+      ]
+    },
+    {
+      "dx": 40,
+      "dy": 120,
+      "id": 34,
+      "name": "Enter Action",
+      "type": "Action",
+      "textX": 15,
+      "textY": 22,
+      "weight": 100,
+      "parentId": 5,
+      "snippets": [
+        {
+          "name": "Input_Action",
+          "type": "normal",
+          "fullName": "IL_Receipt Module.script:Input_Action",
+          "scriptPath": "IL_Receipt Module.script:Input_Action"
+        }
+      ],
+      "callLimit": 0,
+      "actionType": "Sequent",
+      "parameters": [
+        {
+          "id": 0,
+          "name": "",
+          "type": "",
+          "random": "",
+          "ranges": [],
+          "initial": "",
+          "parameterUuid": "73bfb42d-ff45-477c-a904-a7cb7e652d2b"
+        }
+      ],
+      "elementUuid": "bd633478-143e-46b4-a92c-b42f12660743",
+      "sortingType": "C",
+      "connectedStates": [
+        {
+          "stateRef": 7
+        }
+      ]
+    },
+    {
+      "dx": 180,
+      "dy": 40,
+      "id": 35,
+      "name": "CPF Indicator",
+      "type": "Action",
+      "textX": 15,
+      "textY": 22,
+      "weight": 100,
+      "parentId": 6,
+      "snippets": [
+        {
+          "name": "Input_CPF_Ind",
+          "type": "normal",
+          "fullName": "IL_Receipt Module.script:Input_CPF_Ind",
+          "scriptPath": "IL_Receipt Module.script:Input_CPF_Ind"
+        }
+      ],
+      "callLimit": 0,
+      "actionType": "Sequent",
+      "parameters": [
+        {
+          "id": 0,
+          "name": "",
+          "type": "",
+          "random": "",
+          "ranges": [],
+          "initial": "",
+          "parameterUuid": "db54769e-a05b-4660-9d98-4a68eac4677b"
+        }
+      ],
+      "elementUuid": "ca84304a-5aa7-4d55-aa1f-929519456346",
+      "sortingType": "C",
+      "connectedStates": [
+        {
+          "stateRef": 32
+        }
+      ]
+    },
+    {
+      "dx": 380,
+      "dy": 40,
+      "id": 36,
+      "name": "Enter Cheque No",
+      "type": "Action",
+      "textX": 15,
+      "textY": 22,
+      "weight": 100,
+      "parentId": 6,
+      "snippets": [
+        {
+          "name": "Input_ChequeNo",
+          "type": "normal",
+          "fullName": "IL_Receipt Module.script:Input_ChequeNo",
+          "scriptPath": "IL_Receipt Module.script:Input_ChequeNo"
+        }
+      ],
+      "callLimit": 0,
+      "actionType": "Sequent",
+      "parameters": [
+        {
+          "id": 0,
+          "name": "",
+          "type": "",
+          "random": "",
+          "ranges": [],
+          "initial": "",
+          "parameterUuid": "c52833d8-6932-4f62-8e97-d03d40635f31"
+        }
+      ],
+      "elementUuid": "9fda2d5f-6516-4f20-b0b4-208cb8692ae7",
+      "sortingType": "C",
+      "connectedStates": [
+        {
+          "stateRef": 11
+        }
+      ]
+    },
+    {
+      "dx": 20,
+      "dy": 40,
+      "id": 38,
+      "name": "Select Receivables and Payables",
+      "type": "Action",
+      "textX": 15,
+      "textY": 22,
+      "weight": 100,
+      "parentId": 37,
+      "snippets": [
+        {
+          "name": "Click_Receivables_Payables",
+          "type": "normal",
+          "fullName": "IL_S0017_MasterMenu.script:Click_Receivables_Payables",
+          "scriptPath": "IL_S0017_MasterMenu.script:Click_Receivables_Payables"
+        }
+      ],
+      "callLimit": 0,
+      "actionType": "Normal",
+      "parameters": [
+        {
+          "id": 0,
+          "name": "",
+          "type": "",
+          "random": "",
+          "ranges": [],
+          "initial": "",
+          "parameterUuid": "b65df187-68e1-4d4c-a2c5-ea5cdcb82981"
+        }
+      ],
+      "shapeWidth": 231,
+      "elementUuid": "c1f55b92-ac0d-4716-8788-8c48231c824f",
+      "shapeHeight": 40,
+      "sortingType": "C",
+      "connectedStates": [
+        {
+          "stateRef": 39
+        }
+      ]
+    },
+    {
+      "dx": 20,
+      "dy": 40,
+      "id": 40,
+      "name": "Select Receipts",
+      "type": "Action",
+      "textX": 15,
+      "textY": 22,
+      "weight": 100,
+      "parentId": 39,
+      "snippets": [
+        {
+          "name": "Click_Receipts",
+          "type": "normal",
+          "fullName": "IL_S0018_Proposal_NB.script:Click_Receipts",
+          "scriptPath": "IL_S0018_Proposal_NB.script:Click_Receipts"
+        }
+      ],
+      "callLimit": 0,
+      "actionType": "Normal",
+      "parameters": [
+        {
+          "id": 0,
+          "name": "",
+          "type": "",
+          "random": "",
+          "ranges": [],
+          "initial": "",
+          "parameterUuid": "5213734d-eaa7-463d-8368-57a2f81588a5"
+        }
+      ],
+      "shapeWidth": 108,
+      "elementUuid": "068bc675-cb7f-499c-964f-4d01b4b71fe1",
+      "shapeHeight": 40,
+      "sortingType": "C",
+      "connectedStates": [
+        {
+          "stateRef": 5
+        }
+      ]
+    }
+  ],
+  "modeluuid": "e031cb9f-62c4-448d-a354-eec409f08690",
+  "suitePath": "IntegralLife.suite",
+  "testcases": [
+    {
+      "id": 0,
+      "fails": "",
+      "tests": "",
+      "testIds": "",
+      "testcase": "Action Initial::\"Load Test Data\", Action \"Receipt Menu\"::\"Validate Receipt Screen\", Action \"Receipt Menu\"::\"Enter BankCode\", Action \"Receipt Menu\"::\"Enter Action\", Action \"Receipt Header\"::\"Validate Header\", Action \"Receipt Header\"::\"Validate Payment\", Action \"Non GIRO\"::\"Input Non GIRO Receipt details\", Action \"AML Check\"::\"Handle AML Screen\", Action \"Receipt Details\"::\"Validate Receipt Details Screen\", Action \"Receipt Details\"::PolicyNumber, Action \"Receipt Details\"::\"SacsCode SacsType\", Action \"Receipt Details\"::\"Premium Amount\", Action \"FPDF Screen\"::\"Handle FPDF Screen\", Action \"Complete Receipt Creation\"::\"Validate Receipt Completion\"",
+      "testcaseName": "IL_TC01",
+      "testcaseTags": "",
+      "testcaseOrigin": "",
+      "testcaseExternalID": "",
+      "testcaseDescription": "NON GIRO FLOW"
+    },
+    {
+      "id": 1,
+      "fails": "",
+      "tests": "",
+      "testIds": "",
+      "testcase": "Action Initial::\"Load Test Data\", Action \"Receipt Menu\"::\"Validate Receipt Screen\", Action \"Receipt Menu\"::\"Enter Action\", Action \"Receipt Menu\"::\"Enter BankCode\", Action \"Receipt Header\"::\"Validate Header\", Action \"Receipt Header\"::\"Validate Payment\", Action GIRO::\"Input GIRO Details\", Action \"AML Check\"::\"Handle AML Screen\", Action \"Receipt Details\"::\"Validate Receipt Details Screen\", Action \"Receipt Details\"::PolicyNumber, Action \"Receipt Details\"::\"SacsCode SacsType\", Action \"Receipt Details\"::\"Premium Amount\", Action \"FPDF Screen\"::\"Handle FPDF Screen\", Action \"Complete Receipt Creation\"::\"Validate Receipt Completion\"",
+      "testcaseName": "IL_TC02",
+      "testcaseTags": "",
+      "testcaseOrigin": "",
+      "testcaseExternalID": "",
+      "testcaseDescription": "GIRO FLOW"
+    }
+  ],
+  "verbosity": 27392,
+  "snippetFull": true,
+  "stateCounter": 15,
+  "actionCounter": 26,
+  "parameterCounter": 0,
+  "performanceTests": [],
+  "performanceTimings": false,
+  "allSnippetsDisabled": false,
+  "runCleanupAfterAbort": false,
+  "allowGlobalActionsInInitialStates": true
+}

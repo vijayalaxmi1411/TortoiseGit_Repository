@@ -1,0 +1,178 @@
+﻿//======================================================
+//                                           AIA SINGAPORE
+//======================================================
+// Name        : Common_Functions
+// Descripton : This contains all common functions for Integral Life application suite
+//======================================================
+//  REVISION
+//-------------------------------------------------------------------------------------------------------------------------
+// Date          |  Author                              | Description
+//----------------- -------------------------------- ----------------------------------------------------------------------
+// 20220410    Automation Team -Colleen    Initial Version for IL Proposal - New ILP comp 
+//-------------------------------------------------------------------------------------------------------------------------
+
+
+on Enter_Premium
+	repeat each line of global var_Premiums
+		if repeatindex() = global var_cov_lineno
+			put line repeatIndex() of global var_Premiums into var_line_premium
+			repeat each item of var_line_premium
+				put repeatindex() into var_item_index
+				if var_item_index = global var_cov_itemno
+					put item global var_cov_itemno of var_line_premium into  var_premium
+					exit repeat 
+				end if
+			end repeat
+		end if
+	end repeat
+	
+	if imagefound(text:"Total Premium",caseSensitive:yes)
+		click FoundImageLocation()
+		typetext tabKey,  var_premium 
+	else
+		
+		logerror "Premium field not found " 
+		capturescreen {name: "Premium field not found_" & today & hour(time) & "_" & minute(time) &second(time) , increment: yes} 
+		exit handler
+	end if
+	
+	set the SearchRectangle to empty
+	
+end Enter_Premium
+
+on Check_For_Errors
+	typetext f5 
+	put  ImageRectangle(Text:"Special Terms", caseSensitive:yes , WaitFor:1)  into var_loc
+	put  [var_loc.bottomleft +[-10,30], var_loc.bottomright + [1000,70] ] into var_rec 
+	set the SearchRectangle to var_rec 
+	
+	put readtext(var_rec) into var_error
+	if var_error  <>  "" 
+		logerror var_error & " error displayed"
+		capturescreen {name: "Error displayed_" & today & hour(time) & "_" & minute(time) &second(time)  } 
+	else
+		logsuccess "Screen has no error prompt"
+	end if
+	set the SearchRectangle to empty
+end Check_For_Errors
+
+on Enter_Mat_Age
+	(*	Common_Functions.GlobalGetExcelData 1, "D:\CTestAutomation\IL\IL_NB.suite\Resources\IL_TestData.xlsx", "Life01"
+	put 2 into global var_cov_lineno
+	put 1 into global var_cov_itemno*)
+	repeat each line of global var_RiskAge
+		if repeatindex() = global var_cov_lineno
+			put line repeatIndex() of  global var_RiskAge  into var_line_mat_age
+			repeat each item of var_line_mat_age
+				put repeatindex() into var_item_index
+				if var_item_index = global var_cov_itemno
+					put item global var_cov_itemno of var_line_mat_age into  var_mat_age
+					exit repeat 
+				end if
+			end repeat
+		end if
+	end repeat
+	
+	put  ImageRectangle(Text:"Maturity Age/Term", EnableAggressiveTextExtraction:"Yes", TextDifference:"1", WaitFor:1)  into var_loc
+	put  [var_loc.topleft +[250,-10], var_loc.bottomright + [200,010] ] into var_rec 
+	set the SearchRectangle to var_rec 
+	
+	put readtext(var_rec) into var_readtext
+	if var_readtext = "" and var_mat_age <> ""
+		click FoundImageLocation()
+		typetext tabKey, var_mat_age
+	else
+		logsuccess "default value of Mat Cess Age/Term is " & var_readtext  
+	end if
+	set the SearchRectangle to empty 
+end Enter_Mat_Age
+
+
+on Enter_Prem_Age
+	repeat each line of global var_PremAge
+		if repeatindex() = global var_cov_lineno
+			put line repeatIndex() of  global var_PremAge into var_line_prem_cess_age
+			repeat each item of var_line_prem_cess_age
+				put repeatindex() into var_item_index
+				if var_item_index = global var_cov_itemno
+					put item global var_cov_itemno of var_line_prem_cess_age into  var_prem_cess_age
+					exit repeat 
+				end if
+			end repeat
+		end if
+	end repeat
+	
+	put  ImageRectangle(Text:"Prem Cess Age/Term", EnableAggressiveTextExtraction:"Yes", TextDifference:"1", WaitFor:1)  into var_loc
+	put  [var_loc.topleft +[250,-10], var_loc.bottomright + [200,010] ] into var_rec 
+	set the SearchRectangle to var_rec 
+	
+	put readtext(var_rec) into var_readtext
+	if var_readtext = "" and var_prem_cess_age <> ""
+		click FoundImageLocation()
+		typetext tabKey, var_prem_cess_age
+	else
+		logsuccess "default value of Prem Cess Age/Term is " & var_readtext  
+	end if
+	
+	set the SearchRectangle to empty  
+end Enter_Prem_Age
+
+
+on Check_Ben_Amt_Exists
+	if imagefound(text:"Benefit Amount",waitfor: 1  ) =true or  imagefound(text:"Sum Assured",waitfor: 1  )  = true
+		put "true" into var_ben_amt_exists
+	else
+		put "false" into var_ben_amt_exists
+	end if
+	return var_ben_amt_exists 
+	
+	
+end Check_Ben_Amt_Exists
+
+on Enter_Ben_Amt
+	repeat each line of global var_Sum_Assured_Ben_Amt
+		if repeatindex() = global var_cov_lineno
+			put line repeatIndex() of global var_Sum_Assured_Ben_Amt into var_line_ben_amt
+			repeat each item of var_line_ben_amt
+				put repeatindex() into var_item_index
+				if var_item_index = global var_cov_itemno
+					put item global var_cov_itemno of var_line_ben_amt into  var_ben_amt
+					exit repeat 
+				end if
+			end repeat
+		end if
+	end repeat
+	if imagefound(text: "Benefit Amount",waitfor: 1) = true or imagefound(text: "Sum Assured", waitfor: 1) 
+		click FoundImageLocation()
+		typetext tabKey, var_ben_amt
+	end if
+	
+	
+end Enter_Ben_Amt
+
+on Hit_Enter
+	capturescreen {name: "Image before Hit Enter" & today & hour(time) & "_" & minute(time) &second(time)  } 
+	typetext returnkey
+	(*if imagefound (text: "S5417" )    ------------TO DELETE LATER
+		if global var_cov_lineno =1 
+			click text: "Mercer Portfolio"
+			typetext tabKey, "BAL"
+			typetext returnkey
+		else
+			typetext returnkey
+		end if
+	end if *)
+	
+end Hit_Enter
+
+
+on Set_Ben_Amt_done  var_ben_amt_exists
+	if var_ben_amt_exists="false"
+		set var_Ben_Amt_done = "true"
+	else
+		set var_Ben_Amt_done = "false"
+	end if
+	return var_Ben_Amt_done
+	
+	
+end Set_Ben_Amt_done

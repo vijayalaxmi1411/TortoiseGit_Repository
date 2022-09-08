@@ -1,0 +1,79 @@
+﻿//======================================================
+//                                           AIA SINGAPORE
+//======================================================
+// Name        : Common_Functions
+// Descripton : This contains all common functions for Integral Life application suite
+//======================================================
+//  REVISION
+//-------------------------------------------------------------------------------------------------------------------------
+// Date          |  Author                              | Description
+//----------------- -------------------------------- ----------------------------------------------------------------------
+// 20220410    Automation Team -Colleen    Initial Version for IL Proposal Pre  Issue validation
+//-------------------------------------------------------------------------------------------------------------------------
+
+
+To handle PreIssue_Proposal_Validation
+	
+	If Imagefound(text: "S6378", Waitfor: 5)
+		CaptureScreen {Name: "Pre-Issue Proposal Validation" & "_" & Today & "_" & time, increment: true, imageFormat: JPG}
+		LogSuccess "Pre-Issue Proposal Validation is displayed"
+	else
+		CaptureScreen {Name: "Pre-Issue Proposal Validation" & "_" & Today & "_" & time, increment: true, imageFormat: JPG}
+		LogError  "Pre-Issue Proposal Validation is not displayed"
+	End If
+	
+	Put ImageRectangle (text: "Validation Errors Detected",caseSensitive:yes, waitfor: 5) into var_ErrorLoc
+	Log ReadText ([var_ErrorLoc.bottomleft + [-400,320],var_ErrorLoc.bottomright + [600,35]])
+	Put ReadText ([var_ErrorLoc.bottomleft + [-400,320],var_ErrorLoc.bottomright + [600,35]]) into var_ErrorCheck
+	Log var_ErrorCheck
+	
+	if var_ErrorCheck <> ""
+		CaptureScreen {Name: "Validation Errors" & "_" & Today & "_" & time, increment: true, imageFormat: JPG}
+		LogWarning "Unable to provide complete / correct details"
+	else
+		CaptureScreen {Name: "Validation Errors" & "_" & Today & "_" & time, increment: true, imageFormat: JPG}
+		LogSuccess "Able to provide complete / correct details"
+	end if
+	
+End PreIssue_Proposal_Validation
+
+on Issue_Policy
+	Set global var_contractissued = "N"
+	
+	Typetext return
+	wait 1
+	
+	If Imagefound(text: "Press ENTER to put in force", EnableAggressiveTextExtraction: Yes, Waitfor: 5)
+		CaptureScreen {Name: "Contract ready to issue" & "_" & Today & "_" & time, increment: true, imageFormat: JPG}
+		LogSuccess "Able to view Contract ready to issue"
+		
+		Typetext return
+		Wait 1
+		
+		If Imagefound(text: "Last transaction processed", CaseSensitive:Yes, Waitfor: 5)
+			CaptureScreen {Name: "Contract Issued" & "_" & Today & "_" & time, increment: true, imageFormat: JPG}
+			LogSuccess "Able to issue contract"
+			Set global var_contractissued = "Y"
+		End If
+		
+		Typetext F3
+	else
+		If Imagefound(text: "Contract not issued", CaseSensitive:Yes, Waitfor: 5)
+			CaptureScreen {Name: "Contract not issued" & "_" & Today & "_" & time, increment: true, imageFormat: JPG}
+			LogWarning "Contract not issued"
+			
+			Typetext F3
+			Wait 1
+			
+			If Imagefound(text: "Last transaction abandoned", CaseSensitive:Yes, Waitfor: 5)
+				CaptureScreen {Name: "Last transaction abandoned" & "_" & Today & "_" & time, increment: true, imageFormat: JPG}
+				LogSuccess "Last transaction abandoned - Contract not issued"
+			End If
+		End If
+		
+		Typetext F3
+	End If
+	
+	(*	return global var_contractissued*)
+	
+end Issue_Policy

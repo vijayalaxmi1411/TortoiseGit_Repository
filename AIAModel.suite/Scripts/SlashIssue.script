@@ -1,0 +1,7 @@
+﻿to SlashVar Var1
+	log Var1
+end SlashVar
+
+to SlashPath Path
+	log Path
+end SlashPath

@@ -1,0 +1,165 @@
+﻿//======================================================
+//                                           AIA SINGAPORE
+//======================================================
+// Name        : Common_Functions
+// Descripton : This contains Work with Proposal handlers for Integral Life application suite
+//======================================================
+//  REVISION
+//-------------------------------------------------------------------------------------------------------------------------
+// Date          |  Author                              | Description
+//----------------- -------------------------------- ----------------------------------------------------------------------
+// 20220410    Automation Team -Colleen    Initial Version for IL Work with Proposal
+//-------------------------------------------------------------------------------------------------------------------------
+
+
+On Review_Work_With_Proposal var_status
+	capturescreen {name: "Image before F5" & today & hour(time) & "_" & minute(time) &second(time)  } 
+	put  ImageRectangle(Text: "Act?",   caseSensitive: yes, WaitFor:1) into var_loc
+	put  [var_loc.topleft +[0,50], var_loc.bottomright + [1000,800] ] into var_rec_comp
+	repeat with each line var_comp of global var_components 
+		put repeatindex() into var_lineno 
+		repeat with each item of  var_comp 
+			put repeatindex() into var_itemno
+			put item var_itemno of line var_lineno of global var_components  into var_component 
+			set the SearchRectangle to  var_rec_comp
+			if imagefound(text: var_component,waitfor:1  ,textDifference:1,caseSensitive: yes  )  
+				put  ImageRectangle(Text: var_component,  textDifference:1 , caseSensitive: yes, WaitFor:1) into var_loc
+				put  [var_loc.topleft +[670,-5], var_loc.bottomright + [730,10] ] into var_rec
+				set the SearchRectangle to  var_rec
+				if imagefound(text:var_status , waitfor: 1)
+					logsuccess var_component  &" is in " & var_status &" status"
+					else
+					logerror var_component & " is not " & var_status &" status"
+					capturescreen {name: var_component & " is in " & var_status &" status" & today & hour(time) & "_" & minute(time) &second(time) } 
+				end if
+				
+				else 
+				logerror var_component & " is not found"
+				capturescreen {name: var_component & " is not found" & today & hour(time) & "_" & minute(time) &second(time)} 
+			end if
+			
+			put  [var_loc.bottomleft +[-5,0], var_loc.bottomright + [40,35] ] into var_rec_next_line
+			set the SearchRectangle to  var_rec_next_line 
+			
+		end repeat
+		
+	end repeat
+	
+	set the SearchRectangle to empty
+	
+	click text: "Act?" 
+	TypeText tabKey, "1"
+	Typetext returnKey
+	If imagefound (Text:"Verified", caseSensitive:"Yes", EnableAggressiveTextExtraction:"Yes", IgnoreSpaces:"Yes", WaitFor:5)  = true and global var_action = "New Proposal"
+		click FoundImageLocation() 
+		typetext tabKey
+		TypeText "Y" 
+	End If
+	typetext returnKey 
+	
+End Review_Work_With_Proposal
+
+on Hit_Enter
+	capturescreen {name: "Image before Hit Enter" & today & hour(time) & "_" & minute(time) &second(time)  } 
+	typetext returnkey
+	capturescreen {name: "Image After Hit Enter" & today & hour(time) & "_" & minute(time) &second(time)  } 
+	typetext returnkey
+	
+	
+end Hit_Enter
+
+on Perform_PreIssue_Validation  
+	typetext f5 
+	Check_For_Errors
+	Hit_Enter 
+	
+	put common_functions.Check_Next_Screen (global var_env) into var_next_screen
+	
+	return var_next_screen
+	
+end Perform_PreIssue_Validation
+
+on Check_For_Errors
+
+	put  ImageRectangle(Text:"Validation Errors", IgnoreUnderscores:"Yes", caseSensitive:"Yes", WaitFor:10)  into var_loc
+	put  [var_loc.bottomleft +[-300,40], var_loc.bottomright + [800,200] ] into var_rec 
+	set the SearchRectangle to var_rec 
+	
+	put readtext(var_rec) into var_error
+	if var_error  <>  "" 
+		log  var_error & "Vaidation errors displayed"
+		capturescreen {name: "VaidationError displayed_" & today & hour(time) & "_" & minute(time) &second(time)  } 
+	end if
+	set the SearchRectangle to empty
+end Check_For_Errors
+
+
+
+on Inquire_Proposal
+	put "Inquire Proposal" into global var_Action
+	typetext returnKey
+	if imagefound (text: "Last transaction", waitfor: 5) 
+		LogSuccess "Proposal created"
+		capturescreen {name: "Proposal created_" & today & hour(time) & "_" & minute(time) &second(time)  } 
+	else
+		LogError "Proposal not created" 
+		capturescreen {name: "Proposal not created_" & today & hour(time) & "_" & minute(time) &second(time)  } 
+	end if
+	
+	
+	(*	if imagefound (text:"Validation errors", waitfor: 3) 
+		LogError "Validation errors exists" 
+		capturescreen {name: "VaidationError displayed_" & today & hour(time) & "_" & minute(time) &second(time)  } 
+	else if  imagefound (text:"Last transaction processed", waitfor: 3) 
+		LogSuccess "Proposal created"
+		capturescreen {name: "Proposal created_" & today & hour(time) & "_" & minute(time) &second(time)  } 
+	else if  imagefound (text:"Last transaction abandoned", waitfor: 3)  and global var_Action="Inquire Proposal"
+		LogSuccess "Proposal with validation errors , not able to inquire"
+		capturescreen {name: "Proposal with validation errors_not able to inquire created_" & today & hour(time) & "_" & minute(time) &second(time)  } 
+	else
+		LogError "Proposal not created" 
+		capturescreen {name: "Proposal not created_" & today & hour(time) & "_" & minute(time) &second(time)  } 
+	end if*)
+end Inquire_Proposal
+
+
+
+
+on Check_to_Exit  
+	(*	if var_inquire_done = "true"
+		set var_next_screen=""
+	end if
+	
+	return var_next_screen*)
+	
+	typetext returnKey
+	if global var_action ="Inquire Proposal"
+		return "true"
+	else 
+		return "false"
+	end if
+	
+end Check_to_Exit
+
+
+
+
+on Hit_Enter_dummyCKA
+	typetext F12
+	capturescreen {name: "Image before Hit Enter" & today & hour(time) & "_" & minute(time) &second(time)  } 
+	typetext returnkey
+	capturescreen {name: "Image After Hit Enter" & today & hour(time) & "_" & minute(time) &second(time)  } 
+	typetext returnkey
+end Hit_Enter_dummyCKA
+
+
+on Validate_Proposal
+	capturescreen {name: "Proposal screen before hit Enter" & today & hour(time) & "_" & minute(time) &second(time)  } 
+	if imagefound(text:"Validation Errors Detected", waitfor: 3) 
+		capturescreen {name: "Validation Errors Detected upon Proposal inquiry" & today & hour(time) & "_" & minute(time) &second(time)  } 
+		typetext F3
+		capturescreen {name: "After F3" & today & hour(time) & "_" & minute(time) &second(time)  } 
+	end if
+end Validate_Proposal
+
+typetext "https://aiacom-my.sharepoint.com/personal/reginal-z_naldoza_aia_com/_layouts/15/onedrive.aspx?id=%2Fpersonal%2Freginal%2Dz%5Fnaldoza%5Faia%5Fcom%2FDocuments%2FTestAutomation%2FVM%5FDocSharing"

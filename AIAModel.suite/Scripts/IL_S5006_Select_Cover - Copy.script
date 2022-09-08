@@ -1,0 +1,110 @@
+﻿on select_coverage
+	Common_Functions.GlobalGetExcelData 1, "D:\CTestAutomation\IL\IL_NB.suite\Resources\IL_TestData.xlsx", "Life01"
+	put  ImageRectangle(Text:"Coverage", LowResolutionMode:"Yes", caseSensitive:"Yes", EnableAggressiveTextExtraction:"Yes", EnhanceLocalContrast:"Yes", TextDifference:"1", WaitFor:1)  into var_loc
+	put  [var_loc.topleft +[0,0], var_loc.bottomright + [0,1000] ] into var_rec_cov
+	put  ImageRectangle(Text:"Rider", LowResolutionMode:"Yes", caseSensitive:"Yes", IgnoreSpaces:"Yes", EnableAggressiveTextExtraction:"Yes", EnhanceLocalContrast:"Yes", TextDifference:"1", WaitFor:1) into var_loc
+	put  [var_loc.topleft +[0,0], var_loc.bottomright + [0,1000] ] into var_rec_rider
+	set the SearchRectangle to empty
+	
+	select_components  var_rec_cov, var_rec_rider
+	
+	
+end select_coverage
+
+on select_components  var_rec_cov, var_rec_rider
+	
+	repeat with each line var_comp of global var_components--  global var_required_component_ind 
+		put repeatindex() into var_lineno 
+		repeat with each item of  var_comp 
+			put repeatindex() into var_itemno
+			if var_itemno = 1 
+				set the SearchRectangle to var_rec_cov 
+			else
+				set the SearchRectangle to var_rec_rider 
+			end if
+			if item var_itemno  of line var_lineno of global var_required_component_ind ="Y"
+				set var_required="Y"
+			else
+				set var_required="N"
+			end if
+			
+			put item var_itemno of line var_lineno of global var_components  into var_component 
+			if imagefound(text: var_component ) and var_itemno = 1   
+				put  ImageRectangle(Text: var_component, caseSensitive: yes, WaitFor:1) into var_loc
+				put  [var_loc.topleft +[-150,-5], var_loc.bottomright + [-100,10] ] into var_rec
+				set the SearchRectangle to  var_rec
+				
+			else  if imagefound(text:var_component ) and var_itemno <> 1    and  var_req_comp <> ""  
+				put  ImageRectangle(Text:var_component, caseSensitive: yes, WaitFor:1) into var_loc
+				put  [var_loc.topleft +[-300,-5], var_loc.bottomright + [-100,10] ] into var_rec
+				set the SearchRectangle to  var_rec
+			end if
+			
+			if imagefound (Text:"X", LowResolutionMode:"Yes", IgnoreUnderscores:"Yes", caseSensitive:"Yes", IgnoreSpaces:"Yes", EnableAggressiveTextExtraction:"Yes", contrastColor:[0,0,0], EnhanceLocalContrast:"Yes", contrast:"On", TextDifference:"1", WaitFor:1, contrastTolerance:"45")
+				set var_X_found ="Y"
+			else
+				set var_X_found ="N"
+			end if
+			
+			if var_required ="Y"	  	
+				if  var_X_found ="Y" 
+					logsuccess   "Required component_" & var_component  & " is pre-selected"
+				else 
+				logerror var_component & " is not pre-selected " 
+			end if
+			else 
+			if  var_X_found ="Y" 
+				logerror var_component & " is  pre-selected " 
+			else 
+				typetext shiftKey, tab 
+				typetext "X"
+				logsuccess   "Selected component " & var_component 
+			end if
+		end if 
+		
+		
+	end repeat
+end repeat
+
+capturescreen {name: "Required coverage completed_" & today & hour(time) & "_" & minute(time) &second(time) , increment: yes}  
+
+end select_components
+
+
+on select_componentsx var_rec_cov, var_rec_rider
+	repeat with each line var_comp of global var_components
+		repeat with each item   of  var_comp 
+			put repeatindex() into var_itemno
+			if var_itemno = 1 
+				set the SearchRectangle to var_rec_cov 
+			else
+				set the SearchRectangle to var_rec_rider 
+			end if
+			if imagefound(text: item var_itemno  of  var_comp) and var_itemno = 1 
+				put  ImageRectangle(Text:item var_itemno  of var_comp, caseSensitive: yes, WaitFor:1) into var_loc
+				put  [var_loc.topleft +[-150,-5], var_loc.bottomright + [0,10] ] into var_rec
+				set the SearchRectangle to  var_rec
+				
+			else
+				put  ImageRectangle(Text:item var_itemno  of var_comp, caseSensitive: yes, WaitFor:1) into var_loc
+				put  [var_loc.topleft +[-300,-5], var_loc.bottomright + [0,10] ] into var_rec
+				set the SearchRectangle to  var_rec
+			end if
+			if imagefound (Text:"X", LowResolutionMode:"Yes", IgnoreUnderscores:"Yes", caseSensitive:"Yes", IgnoreSpaces:"Yes", EnableAggressiveTextExtraction:"Yes", contrastColor:[0,0,0], EnhanceLocalContrast:"Yes", contrast:"On", TextDifference:"1", WaitFor:1, contrastTolerance:"45")
+				logerror "Component "  & item var_itemno of var_comp & " is pre-selected"
+			else
+				click text:  item var_itemno of var_comp
+				typetext shiftKey, tab 
+				typetext "X"
+				
+			end if
+			
+		end repeat
+	end repeat
+	capturescreen {name: "Coverage selection completed_" & today & hour(time) & "_" & minute(time) &second(time) , increment: yes}  
+end select_componentsx
+
+
+repeat  4 times
+	typetext "a"
+end repeat
